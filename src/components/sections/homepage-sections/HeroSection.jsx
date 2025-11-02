@@ -1,41 +1,72 @@
+import { Link } from 'react-router-dom'
 import * as assets from '@assets'
 
-export default function HeroSection() {
+/**
+ * HeroSection
+ * - Uses design tokens (CSS vars) and Tailwind utilities
+ * - Responsive typography mapped to your system: display / h1 / text1
+ * - Reusable via simple props for title and CTAs
+ */
+export default function HeroSection({
+  title = 'Shaping the Future of Robotics',
+  ctaPrimary = 'Become a Member',
+  ctaPrimaryTo = '/join',
+  ctaSecondary = 'Become a Partner',
+  ctaSecondaryTo = '/#partners',
+}) {
+  const baseBtn =
+    'inline-flex items-center justify-center px-6 py-3 rounded-full text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2'
+
+  const primaryBtn =
+    `${baseBtn} bg-[var(--brand)] text-white hover:opacity-90 focus-visible:ring-[var(--brand)]`
+
+  const secondaryBtn =
+    `${baseBtn} ring-1 ring-white/30 bg-white/10 text-white hover:bg-white/20 focus-visible:ring-white/50`
+
   return (
     <section
       id="hero"
-      className="relative w-full min-h-screen bg-gradient-to-b from-[#000C21] via-[#06142B] to-[#000C21] text-white overflow-hidden font-exo"
+      role="region"
+      aria-labelledby="hero-heading"
+      className="relative w-full min-h-screen px-6 py-24 text-white font-sans section-gradient overflow-hidden"
     >
-
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/40 z-10"></div>
+      {/* Dark overlay for readability */}
+      <div className="pointer-events-none absolute inset-0 bg-black/20" />
 
       {/* Content */}
-      <div className="relative z-20 flex flex-col justify-center items-center text-center px-6 py-24 min-h-screen max-w-4xl mx-auto font-exo">
-        {/* Logo */}
-        <img
-          src={assets.navLogo}
-          alt="RoboTUM logo"
-          className="w-[220px] h-auto mb-8 drop-shadow-md"
-        />
-        <h1 className="text-5xl md:text-6xl font-bold leading-tight tracking-tight text-sky-50 drop-shadow-lg">
-          Shaping the Future of Robotics
-        </h1>
+      <div className="relative z-10 flex items-center">
+        <div className="container mx-auto md:py-32 grid place-items-center text-center">
+          {/* Logo */}
+          <img
+            src={assets.navLogo}
+            alt="RoboTUM logo"
+            className="w-40 md:w-56 h-auto mb-8 drop-shadow"
+            loading="eager"
+            decoding="async"
+          />
 
-        {/* Buttons */}
-        <div className="mt-10 flex flex-col sm:flex-row gap-4 sm:gap-6">
-          <a
-            href="/join"
-            className="px-8 py-4 rounded-md bg-indigo-600 hover:bg-indigo-500 text-white text-[15px] tracking-wide font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
+          {/* Heading */}
+          <h1
+            id="hero-heading"
+            className="font-bold leading-tight tracking-tight text-4xl md:text-h1 lg:text-display"
           >
-            Become a Member
-          </a>
-          <a
-            href="#partners"
-            className="px-8 py-4 rounded-md bg-white/10 hover:bg-white/20 text-white text-[15px] tracking-wide font-medium backdrop-blur transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300/60"
-          >
-            Become a Partner
-          </a>
+            {title}
+          </h1>
+
+          {/* Subtext (optional): map to text1 scale if you add subtitle later */}
+          <p className="mt-4 text-text1 text-white/80 max-w-3xl">Your subtitle here</p>
+
+          {/* CTAs */}
+          <div className="mt-10 flex flex-col sm:flex-row gap-4 sm:gap-6">
+            <Link to={ctaPrimaryTo} className={primaryBtn}>
+              {ctaPrimary}
+            </Link>
+            {ctaSecondary ? (
+              <Link to={ctaSecondaryTo} className={secondaryBtn}>
+                {ctaSecondary}
+              </Link>
+            ) : null}
+          </div>
         </div>
       </div>
     </section>
