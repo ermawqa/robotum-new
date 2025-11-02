@@ -48,13 +48,13 @@ export default function HeroSection({
           {/* Heading */}
           <h1
             id="hero-heading"
-            className="font-bold leading-tight tracking-tight text-4xl md:text-h1 lg:text-display"
+            className="font-bold leading-tight tracking-tight [text-wrap:balance] text-[clamp(2.5rem,6vw+0.5rem,7.5rem)]"
           >
             {title}
           </h1>
 
           {/* Subtext (optional): map to text1 scale if you add subtitle later */}
-          <p className="mt-4 text-text1 text-white/80 max-w-3xl">Your subtitle here</p>
+          <p className="mt-4 text-white/80 max-w-3xl text-[clamp(1.125rem,1.2vw+0.5rem,1.75rem)]">Your subtitle here</p>
 
           {/* CTAs */}
           <div className="mt-10 flex flex-col sm:flex-row gap-4 sm:gap-6">
