@@ -1,10 +1,11 @@
 import * as assets from '@assets'
+import Button from '@components/ui/Button'
 
 export default function JoinUsSection() {
   return (
     <section
       id="join"
-      className="w-full px-6 py-24 bg-gradient-to-b from-[#000C21] via-[#06142B] to-[#000C21] text-white font-exo"
+      className="w-full px-6 py-24 text-white font-sans section-gradient"
     >
       <div className="max-w-7xl mx-auto flex flex-col gap-16">
         {/* Become a Member */}
@@ -21,18 +22,8 @@ export default function JoinUsSection() {
               participate in projects, and grow your skills alongside passionate innovators.
             </p>
             <div className="flex gap-4">
-              <a
-                href="#apply"
-                className="px-6 py-3 bg-blue-600 hover:bg-blue-500 rounded-md text-white font-medium"
-              >
-                Apply Now
-              </a>
-              <a
-                href="#learn-more"
-                className="px-6 py-3 border border-white/30 hover:border-white/60 rounded-md text-white font-medium"
-              >
-                Learn More
-              </a>
+              <Button variant="primary" as="link" to="#apply">Apply Now</Button>
+              <Button variant="secondary" as="link" to="#learn-more">Learn More</Button>
             </div>
           </div>
         </div>
@@ -51,18 +42,8 @@ export default function JoinUsSection() {
               and gain visibility in our events and projects.
             </p>
             <div className="flex gap-4">
-              <a
-                href="#partner"
-                className="px-6 py-3 bg-blue-600 hover:bg-blue-500 rounded-md text-white font-medium"
-              >
-                Become a Partner
-              </a>
-              <a
-                href="#view-partners"
-                className="px-6 py-3 border border-white/30 hover:border-white/60 rounded-md text-white font-medium"
-              >
-                View Partners
-              </a>
+              <Button variant="primary" as="link" to="#partner">Become a Partner</Button>
+              <Button variant="secondary" as="link" to="#view-partners">View Partners</Button>
             </div>
           </div>
         </div>
