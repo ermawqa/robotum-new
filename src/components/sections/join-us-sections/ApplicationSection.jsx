@@ -1,4 +1,4 @@
-import * as assets from '../../../assets'
+import * as assets from '@assets'
 
 import React from 'react';
 

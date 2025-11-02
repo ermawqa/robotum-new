@@ -1,5 +1,5 @@
 import React from 'react';
-import * as assets from '../../../assets';
+import * as assets from '@assets'
 
 const HeroSection = () => {
   return (
