@@ -1,5 +1,6 @@
 import * as assets from '@assets'
 import Button from '@components/ui/Button'
+import ImageFrame from '@components/ui/ImageFrame'
 
 export default function JoinUsSection() {
   return (
@@ -10,11 +11,17 @@ export default function JoinUsSection() {
       <div className="max-w-7xl mx-auto flex flex-col gap-16">
         {/* Become a Member */}
         <div className="flex flex-col md:flex-row items-center gap-8">
-          <img
-            src={assets.memberImg}
-            alt="Join as Member"
-            className="md:w-1/2 w-full rounded-xl shadow-lg border border-white/10"
-          />
+          <div className="md:w-1/2 w-full">
+            <ImageFrame
+              src={assets.memberImg}
+              alt="Join as Member"
+              aspect="3/2"
+              fit="cover"
+              variant="soft"
+              rounded="xl"
+              className="w-full"
+            />
+          </div>
           <div className="md:w-1/2 w-full space-y-6">
             <h2 className="text-4xl font-bold">Become a Member</h2>
             <p className="text-slate-300">
@@ -30,11 +37,17 @@ export default function JoinUsSection() {
 
         {/* Become a Partner */}
         <div className="flex flex-col md:flex-row-reverse items-center gap-8">
-          <img
-            src={assets.partnerImg}
-            alt="Join as Partner"
-            className="md:w-1/2 w-full rounded-xl shadow-lg border border-white/10"
-          />
+          <div className="md:w-1/2 w-full">
+            <ImageFrame
+              src={assets.partnerImg}
+              alt="Join as Partner"
+              aspect="3/2"
+              fit="cover"
+              variant="soft"
+              rounded="xl"
+              className="w-full"
+            />
+          </div>
           <div className="md:w-1/2 w-full space-y-6">
             <h2 className="text-4xl font-bold">Become a Partner</h2>
             <p className="text-slate-300">

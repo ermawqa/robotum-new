@@ -1,4 +1,5 @@
 import * as assets from '@assets'
+import ImageFrame from '@components/ui/ImageFrame'
 import React, { useEffect, useRef, useState } from 'react'
 
 /** Smooth counter that starts when `inView` is true */
@@ -58,7 +59,7 @@ export default function AboutHero() {
 
   return (
     <section
-      className="section-gradient text-white pt-28 pb-16 px-6 min-h-screen font-sans"
+      className="text-white pt-28 pb-16 px-6 min-h-screen font-sans surface-1 edge-fade-bottom surface-wrap surface-pattern"
       aria-labelledby="about-hero-heading"
     >
       <div className="max-w-7xl mx-auto">
@@ -67,7 +68,7 @@ export default function AboutHero() {
           <div className="md:w-1/2">
             <h1
               id="about-hero-heading"
-              className="font-bold leading-tight [text-wrap:balance] text-h2"
+              className="font-bold leading-tight text-balance text-h1"
             >
               More than a<br /> student club!
             </h1>
@@ -79,12 +80,15 @@ export default function AboutHero() {
 
           {/* Visual */}
           <div className="md:w-1/2">
-            <img
+            <ImageFrame
               src={assets.auditoryImg}
               alt="RoboTUM students collaborating during a robotics session"
-              className="rounded-xl w-full shadow-lg border border-white/10"
+              aspect="3/2"
+              fit="cover"
+              variant="soft"
+              rounded="xl"
               loading="eager"
-              decoding="async"
+              className="w-full"
             />
           </div>
         </div>

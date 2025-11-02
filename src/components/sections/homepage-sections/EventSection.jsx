@@ -1,6 +1,7 @@
 import { useState } from 'react' 
 import * as assets from '@assets'
 import Button from '@components/ui/Button'
+import ImageFrame from '@components/ui/ImageFrame'
 
 const events = [
   {
@@ -44,11 +45,15 @@ export default function EventSection() {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
         {/* Left side - image and title */}
         <div className="md:w-5/12 text-left">
-          <h2 className="text-4xl md:text-5xl font-bold mb-8">Upcoming Events</h2>
-          <img
+          <h2 className="text-h1 font-bold leading-tight mb-8">Upcoming Events</h2>
+          <ImageFrame
             src={assets.speakerImg}
             alt="Event speaker"
-            className="rounded-lg border border-white/20 shadow-lg"
+            aspect="3/2"
+            fit="cover"
+            variant="soft"
+            rounded="xl"
+            className="w-full"
           />
         </div>
 
@@ -58,10 +63,12 @@ export default function EventSection() {
             const [month, day] = event.date.split(' ')
             const isActive = activeIndex === index
             return (
-              <div
+              <button
+                type="button"
                 key={index}
                 onClick={() => setActiveIndex(index)}
-                className={`cursor-pointer p-6 rounded-xl border transition-all duration-300 ${
+                aria-expanded={isActive}
+                className={`w-full text-left cursor-pointer p-6 rounded-xl border transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40 ${
                   isActive
                     ? 'bg-blue-900/50 border-blue-500'
                     : 'bg-white/5 border-white/10 hover:bg-white/10'
@@ -75,7 +82,7 @@ export default function EventSection() {
                     </div>
                     <div>
                       <div className="text-sm text-slate-300">{event.category}</div>
-                      <div className="text-[15px] font-semibold text-white">
+                      <div className="text-[15px] md:text-base font-semibold text-white">
                         {event.title}
                       </div>
                     </div>
@@ -100,7 +107,7 @@ export default function EventSection() {
                     )}
                   </div>
                 )}
-              </div>
+              </button>
             )
           })}
         </div>

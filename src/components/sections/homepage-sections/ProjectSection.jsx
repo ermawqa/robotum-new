@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import * as assets from '@assets'
 import Button from '@components/ui/Button'
+import ImageFrame from '@components/ui/ImageFrame'
 
 const projects = [
   {
@@ -119,26 +120,26 @@ export default function ProjectSection() {
       id="projects"
       className="w-full px-6 py-24 text-white font-sans surface-1 edge-fade-top"
     >
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 md:gap-12">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 px-2 sm:px-4">
         {/* Left side */}
-        <div className="md:w-1/2 relative text-center md:text-left min-h-[300px] sm:min-h-[360px] md:min-h-[420px]">
+        <div className="w-full md:w-1/2 relative text-center md:text-left min-h-[250px] sm:min-h-80 md:min-h-[420px] px-2">
           <div
             key={current}
             className="transition-all duration-700 ease-in-out opacity-0 translate-x-6 animate-fadeIn"
           >
-            <h2 className="text-[1.5rem] md:text-h2 font-bold mb-2 md:mb-4 [text-wrap:balance]">
+            <h2 className="text-[1.75rem] sm:text-[2rem] md:text-h2 font-bold mb-3 md:mb-4 text-balance leading-tight">
               {projects[current].title}
             </h2>
 
             {/* Show description only on md and up */}
-            <p className="hidden md:block text-text1 text-white/80 mb-6 leading-relaxed">
+            <p className="text-text2 sm:text-text1 text-white/80 mb-4 md:mb-6 leading-relaxed line-clamp-5 md:line-clamp-none">
               {projects[current].description}
             </p>
 
             {/* Button for desktop */}
             <div className="hidden md:block">
               <Button
-                variant="primary"
+                variant="secondary"
                 as="link"
                 to={projects[current].link}
                 className="text-base px-6 py-3"
@@ -155,26 +156,28 @@ export default function ProjectSection() {
             key={current}
             className="transition-opacity duration-700 ease-in-out animate-fadeIn w-full"
           >
-            <div className="relative w-full max-w-md mx-auto h-[300px] sm:h-[360px] md:h-[420px]">
-              <div className="w-full h-full rounded-xl overflow-hidden">
-                <img
-                  src={projects[current].image}
-                  alt={projects[current].title}
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              {/* Navigation buttons (visible on all sizes, positioned responsively) */}
+            <div className="relative w-full max-w-sm sm:max-w-md mx-auto px-2">
+              <ImageFrame
+                src={projects[current].image}
+                alt={projects[current].title}
+                aspect="3/2"
+                fit="contain"
+                variant="soft"
+                rounded="xl"
+                className="w-full"
+              />
+              {/* Navigation buttons */}
               <button
                 onClick={prevProject}
                 aria-label="Previous project"
-                className="flex items-center justify-center absolute left-2 md:-left-10 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white w-10 h-10 md:w-11 md:h-11 rounded-full transition-all z-10"
+                className="flex items-center justify-center absolute left-1 sm:left-2 md:-left-10 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 rounded-full transition-all z-10"
               >
                 ←
               </button>
               <button
                 onClick={nextProject}
                 aria-label="Next project"
-                className="flex items-center justify-center absolute right-2 md:-right-10 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white w-10 h-10 md:w-11 md:h-11 rounded-full transition-all z-10"
+                className="flex items-center justify-center absolute right-1 sm:right-2 md:-right-10 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 rounded-full transition-all z-10"
               >
                 →
               </button>
@@ -184,7 +187,7 @@ export default function ProjectSection() {
           {/* Button for mobile */}
           <div className="mt-6 flex justify-center md:hidden">
             <Button
-              variant="primary"
+              variant="secondary"
               as="link"
               to={projects[current].link}
               className="text-sm px-4 py-2"
@@ -196,7 +199,7 @@ export default function ProjectSection() {
       </div>
 
       {/* Dots indicator */}
-      <div className="mt-10 flex justify-center gap-2">
+      <div className="mt-8 sm:mt-10 flex justify-center gap-2">
         {projects.map((_, i) => (
           <div
             key={i}
