@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import * as assets from '@assets'
+import Button from '@components/ui/Button'
+import ImageFrame from '@components/ui/ImageFrame'
 
 const events = [
   {
@@ -60,42 +62,67 @@ export default function EventsSection() {
       : events.filter((e) => e.category === activeCategory);
 
   return (
-    <section className="px-4 py-16 md:px-8 bg-[#000c21] text-white">
-      <div className="flex justify-center mb-10 flex-wrap gap-4">
-        {categories.map((cat) => (
-          <button
-            key={cat}
-            className={`px-6 py-2 rounded-full border ${
-              activeCategory === cat
-                ? 'bg-[#3f5ea6] text-white'
-                : 'border-[#3f5ea6] text-[#3f5ea6] hover:bg-[#3f5ea6] hover:text-white'
-            } transition duration-200 cursor-pointer`}
-            onClick={() => setActiveCategory(cat)}
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
+    <section className="w-full px-6 py-20 md:py-28 font-sans text-white surface-1 edge-fade-bottom">
+      <div className="max-w-7xl mx-auto">
+        {/* Category Filter */}
+        <div className="flex justify-center mb-10 flex-wrap gap-3 sm:gap-4">
+          {categories.map((cat) => {
+            const active = activeCategory === cat
+            return (
+              <Button
+                key={cat}
+                variant="secondary"
+                onClick={() => setActiveCategory(cat)}
+                className={`
+                  text-sm md:text-base px-5 py-2 rounded-full transition-all duration-300
+                  ${active
+                    ? 'bg-(--brand,#3B82F6) text-white shadow-[0_0_15px_rgba(59,130,246,0.4)] scale-[1.05]'
+                    : 'bg-white/10 text-white/80 hover:bg-white/20 hover:text-white hover:scale-[1.03]'}
+                `}
+              >
+                {cat}
+              </Button>
+            )
+          })}
+        </div>
 
-      <div className="grid gap-10 sm:grid-cols-2">
-        {filteredEvents.map((event) => (
-          <div
-            key={event.id}
-            className="bg-[#0c1a3a] rounded-lg p-4 flex flex-col items-center text-center"
-          >
-            <img
-              src={event.image}
-              alt={event.title}
-              className="rounded-lg w-full h-[250px] object-cover mb-4"
-            />
-            <h3 className="text-xl font-semibold">{event.title}</h3>
-            <p className="text-sm opacity-75 mb-2">{event.date}</p>
-            <p className="text-sm mb-4">{event.description}</p>
-            <button className="px-6 py-2 bg-[#3f5ea6] text-white rounded-full hover:bg-[#577ae0] transition">
-              Register
-            </button>
-          </div>
-        ))}
+        {/* Events Grid */}
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+          {filteredEvents.map((event) => (
+            <div
+              key={event.id}
+              className="flex flex-col bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 hover:border-(--brand,#3B82F6) transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:shadow-[0_8px_32px_rgba(59,130,246,0.3)]"
+            >
+              <ImageFrame
+                src={event.image}
+                alt={event.title}
+                aspect="3/2"
+                fit="cover"
+                variant="soft"
+                rounded="none"
+              />
+
+              <div className="p-6 flex flex-col grow text-left">
+                <h3 className="text-h2 md:text-h3 font-semibold mb-2 leading-tight text-white">
+                  {event.title}
+                </h3>
+                <p className="text-sm text-white/70 mb-3">{event.date}</p>
+                <p className="text-text2 text-white/80 mb-6 grow leading-relaxed">
+                  {event.description}
+                </p>
+
+                <Button
+                  variant="secondary"
+                  as="link"
+                  to={`/events/${event.id}`}
+                  className="self-start text-sm px-5 py-2 mt-auto"
+                >
+                  Register →
+                </Button>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
