@@ -15,10 +15,8 @@ export default function MissionSection() {
     >
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
-        <h2 className="heading heading-h2 font-bold leading-tight mb-10 md:mb-14 text-center md:text-left">
-          We are a student initiative <br className="hidden md:block" />
-          formed of robotic <br className="hidden md:block" />
-          enthusiasts
+        <h2 className="heading heading-h1 font-bold leading-tight mb-10 md:mb-14 text-center md:text-left">
+          Foundations of RoboTUM
         </h2>
 
         {/* Content container */}
@@ -29,7 +27,7 @@ export default function MissionSection() {
               Vision
             </h3>
             <p className="text-text2 md:text-text1 text-black/80 leading-relaxed">
-              To establish Munich as a global robotics hub, comparable to Boston or Switzerland.
+              To establish <span className="text-accent font-semibold">Munich</span> as a global <span className="text-accent font-semibold">robotics hub</span>, comparable to <span className="text-accent font-semibold">Boston</span> or <span className="text-accent font-semibold">Switzerland</span>.
             </p>
           </div>
 
@@ -39,7 +37,7 @@ export default function MissionSection() {
               Mission
             </h3>
             <p className="text-text2 md:text-text1 text-black/80 leading-relaxed">
-              To bridge the gap between robotic industry and academia, driving innovation and entrepreneurship.
+              To bridge the gap between <span className="text-accent font-semibold">robotic industry</span> and <span className="text-accent font-semibold">academia</span>, driving <span className="text-accent font-semibold">innovation</span> and <span className="text-accent font-semibold">entrepreneurship</span>.
             </p>
             <div className="mt-6">
               <Button variant="primary" as="link" to="/about">
