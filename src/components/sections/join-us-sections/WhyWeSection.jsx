@@ -1,42 +1,62 @@
-import React from 'react';
+import React from 'react'
 import * as assets from '@assets'
-
+import Button from '@components/ui/Button'
 
 const WhyWeSection = () => {
   return (
-    <section className="py-24 px-6 sm:px-10 md:px-20 bg-gradient-to-b from-[#091E3E] to-[#000C21] text-white">
-      <div className="max-w-screen-xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-16">Why RoboTUM?</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-24">
-          <div className="bg-[#0B1E3B] rounded-3xl px-6 py-12 text-center flex flex-col items-center">
-            <img src={assets.handsOnIcon} alt="hands-on experience" className="w-20 h-20 mb-4" />
-            <p className="text-lg font-semibold">hands-on experience</p>
-          </div>
-          <div className="bg-[#0B1E3B] rounded-3xl px-6 py-12 text-center flex flex-col items-center">
-            <img src={assets.teamsIcon} alt="interdisciplinary teams" className="w-20 h-20 mb-4" />
-            <p className="text-lg font-semibold">interdisciplinary teams</p>
-          </div>
-          <div className="bg-[#0B1E3B] rounded-3xl px-6 py-12 text-center flex flex-col items-center">
-            <img src={assets.eventsIcon} alt="competition & events" className="w-20 h-20 mb-4" />
-            <p className="text-lg font-semibold">competition & events</p>
-          </div>
+    <section className="w-full px-6 md:px-16 py-20 md:py-28 text-white font-sans surface-1 edge-fade-top edge-fade-bottom surface-wrap surface-pattern">
+      <div className="max-w-7xl mx-auto flex flex-col gap-20">
+
+        {/* Header */}
+        <div className="text-center">
+          <h2 className="text-h1 font-bold leading-tight [text-wrap:balance] mb-6">
+            Why RoboTUM?
+          </h2>
+          <p className="text-text2 md:text-text1 text-white/80 max-w-3xl mx-auto leading-relaxed">
+            Learn, build, and innovate together with students who share your passion for robotics.
+          </p>
         </div>
 
-        <div className="max-w-4xl">
-          <h3 className="text-2xl font-bold mb-6">What are we looking for?</h3>
-          <p className="text-lg mb-4 leading-relaxed">
-            We’re looking for curious, motivated students from all disciplines who have a real interest in robots
-            or want to turn ideas into real robots. No matter your background – if you’re excited about robotics
+        {/* Feature cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {[
+            { icon: assets.handsOnIcon, title: 'Hands-on experience' },
+            { icon: assets.teamsIcon, title: 'Interdisciplinary teams' },
+            { icon: assets.eventsIcon, title: 'Competitions & events' },
+          ].map((item, index) => (
+            <div
+              key={index}
+              className="bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/10 hover:border-white/20 rounded-3xl px-8 py-12 text-center flex flex-col items-center transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_28px_rgba(59,130,246,0.25)]"
+            >
+              <img
+                src={item.icon}
+                alt={item.title}
+                className="w-20 h-20 mb-5 transition-transform duration-300 hover:scale-110"
+              />
+              <p className="text-text1 font-semibold capitalize">{item.title}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Description */}
+        <div className="max-w-4xl mx-auto text-center md:text-left">
+          <h3 className="text-h2 font-bold mb-6">What are we looking for?</h3>
+          <p className="text-text2 md:text-text1 text-white/80 mb-4 leading-relaxed">
+            We’re looking for curious, motivated students from all disciplines who have a real interest in robotics
+            or want to turn ideas into real robots. No matter your background — if you’re excited about robotics
             and ready to learn, you’re in the right place.
           </p>
-          <p className="text-lg leading-relaxed">
-            You don’t need to be an expert – just bring motivation and willingness to learn. We’ll support you
+          <p className="text-text2 md:text-text1 text-white/80 leading-relaxed mb-8">
+            You don’t need to be an expert — just bring motivation and willingness to learn. We’ll support you
             from day one.
           </p>
+          <Button variant="primary" as="link" to="/join">
+            Join Now →
+          </Button>
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default WhyWeSection;
+export default WhyWeSection
