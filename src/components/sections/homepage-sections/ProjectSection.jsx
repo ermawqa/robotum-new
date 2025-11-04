@@ -64,8 +64,8 @@ export default function ProjectSection() {
       className="w-full px-6 py-24 text-white font-sans surface-1 edge-fade-top edge-fade-bottom surface-wrap surface-pattern"
     >
       {/* Heading */}
-      <h2 className="heading heading-h2 font-bold leading-tight mb-10 md:mb-14 text-center md:text-left">
-        Our Projects
+      <h2 className="heading heading-h1 font-bold leading-tight mb-10 md:mb-14 text-center md:text-left">
+        Main Project Showcase
       </h2>
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start justify-between gap-10 md:gap-16">
         {/* LEFT — Text Info */}
