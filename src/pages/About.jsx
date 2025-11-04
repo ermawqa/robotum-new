@@ -6,6 +6,8 @@ import FooterSection from '@components/sections/common-sections/FooterSection';
 import React, { lazy, Suspense, useEffect } from 'react';
 const HeroSection = lazy(() => import('@components/sections/about-us-sections/HeroSection'));
 const TeamSection = lazy(() => import('@components/sections/about-us-sections/TeamSection'));
+const PreviousEventsSection = lazy(() => import('@components/sections/about-us-sections/PreviousEventsSection'));
+const FaqSection = lazy(() => import('@components/sections/about-us-sections/FaqSection'));
 
 const About = () => {
   useEffect(() => {
@@ -20,6 +22,8 @@ const About = () => {
       <Suspense fallback={<div className="w-full py-24 text-center text-white/70">Loading…</div>}>
         <HeroSection />
         <TeamSection />
+        <PreviousEventsSection />
+        <FaqSection />
       </Suspense>
 
       <FooterSection />
