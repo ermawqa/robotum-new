@@ -39,14 +39,14 @@ export default function HeroSection({
         {/* Heading */}
         <h1
           id="hero-heading"
-          className="text-display md:text-hero font-bold leading-tight tracking-tight [text-wrap:balance]"
+          className="text-display md:text-hero font-bold leading-tight tracking-tight text-balance"
         >
           {title}
         </h1>
 
         {/* Subtitle */}
         {subtitle && (
-          <p className="text-text1 text-white/80 leading-relaxed max-w-3xl mx-auto [text-wrap:balance]">
+          <p className="text-text1 text-white/80 leading-relaxed max-w-3xl mx-auto text-balance">
             {subtitle}
           </p>
         )}
