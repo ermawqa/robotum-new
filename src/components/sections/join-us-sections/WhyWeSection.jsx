@@ -4,12 +4,12 @@ import Button from '@components/ui/Button'
 
 const WhyWeSection = () => {
   return (
-    <section className="w-full px-6 md:px-16 py-20 md:py-28 text-white font-sans surface-1 edge-fade-top edge-fade-bottom surface-wrap surface-pattern">
+    <section className="w-full px-6 md:px-16 py-20 md:py-28 text-white font-sans surface-1 edge-fade-top edge-fade-bottom surface-wrap surface-pattern" aria-labelledby="why-heading">
       <div className="max-w-7xl mx-auto flex flex-col gap-20">
 
         {/* Header */}
         <div className="text-center">
-          <h2 className="text-h1 font-bold leading-tight text-balance mb-6">
+          <h2 id="why-heading" className="heading heading-h1 font-bold leading-tight text-balance mb-6">
             Why RoboTUM?
           </h2>
           <p className="text-text2 md:text-text1 text-white/80 max-w-3xl mx-auto leading-relaxed">
@@ -18,13 +18,13 @@ const WhyWeSection = () => {
         </div>
 
         {/* Feature cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" role="list" aria-label="Why RoboTUM features">
           {[
             { icon: assets.handsOnIcon, title: 'Hands-on experience' },
             { icon: assets.teamsIcon, title: 'Interdisciplinary teams' },
             { icon: assets.eventsIcon, title: 'Competitions & events' },
           ].map((item, index) => (
-            <div
+            <div role="listitem"
               key={index}
               className="bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/10 hover:border-white/20 rounded-3xl px-8 py-12 text-center flex flex-col items-center transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_28px_rgba(59,130,246,0.25)]"
             >
@@ -40,7 +40,7 @@ const WhyWeSection = () => {
 
         {/* Description */}
         <div className="max-w-4xl mx-auto text-center md:text-left">
-          <h3 className="text-h2 font-bold mb-6">What are we looking for?</h3>
+          <h3 className="heading heading-h2 font-bold mb-6">What are we looking for?</h3>
           <p className="text-text2 md:text-text1 text-white/80 mb-4 leading-relaxed">
             We’re looking for curious, motivated students from all disciplines who have a real interest in robotics
             or want to turn ideas into real robots. No matter your background — if you’re excited about robotics

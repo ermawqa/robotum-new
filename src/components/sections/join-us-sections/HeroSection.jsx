@@ -1,13 +1,14 @@
 import * as assets from '@assets'
 import Button from '@components/ui/Button'
+import ImageFrame from '@components/ui/ImageFrame'
 
 const HeroSection = () => {
   return (
     <section className="w-full min-h-[70vh] lg:min-h-screen flex flex-col lg:flex-row items-center justify-between px-6 md:px-16 py-20 md:py-28 text-white font-sans surface-2 edge-fade-bottom surface-wrap surface-pattern overflow-hidden">
       {/* Left side: text content */}
-      <div className="w-full lg:w-1/2 space-y-6 text-center lg:text-left">
-        <h1 className="text-hero md:text-hero font-bold leading-tight text-balance">
-          Get inspired <br /> get involved!
+      <div className="w-full lg:w-1/2 order-2 lg:order-1 space-y-6 text-center lg:text-left">
+        <h1 className="heading text-hero md:text-display leading-tight text-balance">
+          Get inspired, <br /> get involved!
         </h1>
         <p className="text-text2 md:text-text1 text-white/80 leading-relaxed max-w-xl mx-auto lg:mx-0">
           We are an interdisciplinary student club at TUM focused on robotics, innovation, and teamwork.
@@ -23,11 +24,15 @@ const HeroSection = () => {
       </div>
 
       {/* Right side: image */}
-      <div className="w-full lg:w-1/2 mt-10 lg:mt-0 flex justify-center">
-        <img
+      <div className="w-full lg:w-1/2 order-1 lg:order-2 mt-10 lg:mt-0 flex justify-center">
+        <ImageFrame
           src={assets.allMembersImg}
           alt="Group of club members"
-          className="rounded-2xl object-cover w-full max-w-md md:max-w-lg shadow-[0_8px_40px_rgba(0,0,0,0.4)]"
+          aspect="3/2"
+          fit="cover"
+          variant="soft"
+          rounded="2xl"
+          className="w-full max-w-md md:max-w-lg"
         />
       </div>
     </section>
@@ -35,4 +40,3 @@ const HeroSection = () => {
 }
 
 export default HeroSection
-

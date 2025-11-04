@@ -24,9 +24,9 @@ const steps = [
 
 const ApplicationSection = () => {
   return (
-    <section className="w-full px-6 md:px-16 py-20 md:py-28 font-sans text-white surface-1 edge-fade-top edge-fade-bottom surface-wrap surface-pattern">
+    <section className="w-full px-6 md:px-16 py-20 md:py-28 font-sans text-white surface-1 edge-fade-top edge-fade-bottom surface-wrap surface-pattern" aria-labelledby="application-heading" role="region">
       <div className="max-w-6xl mx-auto text-center mb-16">
-        <h2 className="text-h1 font-bold leading-tight text-balance mb-6">
+        <h2 id="application-heading" className="heading heading-h1 font-bold leading-tight text-balance mb-6">
           Application Process
         </h2>
         <p className="text-text2 md:text-text1 text-white/80 leading-relaxed max-w-3xl mx-auto">
@@ -37,18 +37,20 @@ const ApplicationSection = () => {
       </div>
 
       {/* Steps grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-14 max-w-6xl mx-auto text-center">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-14 max-w-6xl mx-auto text-center" role="list" aria-label="Application steps">
         {steps.map((step) => (
-          <div
+          <article
             key={step.number}
-            className="flex flex-col items-center p-8 rounded-3xl bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/10 hover:border-white/20 shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_28px_rgba(59,130,246,0.25)] transition-all duration-300"
+            role="listitem"
+            aria-labelledby={`step-${step.number}-title`}
+            className="flex flex-col items-center p-8 rounded-3xl bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/10 hover:border-white/20 shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_28px_rgba(59,130,246,0.25)] transition-all duration-300 focus-within:ring-2 focus-within:ring-white/30"
           >
-            <div className="w-20 h-20 flex items-center justify-center rounded-2xl bg-accent/10 text-accent text-4xl font-bold mb-5">
+            <div aria-hidden="true" className="w-20 h-20 flex items-center justify-center rounded-2xl bg-accent/10 text-accent text-4xl font-bold mb-5 ring-1 ring-accent/30 shadow-[0_8px_28px_rgba(59,130,246,0.25)]">
               {step.number}
             </div>
-            <h3 className="text-text1 font-semibold mb-2 capitalize">{step.title}</h3>
+            <h3 id={`step-${step.number}-title`} className="text-text1 font-semibold mb-2 capitalize">{step.title}</h3>
             <p className="text-text2 text-white/80 leading-relaxed max-w-xs">{step.description}</p>
-          </div>
+          </article>
         ))}
       </div>
     </section>
