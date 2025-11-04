@@ -1,5 +1,24 @@
 @import "tailwindcss";
 
+@theme {
+  /* Font family (so `font-sans` uses Exo) */
+  --font-sans: "Exo", system-ui, sans-serif;
+
+  /* Colors → bg-primary, text-accent, etc. */
+  --color-primary: #000c21;
+  --color-secondary: #1e293b;
+  --color-accent: #3b82f6;
+  --color-light: #f1f5f9;
+
+  /* Typography scale → text-display, text-hero, text-h1, text-h2, text-text1, text-text2 */
+  --text-display: clamp(3rem, 7vw + 0.5rem, 7.5rem);          /* big landing title */
+  --text-hero:    clamp(2.75rem, 5.5vw + 0.5rem, 5.5rem);
+  --text-h1:      clamp(2.25rem, 4vw + 0.5rem, 4.5rem);
+  --text-h2:      clamp(2rem, 3vw + 0.5rem, 3.25rem);
+  --text-text1:   clamp(1.125rem, 1.1vw + 0.25rem, 1.5rem);
+  --text-text2:   clamp(0.9375rem, 0.6vw + 0.2rem, 1.125rem);
+}
+
 body {
   font-family: 'Exo', system-ui, sans-serif;
 }

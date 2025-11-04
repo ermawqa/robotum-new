@@ -43,7 +43,7 @@ export default function HeroSection({
 
 
           {/* TEST */}
-          <div className="bg-black w-16 h-16">Test</div>
+          <div className="bg-testpink w-16 h-16">Test</div>
           {/* TEST */}
 
 
