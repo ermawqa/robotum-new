@@ -15,6 +15,10 @@
   --color-secondary: #06142b;
   --color-accent: #3b82f6;
   --color-light: #f1f5f9;
+  --color-brand: #0ea5e9;
+  --color-primary: #000C21;
+  --color-section-gradient: linear-gradient(to bottom, #020035, #000000);
+  --color-surface-light: #E5F0FF;
 
   /* Typography scale */
   --text-hero:    clamp(2.75rem, 5.5vw + 0.5rem, 5.5rem);
