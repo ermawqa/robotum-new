@@ -5,8 +5,8 @@ import ImageFrame from '@components/ui/ImageFrame'
 
 const HeroSection = () => {
   return (
-    <section className="w-full px-6 py-20 md:py-24 font-sans text-white surface-2 edge-fade-bottom">
-      <div className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-10 md:gap-12">
+    <section className="w-full min-h-[70vh] lg:min-h-screen px-6 py-20 md:py-28 lg:py-32 font-sans text-white surface-2 edge-fade-bottom surface-wrap surface-pattern overflow-hidden">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-10 md:gap-14">
         {/* Visual */}
         <div className="w-full lg:w-1/2">
           <ImageFrame
@@ -22,14 +22,14 @@ const HeroSection = () => {
 
         {/* Copy + CTAs */}
         <div className="w-full lg:w-1/2 text-center lg:text-left">
-          <h1 className="text-h1 font-bold leading-tight text-balance mb-4">
+          <h1 className="text-display md:text-h1 font-bold leading-tight [text-wrap:balance] mb-6 md:mb-8">
             Where ideas <br /> connect and grow!
           </h1>
-          <p className="text-text2 md:text-text1 text-white/80 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+          <p className="text-text2 md:text-text1 text-white/80 leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-6 md:mb-8">
             Join thought‑provoking events that bring together students, professionals, and innovators. From inspiring keynotes to interactive workshops and networking – each event offers space for exchange, reflection, and growth.
           </p>
 
-          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          <div className="mt-6 md:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-5 justify-center lg:justify-start">
             <Button variant="primary" as="link" to="/events#upcoming">
               View upcoming events
             </Button>
