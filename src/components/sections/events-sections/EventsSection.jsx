@@ -70,7 +70,7 @@ export default function EventsSection() {
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <h2 id="events-section-heading" className="heading heading-h1 leading-tight mb-8 text-center md:text-left">
-          Events
+          Upcoming Events
         </h2>
         {/* Category Filter */}
         <div className="flex justify-center mb-10 flex-wrap gap-3 sm:gap-4">
