@@ -62,8 +62,16 @@ export default function EventsSection() {
       : events.filter((e) => e.category === activeCategory);
 
   return (
-    <section className="w-full px-6 py-20 md:py-28 font-sans text-white surface-1 edge-fade-bottom">
+    <section
+      className="w-full px-6 py-20 md:py-28 font-sans text-white surface-1 edge-fade-top edge-fade-bottom surface-wrap surface-pattern"
+      aria-labelledby="events-section-heading"
+      role="region"
+    >
       <div className="max-w-7xl mx-auto">
+        {/* Heading */}
+        <h2 id="events-section-heading" className="heading heading-h1 leading-tight mb-8 text-center md:text-left">
+          Events
+        </h2>
         {/* Category Filter */}
         <div className="flex justify-center mb-10 flex-wrap gap-3 sm:gap-4">
           {categories.map((cat) => {
@@ -76,7 +84,7 @@ export default function EventsSection() {
                 className={`
                   text-sm md:text-base px-5 py-2 rounded-full transition-all duration-300
                   ${active
-                    ? 'bg-(--brand,#3B82F6) text-white shadow-[0_0_15px_rgba(59,130,246,0.4)] scale-[1.05]'
+                    ? 'bg-accent text-white shadow-[0_0_15px_rgba(59,130,246,0.4)] scale-[1.05]'
                     : 'bg-white/10 text-white/80 hover:bg-white/20 hover:text-white hover:scale-[1.03]'}
                 `}
               >
@@ -87,11 +95,12 @@ export default function EventsSection() {
         </div>
 
         {/* Events Grid */}
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3" role="list">
           {filteredEvents.map((event) => (
-            <div
+            <article
               key={event.id}
-              className="flex flex-col bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 hover:border-(--brand,#3B82F6) transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:shadow-[0_8px_32px_rgba(59,130,246,0.3)]"
+              role="listitem"
+              className="flex flex-col bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 hover:border-accent transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:shadow-[0_8px_32px_rgba(59,130,246,0.3)]"
             >
               <ImageFrame
                 src={event.image}
@@ -103,7 +112,7 @@ export default function EventsSection() {
               />
 
               <div className="p-6 flex flex-col grow text-left">
-                <h3 className="text-h2 md:text-h3 font-semibold mb-2 leading-tight text-white">
+                <h3 className="text-text1 md:text-h2 font-semibold mb-2 leading-tight text-white">
                   {event.title}
                 </h3>
                 <p className="text-sm text-white/70 mb-3">{event.date}</p>
@@ -120,7 +129,7 @@ export default function EventsSection() {
                   Register →
                 </Button>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>

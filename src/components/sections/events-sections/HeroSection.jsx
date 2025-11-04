@@ -1,11 +1,20 @@
-import React from 'react';
+import React from 'react'
 import * as assets from '@assets'
 import Button from '@components/ui/Button'
 import ImageFrame from '@components/ui/ImageFrame'
 
+/**
+ * Events → Hero Section
+ * - Uses global heading helpers and design tokens
+ * - Matches the typography tracking from Figma (via .heading)
+ * - Consistent surfaces, spacing, and accessibility
+ */
 const HeroSection = () => {
   return (
-    <section className="w-full min-h-[70vh] lg:min-h-screen px-6 py-20 md:py-28 lg:py-32 font-sans text-white surface-2 edge-fade-bottom surface-wrap surface-pattern overflow-hidden">
+    <section
+      className="w-full min-h-[70vh] lg:min-h-screen px-6 md:px-16 py-20 md:py-28 lg:py-32 font-sans text-white surface-2 edge-fade-bottom surface-wrap surface-pattern overflow-hidden"
+      aria-labelledby="events-hero-heading"
+    >
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-10 md:gap-14">
         {/* Visual */}
         <div className="w-full lg:w-1/2">
@@ -22,11 +31,15 @@ const HeroSection = () => {
 
         {/* Copy + CTAs */}
         <div className="w-full lg:w-1/2 text-center lg:text-left">
-          <h1 className="text-hero md:text-h1 font-bold leading-tight text-balance mb-6 md:mb-8">
+          <h1
+            id="events-hero-heading"
+            className="heading heading-h1 font-bold leading-tight text-balance mb-6 md:mb-8"
+          >
             Where ideas <br /> connect and grow!
           </h1>
+
           <p className="text-text2 md:text-text1 text-white/80 leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-6 md:mb-8">
-            Join thought‑provoking events that bring together students, professionals, and innovators. From inspiring keynotes to interactive workshops and networking – each event offers space for exchange, reflection, and growth.
+            Join thought‑provoking events that bring together students, professionals, and innovators. From inspiring keynotes to interactive workshops and networking — each event offers space for exchange, reflection, and growth.
           </p>
 
           <div className="mt-6 md:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-5 justify-center lg:justify-start">
@@ -41,6 +54,6 @@ const HeroSection = () => {
       </div>
     </section>
   )
-};
+}
 
-export default HeroSection;
+export default HeroSection
