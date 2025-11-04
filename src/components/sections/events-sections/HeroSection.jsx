@@ -22,7 +22,7 @@ const HeroSection = () => {
 
         {/* Copy + CTAs */}
         <div className="w-full lg:w-1/2 text-center lg:text-left">
-          <h1 className="text-display md:text-h1 font-bold leading-tight [text-wrap:balance] mb-6 md:mb-8">
+          <h1 className="text-display md:text-h1 font-bold leading-tight text-balance mb-6 md:mb-8">
             Where ideas <br /> connect and grow!
           </h1>
           <p className="text-text2 md:text-text1 text-white/80 leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-6 md:mb-8">
