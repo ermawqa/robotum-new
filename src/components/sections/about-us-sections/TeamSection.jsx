@@ -23,55 +23,6 @@ const teamData = [
     image: assets.member,
     linkedin: '#'
   },
-  {
-    name: 'Loren Ipsum',
-    position: 'Project Manager',
-    category: 'Projects',
-    image: assets.member,
-    linkedin: '#'
-  },
-  {
-    name: 'Loren Ipsum',
-    position: 'Project Manager',
-    category: 'Projects',
-    image: assets.member,
-    linkedin: '#'
-  },
-  {
-    name: 'Loren Ipsum',
-    position: 'Project Manager',
-    category: 'Projects',
-    image: assets.member,
-    linkedin: '#'
-  },
-  {
-    name: 'Loren Ipsum',
-    position: 'Project Manager',
-    category: 'Projects',
-    image: assets.member,
-    linkedin: '#'
-  },
-  {
-    name: 'Loren Ipsum',
-    position: 'Project Manager',
-    category: 'Projects',
-    image: assets.member,
-    linkedin: '#'
-  },
-  {
-    name: 'Loren Ipsum',
-    position: 'Project Manager',
-    category: 'Projects',
-    image: assets.member,
-    linkedin: '#'
-  },
-  {
-    name: 'Loren Ipsum',
-    position: 'Project Manager',
-    category: 'Projects',
-    image: assets.member,
-    linkedin: '#'
-  },
 ]
 
 const categories = ['All', 'Founders', 'Departments Leads', 'Projects']
@@ -86,73 +37,66 @@ export default function TeamSection() {
 
   return (
     <section
-      className="section-gradient text-white py-16 px-6 lg:px-10 font-sans"
+      className="w-full px-6 md:px-16 py-20 md:py-28 text-white font-sans surface-2 edge-fade-top edge-fade-bottom surface-wrap surface-pattern"
       aria-labelledby="team-heading"
     >
       <div className="max-w-7xl mx-auto">
-        <h2 id="team-heading" className="text-h2 font-bold leading-tight mb-8 [text-wrap:balance]">
+        <h2
+          id="team-heading"
+          className="text-h1 font-bold leading-tight text-balance mb-10 text-center"
+        >
           Meet Our Team
         </h2>
 
-        {/* Category pills — horizontal scroll on mobile */}
-        <div className="-mx-2 mb-10 overflow-x-auto">
-          <div
-            className="px-2 inline-flex gap-3 whitespace-nowrap"
-            role="tablist"
-            aria-label="Team categories"
-          >
-            {categories.map((category) => {
-              const active = selectedCategory === category
-              return (
-                <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  role="tab"
-                  aria-selected={active}
-                  className={[
-                    'px-4 py-2 rounded-full border transition-colors',
-                    'text-sm md:text-base cursor-pointer',
-                    active
-                      ? 'bg-white/15 text-white border-white/20'
-                      : 'text-white/70 border-white/20 hover:bg-white/10 hover:text-white',
-                  ].join(' ')}
-                >
-                  {category}
-                </button>
-              )
-            })}
-          </div>
+        {/* Category Buttons */}
+        <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-12">
+          {categories.map((category) => {
+            const active = selectedCategory === category
+            return (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-5 py-2 rounded-full transition-all duration-300 text-sm md:text-base font-medium
+                  ${active
+                    ? 'bg-accent text-white shadow-[0_0_20px_rgba(59,130,246,0.4)] scale-[1.05]'
+                    : 'bg-white/10 text-white/80 hover:bg-white/20 hover:text-white hover:scale-[1.03]'
+                  }`}
+              >
+                {category}
+              </button>
+            )
+          })}
         </div>
 
-        {/* Team grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-6 md:gap-8">
+        {/* Team Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-6 md:gap-10">
           {filteredTeam.map((member, index) => (
             <article
               key={`${member.name}-${index}`}
-              className="group bg-white/5 border border-white/10 rounded-2xl p-4 hover:bg-white/10 transition-colors cursor-pointer"
+              className="group bg-white/5 border border-white/10 rounded-2xl p-4 hover:bg-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer text-center"
             >
-              <div className="w-full aspect-square overflow-hidden rounded-xl bg-white/10 border border-white/5 cursor-pointer">
+              <div className="relative w-full aspect-square overflow-hidden rounded-xl bg-white/10 border border-white/5">
                 <img
                   src={member.image}
                   alt={member.name}
-                  className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300 ease-out"
+                  className="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-500 ease-out"
                   loading="lazy"
                   decoding="async"
                 />
               </div>
 
-              <div className="mt-3">
-                <h3 className="text-text1 font-semibold leading-tight">{member.name}</h3>
+              <div className="mt-4">
+                <h3 className="text-text1 font-semibold">{member.name}</h3>
                 <p className="text-text2 text-white/70">{member.position}</p>
               </div>
 
-              <div className="mt-3">
+              <div className="mt-3 flex justify-center">
                 <a
                   href={member.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`Open ${member.name} LinkedIn`}
-                  className="inline-flex items-center gap-2 text-white/80 hover:text-white"
+                  className="inline-flex items-center gap-2 text-white/80 hover:text-accent transition-colors"
                 >
                   <img src={assets.linkedinIcon} alt="" className="w-5 h-5" />
                   <span className="text-sm">LinkedIn</span>
