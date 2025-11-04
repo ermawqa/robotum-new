@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import About from './pages/About'; 
 import Join from './pages/Join-us';
 import Events from './pages/Events';
+import Partners from './pages/Partners';
 
 export default function App() {
   return (
@@ -11,6 +12,7 @@ export default function App() {
       <Route path="/about" element={<About />} />
       <Route path="/join" element={<Join />} />
       <Route path="/events" element={<Events />} />
+      <Route path="/partners" element={<Partners />} />
     </Routes>
   );
 }

@@ -13,7 +13,7 @@ const links = [
     subLinks: ['Technical', 'Operations', 'Innovation & Entrepreneurship'],
   },
   { label: 'Events', href: '/events' },
-  { label: 'Partners', href: '#partners' },
+  { label: 'Partners', href: '/partners' },
   { label: 'Join us', href: '/join' },
 ]
 
@@ -21,7 +21,7 @@ function ProjectDropdown({ open, onEnter, onLeave, onItemClick }) {
   return (
     open && (
       <div
-        className="absolute left-0 top-full min-w-[160px] rounded-md bg-[#06142B] px-2 py-2 shadow-lg ring-1 ring-white/10 z-50"
+        className="absolute left-0 top-full min-w-40 rounded-md bg-[#06142B] px-2 py-2 shadow-lg ring-1 ring-white/10 z-50"
         onMouseEnter={onEnter}
         onMouseLeave={onLeave}
       >
@@ -120,7 +120,7 @@ export default function Navbar() {
             <img
               src={assets.navLogo}
               alt="RoboTUM logo"
-              className="w-[130px] h-[40px] object-contain"
+              className="w-[130px] h-10 object-contain"
             />
           </Link>
 
