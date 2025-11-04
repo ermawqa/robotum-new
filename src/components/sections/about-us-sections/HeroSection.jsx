@@ -68,7 +68,7 @@ export default function AboutHero() {
           <div className="md:w-1/2">
             <h1
               id="about-hero-heading"
-              className="font-bold leading-tight text-balance text-h1"
+              className="font-bold leading-tight text-balance text-hero"
             >
               More than a<br /> student club!
             </h1>

@@ -42,7 +42,7 @@ export default function HeroSection({
           {/* Heading */}
           <h1
             id="hero-heading"
-            className="font-bold leading-tight tracking-tight text-balance text-hero md:text-display"
+            className="font-bold leading-tight tracking-tight text-balance text-hero md:text-hero"
           >
             {title}
           </h1>

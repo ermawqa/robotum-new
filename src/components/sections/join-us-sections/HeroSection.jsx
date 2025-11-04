@@ -6,8 +6,8 @@ const HeroSection = () => {
     <section className="w-full min-h-[70vh] lg:min-h-screen flex flex-col lg:flex-row items-center justify-between px-6 md:px-16 py-20 md:py-28 text-white font-sans surface-2 edge-fade-bottom surface-wrap surface-pattern overflow-hidden">
       {/* Left side: text content */}
       <div className="w-full lg:w-1/2 space-y-6 text-center lg:text-left">
-        <h1 className="text-hero md:text-display font-bold leading-tight text-balance">
-          Get inspired, <br /> get involved!
+        <h1 className="text-hero md:text-hero font-bold leading-tight text-balance">
+          Get inspired <br /> get involved!
         </h1>
         <p className="text-text2 md:text-text1 text-white/80 leading-relaxed max-w-xl mx-auto lg:mx-0">
           We are an interdisciplinary student club at TUM focused on robotics, innovation, and teamwork.
