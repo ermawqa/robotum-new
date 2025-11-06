@@ -4,23 +4,23 @@ import * as assets from '@assets'
 const offers = [
   {
     icon: assets.roboticsIcon,
-    title: 'Networking Opportunities',
-    description: 'Connect with professionals and experts in robotics to share knowledge and ideas.',
+    title: 'ROBOTICS & AI TALENT POOL',
+    description: 'Get access to our network of highly motivated students with a specialization in artificial intelligence technologies. Many of our members are interested in internships and working student positions.',
   },
   {
     icon: assets.marketingIcon,
-    title: 'Skill Development',
-    description: 'Gain hands-on experience in cutting-edge robotics projects and technologies.',
+    title: 'MARKETING & AWARENESS',
+    description: 'As a partner, you will be featured on our website. Plus, we will advertise your company as a supporter in our marketing campaigns. Boost the perception of your brand among students across Munich and beyond.',
   },
   {
     icon: assets.collaborationIcon,
-    title: 'Innovation Support',
-    description: 'Collaborate on innovative solutions with industry leaders and academic experts.',
+    title: 'PROJECT COLLABORATIONS',
+    description: 'Being a partner opens the door for many sorts of collaborations, like becoming a challenge setter for our Hackathons, joining us for an industry project or hosting networking workshops with our members. We are only limited by your creativity!',
   },
   {
     icon: assets.networkingIcon,
-    title: 'Global Exposure',
-    description: 'Get involved in international competitions and events to showcase your skills.',
+    title: 'NETWORK & ECOSYSTEMS',
+    description: 'We invite you to benefit from our entrepreneurial ecosystem, our own AI startup founders, as well as insights from our own R&D projects. We invite you to leverage our connections to other top university clubs, as well as the association to the TUM brand to drive robotics in your company.',
   },
 ]
 
