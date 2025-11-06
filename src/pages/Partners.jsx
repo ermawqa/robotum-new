@@ -27,8 +27,8 @@ export default function Partners() {
       >
         <HeroSection />
         <PartnerCategories />
-        <WhatWeOffer />
         <NextPrototypes />
+        <WhatWeOffer />
       </Suspense>
 
       <FooterSection />

@@ -130,7 +130,7 @@ export default function Navbar() {
       ref={navRef}
       role="navigation"
       aria-label="Main"
-      className={`navbar-gradient fixed top-0 left-0 right-0 z-50 font-sans transition-opacity ${scrolled ? 'opacity-95' : 'opacity-95'}`}
+      className={`fixed top-0 left-0 right-0 z-50 font-sans transition-all duration-500 backdrop-blur-md bg-primary/70 border-b border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.25)] ${scrolled ? 'backdrop-blur-lg bg-primary/80' : 'backdrop-blur-md bg-primary/60'}`}
     >
       <div className="mx-auto max-w-7xl w-full px-2 sm:px-4 pt-3 pb-1.5">
         <div className="flex w-full justify-between">
