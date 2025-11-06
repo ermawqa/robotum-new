@@ -11,12 +11,11 @@
   --font-sans: "Exo", system-ui, sans-serif;
 
   /* Brand palette */
-  --color-primary: #000c21;
+  --color-primary: #000C21;
   --color-secondary: #06142b;
   --color-accent: #3b82f6;
   --color-light: #f1f5f9;
   --color-brand: #0ea5e9;
-  --color-primary: #000C21;
   --color-section-gradient: linear-gradient(to bottom, #020035, #000000);
   --color-surface-light: #E5F0FF;
 
