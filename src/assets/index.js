@@ -4,9 +4,9 @@ export { default as linkedinIcon } from './icons/social-media/linkedin.svg'
 export { default as emailIcon } from './icons/social-media/email.svg'
 export { default as whatsappIcon } from './icons/social-media/whatsapp.svg'
 export { default as telegramIcon } from './icons/social-media/telegram.png'
-export { default as handsOnIcon } from './icons/hands-on.png'
-export { default as teamsIcon } from './icons/teams.png'
-export { default as eventsIcon } from './icons/events.png'
+export { default as handsOnIcon } from './icons/others/hands-on.png'
+export { default as teamsIcon } from './icons/others/teams.png'
+export { default as eventsIcon } from './icons/others/events.png'
 
 // General images
 export { default as speakerImg } from './images/speaker.png'
