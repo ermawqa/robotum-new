@@ -7,6 +7,9 @@ const About = lazy(() => import('@pages/About'))
 const Join = lazy(() => import('@pages/Join-us'))
 const Events = lazy(() => import('@pages/Events'))
 const Partners = lazy(() => import('@pages/Partners'))
+const Impressum = lazy(() => import('@pages/Impressum'))
+const PrivacyPolicy = lazy(() => import('@pages/PrivacyPolicy'))
+const GenderAndDiversity = lazy(() => import('@pages/GenderAndDiversity'))
 
 export default function App() {
   return (
@@ -23,6 +26,9 @@ export default function App() {
         <Route path="/join" element={<Join />} />
         <Route path="/events" element={<Events />} />
         <Route path="/partners" element={<Partners />} />
+        <Route path="/impressum" element={<Impressum />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/gender-and-diversity" element={<GenderAndDiversity />} />
       </Routes>
     </Suspense>
   )

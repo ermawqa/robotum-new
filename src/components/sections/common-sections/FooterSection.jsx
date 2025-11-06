@@ -30,9 +30,9 @@ export default function FooterSection() {
         <div className="min-w-40">
           <h3 className="font-semibold text-lg mb-3">Legal</h3>
           <ul className="flex flex-col gap-2 text-sm text-gray-300">
-            <li><a href="#" className="hover:text-white">Privacy Policy</a></li>
-            <li><a href="#" className="hover:text-white">Legal Notice</a></li>
-            <li><a href="#" className="hover:text-white">Terms of Service</a></li>
+            <li><a href="/impressum" className="hover:text-white">Impressum</a></li>
+            <li><a href="/privacy-policy" className="hover:text-white">Privacy Policy</a></li>
+            <li><a href="/gender-and-diversity" className="hover:text-white">Gender and Diversity</a></li>
           </ul>
         </div>
 
