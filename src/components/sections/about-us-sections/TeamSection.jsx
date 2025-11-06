@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import * as assets from '@assets'
+import ImageFrame from '@components/ui/ImageFrame'
 
 const teamData = [
   {
@@ -76,12 +77,13 @@ export default function TeamSection() {
               className="group bg-white/5 border border-white/10 rounded-2xl p-4 hover:bg-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer text-center"
             >
               <div className="relative w-full aspect-square overflow-hidden rounded-xl bg-white/10 border border-white/5">
-                <img
+                <ImageFrame
                   src={member.image}
                   alt={member.name}
-                  className="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-500 ease-out"
-                  loading="lazy"
-                  decoding="async"
+                  variant="soft"
+                  rounded="xl"
+                  fit="cover"
+                  className="group-hover:scale-[1.05] transition-transform duration-500 ease-out"
                 />
               </div>
 

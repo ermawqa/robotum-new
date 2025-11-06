@@ -1,4 +1,5 @@
 import * as assets from '@assets'
+import ImageFrame from '@components/ui/ImageFrame'
 
 const partnerTypes = [
   {
@@ -59,16 +60,15 @@ const PartnerCategories = () => {
                   rel="noopener noreferrer"
                   aria-label={p.name}
                   title={p.name}
-                  className="group w-32 h-32 sm:w-36 sm:h-36 rounded-xl bg-white shadow-md border border-[#E5EAF2] 
-                             flex items-center justify-center transition-all duration-300
-                             hover:scale-105 hover:shadow-xl focus-visible:ring-2 focus-visible:ring-[#60A5FA] focus:outline-none"
+                  className="group w-32 h-32 sm:w-36 sm:h-36 rounded-xl bg-transparent border-none flex items-center justify-center transition-transform duration-500 hover:scale-105 focus-visible:ring-2 focus-visible:ring-[#60A5FA] focus:outline-none"
                 >
-                  <img
+                  <ImageFrame
                     src={p.logo}
                     alt={p.name}
-                    className="max-w-[72%] max-h-[72%] object-contain transition-transform duration-300 group-hover:scale-110"
-                    loading="lazy"
-                    decoding="async"
+                    fit="contain"
+                    variant="none"
+                    rounded="none"
+                    className="shadow-none max-w-[72%] max-h-[72%] transition-transform duration-500 group-hover:scale-110"
                   />
                 </a>
               ))}
