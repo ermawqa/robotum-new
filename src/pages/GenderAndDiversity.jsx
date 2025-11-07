@@ -5,7 +5,9 @@ import FooterSection from '@components/sections/common-sections/FooterSection'
 import React, { useEffect } from 'react'
 
 export default function GenderAndDiversity() {
-  useEffect(() => { document.title = 'Gender & Biodiversity | RoboTUM' }, [])
+  useEffect(() => { document.title = 'Gender & Biodiversity | RoboTUM';
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+   }, [])
 
   return (
     <>

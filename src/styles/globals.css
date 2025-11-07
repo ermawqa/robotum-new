@@ -216,3 +216,8 @@ body {
 .icon-white {
   filter: invert(1) brightness(2);
 }
+
+/* Use the dynamic viewport height variable for mobile correctness */
+.full-screen {
+  height: 100dvh; /* instead of min-h-screen or 100vh */
+}

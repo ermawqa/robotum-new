@@ -11,7 +11,8 @@ export default function ProjectDetail() {
   const project = projects.find(p => p.slug === slug)
 
   useEffect(() => {
-    document.title = project ? `${project.title} | RoboTUM` : 'Project | RoboTUM'
+    document.title = project ? `${project.title} | RoboTUM` : 'Project | RoboTUM';
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
   }, [project])
 
   useEffect(() => {

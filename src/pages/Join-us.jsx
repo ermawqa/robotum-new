@@ -11,6 +11,7 @@ const ApplicationSection = lazy(() => import('@components/sections/join-us-secti
 const JoinUs = () => {
   useEffect(() => {
     document.title = 'Join Us | RoboTUM';
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
   }, []);
 
   return (

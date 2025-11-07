@@ -12,6 +12,7 @@ const FaqSection = lazy(() => import('@components/sections/about-us-sections/Faq
 const About = () => {
   useEffect(() => {
     document.title = 'About Us | RoboTUM';
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
   }, []);
 
   return (

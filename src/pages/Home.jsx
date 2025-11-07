@@ -13,7 +13,8 @@ const PartnersSection = lazy(() => import('@components/sections/homepage-section
 
 const Home = () => {
   useEffect(() => {
-    document.title = 'Home | RoboTUM'
+    document.title = 'Home | RoboTUM';
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
   }, [])
 
   return (

@@ -11,7 +11,8 @@ const WhatWeOffer = lazy(() => import('@components/sections/partners-sections/Wh
 
 export default function Partners() {
   useEffect(() => {
-    document.title = 'Partners | RoboTUM'
+    document.title = 'Partners | RoboTUM';
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
   }, [])
 
   return (

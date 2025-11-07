@@ -5,7 +5,9 @@ import FooterSection from '@components/sections/common-sections/FooterSection';
 import React, { useEffect } from 'react'
 
 export default function Impressum() {
-  useEffect(() => { document.title = 'Impressum | RoboTUM' }, [])
+  useEffect(() => { document.title = 'Impressum | RoboTUM';
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+   }, [])
 
   return (
     <>

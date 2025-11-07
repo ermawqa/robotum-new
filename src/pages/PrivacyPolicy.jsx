@@ -6,7 +6,9 @@ import FooterSection from '@components/sections/common-sections/FooterSection'
 import React, { useEffect } from 'react'
 
 export default function PrivacyPolicy() {
-  useEffect(() => { document.title = 'Privacy Policy | RoboTUM' }, [])
+  useEffect(() => { document.title = 'Privacy Policy | RoboTUM';
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+   }, [])
 
   return (
     <>
