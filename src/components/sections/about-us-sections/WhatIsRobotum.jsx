@@ -111,7 +111,7 @@ export default function WhatIsRobotum({ illustration }) {
         <div className="flex items-center gap-4 animate-marquee-slow whitespace-nowrap opacity-80">
           {['Humanoids','ROS','Perception','Control','HRI','Startups','Workshops','Community','Open-source','Competitions'].map((k) => (
             <span key={k} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs bg-white/8 border border-white/10 mx-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#60A5FA]"/> {k}
+              <span className="h-1.5 w-1.5 rounded-full bg-accent"/> {k}
             </span>
           ))}
         </div>

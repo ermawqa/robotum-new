@@ -1,5 +1,6 @@
 import * as assets from '@assets'
 import ImageFrame from '@components/ui/ImageFrame'
+import Button from '@components/ui/Button'
 
 const events = [
   {
@@ -47,6 +48,11 @@ const PreviousEventsSection = () => {
               <p className="text-text2 text-white/80">{event.date}</p>
             </a>
           ))}
+        </div>
+        <div className="mt-10 text-center">
+          <Button as="link" to="/events" variant="primary">
+            View all events
+          </Button>
         </div>
       </div>
     </section>
