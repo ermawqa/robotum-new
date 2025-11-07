@@ -56,7 +56,7 @@ export { default as collaborationIcon } from './icons/offers/collaboration.png'
 export { default as networkingIcon } from './icons/offers/networking.png'
 
 // Projects
-export { default as humanoidImg } from './images/projects/humanoid-project.png'
+export { default as humanoid } from './images/projects/humanoid-project.png'
 export { default as creativeRobotics } from './images/projects/creative-robotics-project.png'
 export { default as itqPlastix } from './images/projects/itq-plastix-project.png'
 export { default as replyProject } from './images/projects/reply-project.png'
