@@ -22,11 +22,11 @@ export default function WhatIsRobotum({ illustration }) {
         <div className="animate-fadeIn">
           <p className="mb-3 text-sm tracking-[0.15em] uppercase text-white/70">Student initiative @ TUM</p>
           <h2 id="what-robotum-heading" className="heading heading-h1 mb-5 text-white leading-tight text-balance">
-            What is <span className="text-[#60A5FA]">RoboTUM</span>?
+            What is <span className="text-accent">RoboTUM</span>?
           </h2>
           <p className="text-text1 text-white/85 leading-relaxed mb-6">
             RoboTUM is a student-led robotics community at TUM. Our vision is to help establish
-            <span className="font-semibold text-[#60A5FA]"> Munich</span> as a global robotics hub — comparable to Boston or Switzerland.
+            <span className="font-semibold text-accent"> Munich</span> as a global robotics hub — comparable to Boston or Switzerland.
             Our mission is to <span className="font-semibold text-[#7C3AED]">bridge industry and academia</span>,
             turning research into real-world innovation and entrepreneurship.
           </p>
