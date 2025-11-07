@@ -81,7 +81,7 @@ export default function ProjectSection() {
               onClick={prevProject}
               disabled={current === 0}
               aria-label="Previous project"
-              className="px-4 py-2 text-sm cursor-pointer"
+              className="px-4 py-2 text-sm"
             >
               ← Previous
             </Button>
@@ -91,7 +91,7 @@ export default function ProjectSection() {
               onClick={nextProject}
               disabled={current === projects.length - 1}
               aria-label="Next project"
-              className="px-4 py-2 text-sm cursor-pointer"
+              className="px-4 py-2 text-sm"
             >
               Next →
             </Button>
