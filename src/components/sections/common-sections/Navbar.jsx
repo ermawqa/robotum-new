@@ -96,23 +96,19 @@ export default function Navbar() {
   }, [])
 
   useEffect(() => {
-    const body = document.body;
-
-    // Lock scroll and blur background when mobile navbar is open
+    const body = document.body
     if (open) {
-      body.style.overflow = 'hidden';  // Lock scrolling
-      body.classList.add('bg-blur');   // Add blur effect
+      body.style.overflow = 'hidden'
+      body.classList.add('blurred-overlay')
     } else {
-      body.style.overflow = 'auto';   // Unlock scrolling
-      body.classList.remove('bg-blur'); // Remove blur effect
+      body.style.overflow = 'auto'
+      body.classList.remove('blurred-overlay')
     }
-
     return () => {
-      // Cleanup when the component unmounts or navbar is closed
-      body.style.overflow = 'auto';
-      body.classList.remove('bg-blur');
+      body.style.overflow = 'auto'
+      body.classList.remove('blurred-overlay')
     }
-  }, [open]);  // Only runs when the "open" state changes
+  }, [open])
 
   const itemBase =
     'inline-flex items-center justify-center px-4 py-3 text-[14px] tracking-[0.8px] font-normal text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 hover:text-indigo-300 cursor-pointer'

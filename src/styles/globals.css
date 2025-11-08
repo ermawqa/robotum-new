@@ -221,3 +221,14 @@ body {
 .full-screen {
   height: 100dvh; /* instead of min-h-screen or 100vh */
 }
+
+.blurred-overlay::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(12px);
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 30;
+  pointer-events: none;
+  transition: backdrop-filter 0.3s ease, background-color 0.3s ease;
+}
