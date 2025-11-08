@@ -47,10 +47,21 @@ const partnerTypes = [
 const PartnerCategories = () => {
   return (
     <section className="surface-light surface-wrap edge-fade-y px-6 md:px-12 py-24">
-      <div className="max-w-6xl mx-auto grid gap-20">
+      <div className="max-w-6xl mx-auto space-y-24">
         {partnerTypes.map((type, idx) => (
-          <div key={idx} className="text-center animate-fadeIn">
-            <h2 className="heading heading-h2 text-[#0B1B2E] mb-10">{type.title}</h2>
+          <div
+            key={idx}
+            className="text-center relative animate-fadeIn"
+          >
+            {/* Decorative divider with gradient */}
+            {idx > 0 && (
+              <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-3/5 h-px bg-linear-to-r from-transparent via-accent/40 to-transparent"></div>
+            )}
+
+            <h2 className="heading heading-h2 text-[#0B1B2E] mb-12">
+              {type.title}
+            </h2>
+
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-10 place-items-center">
               {type.partners.map((p, i) => (
                 <a
@@ -60,8 +71,9 @@ const PartnerCategories = () => {
                   rel="noopener noreferrer"
                   aria-label={p.name}
                   title={p.name}
-                  className="group w-32 h-32 sm:w-36 sm:h-36 rounded-xl bg-transparent border-none flex items-center justify-center transition-transform duration-500 hover:scale-105 focus-visible:ring-2 focus-visible:ring-[#60A5FA] focus:outline-none"
+                  className="group relative w-32 h-32 sm:w-36 sm:h-36 flex items-center justify-center bg-white/50 border border-[#E0E7FF] rounded-xl shadow-sm hover:shadow-[0_0_20px_rgba(37,99,235,0.25)] transition-all duration-500 cursor-pointer overflow-hidden"
                 >
+                  <div className="absolute inset-0 bg-linear-to-tr from-accent/0 via-accent/5 to-[#7C3AED]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <ImageFrame
                     src={p.logo}
                     alt={p.name}
@@ -76,6 +88,9 @@ const PartnerCategories = () => {
           </div>
         ))}
       </div>
+
+      {/* Subtle flowing background accent */}
+      <div className="absolute inset-0 -z-10 opacity-[0.08] bg-[radial-gradient(circle_at_50%_20%,#2563EB_0%,transparent_70%)]"></div>
     </section>
   )
 }
