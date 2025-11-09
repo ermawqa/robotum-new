@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import * as assets from '@assets'
 import Button from '@components/ui/Button'
 import ImageFrame from '@components/ui/ImageFrame'
-import { events, EVENT_CATEGORIES } from '@data/events'
+import { events, EVENT_CATEGORIES } from '@data'
 
 export default function EventsSection() {
   const [activeCategory, setActiveCategory] = useState('All')

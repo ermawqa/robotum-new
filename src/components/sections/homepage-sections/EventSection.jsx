@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react'
 import * as assets from '@assets'
 import Button from '@components/ui/Button'
 import ImageFrame from '@components/ui/ImageFrame'
-import { events } from '@data/events'
+import { events } from '@data'
 
 export default function EventSection() {
   const [activeIndex, setActiveIndex] = useState(0)

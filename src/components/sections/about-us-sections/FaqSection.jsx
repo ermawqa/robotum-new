@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline' // Importing Chevron icons from Heroicons
-import { faqs } from '@data/faqs.js'
+import { faqs } from '@data'
 
 const FaqSection = () => {
   const [openIndex, setOpenIndex] = useState(null)

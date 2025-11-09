@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import * as assets from '@assets'
 import ImageFrame from '@components/ui/ImageFrame'
-import { members, MEMBER_CATEGORIES } from '@data/members.js'
+import { members, MEMBER_CATEGORIES } from '@data'
 
 export default function TeamSection() {
   const [selectedCategory, setSelectedCategory] = useState('All')

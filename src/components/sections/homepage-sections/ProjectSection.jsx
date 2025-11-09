@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { projects } from '@data/projects'
+import { projects } from '@data'
 import Button from '@components/ui/Button'
 import ImageFrame from '@components/ui/ImageFrame'
 

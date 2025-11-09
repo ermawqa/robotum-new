@@ -1,6 +1,6 @@
 import * as assets from '@assets'
 import ImageFrame from '@components/ui/ImageFrame'
-import { partners } from '@data/partners'
+import { partners } from '@data'
 
 const PartnerCategories = () => {
   return (
