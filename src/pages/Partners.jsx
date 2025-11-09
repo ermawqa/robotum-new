@@ -8,6 +8,7 @@ const HeroSection = lazy(() => import('@components/sections/partners-sections/He
 const PartnerCategories = lazy(() => import('@components/sections/partners-sections/PartnerCategories'))
 const NextPrototypes = lazy(() => import('@components/sections/partners-sections/NextPrototypes'))
 const WhatWeOffer = lazy(() => import('@components/sections/partners-sections/WhatWeOffer'))
+const ContactUsSection = lazy(() => import('@components/sections/partners-sections/ContactUsSection'))
 
 export default function Partners() {
   useEffect(() => {
@@ -30,6 +31,7 @@ export default function Partners() {
         <PartnerCategories />
         <NextPrototypes />
         <WhatWeOffer />
+        <ContactUsSection />
       </Suspense>
 
       <FooterSection />
