@@ -1,38 +1,6 @@
 import React, { useState } from 'react'
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline' // Importing Chevron icons from Heroicons
-
-const faqItems = [
-  {
-    question: 'What is RoboTUM?',
-    answer:
-      'RoboTUM is a student-led initiative at the Technical University of Munich focusing on robotics innovation and research. We engage students in robotics projects, competitions, and collaborations with industry leaders.',
-  },
-  {
-    question: 'How can I become a member?',
-    answer:
-      'To become a member, you can apply through our website. Simply fill out the form on the "Join Us" page, and we will get in touch with you about the next steps!',
-  },
-  {
-    question: 'What kind of projects do you work on?',
-    answer:
-      'RoboTUM is a student-led initiative at the Technical University of Munich focusing on robotics innovation and research. We engage students in robotics projects, competitions, and collaborations with industry leaders.',
-  },
-  {
-    question: 'How can I become a member?',
-    answer:
-      'To become a member, you can apply through our website. Simply fill out the form on the "Join Us" page, and we will get in touch with you about the next steps!',
-  },
-  {
-    question: 'What kind of projects do you work on?',
-    answer:
-      'We work on a wide range of robotics projects, from humanoid robots to autonomous systems. Our projects cover areas such as AI, machine learning, and computer vision in robotics.',
-  },
-  {
-    question: 'Can I collaborate with RoboTUM?',
-    answer:
-      'Yes! We welcome collaboration with industry partners, academic institutions, and other student groups. Please reach out to us through our contact page for more information.',
-  },
-]
+import { faqs } from '@data/faqs.js'
 
 const FaqSection = () => {
   const [openIndex, setOpenIndex] = useState(null)
@@ -44,10 +12,10 @@ const FaqSection = () => {
   return (
     <section className="section-container font-sans surface-1 edge-fade-top edge-fade-bottom surface-wrap surface-pattern">
       <div>
-        <h2 className="heading heading-h2 font-bold text-center mb-8">Frequently Asked Questions</h2>
-        <div className="space-y-6">
-          {faqItems.map((item, index) => (
-            <div key={index} className="space-y-2">
+        <h2 className="heading heading-h2 font-bold text-center mb-10">Frequently Asked Questions</h2>
+        <div className="space-y-8">
+          {faqs.map((item, index) => (
+            <div key={index} className="space-y-3">
               {/* Question */}
               <button
                 onClick={() => toggleAnswer(index)}
