@@ -178,7 +178,7 @@ export default function Navbar() {
       }`}
     >
       <div className="mx-auto max-w-7xl w-full px-3 sm:px-4 pt-3 pb-1.5">
-        <div className="flex w-full justify-between items-center">
+        <div className="flex w-full justify-between items-center relative z-60">
           <Link
             to="/"
             className="pl-3 pr-3 flex items-center"
@@ -268,9 +268,11 @@ export default function Navbar() {
             onClick={() => setOpen(o => !o)}
           >
             <span className="sr-only">Toggle navigation</span>
-            {open ? (
+            <div className="relative w-6 h-6 transition-transform duration-300 ease-in-out">
               <svg
-                className="h-6 w-6 text-white"
+                className={`absolute inset-0 w-6 h-6 text-white transition-all duration-300 ease-in-out transform ${
+                  open ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-90'
+                }`}
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -278,13 +280,16 @@ export default function Navbar() {
               >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
-            ) : (
-              <div className="space-y-1" aria-hidden="true">
-                <span className="block h-0.5 w-6 bg-white" />
-                <span className="block h-0.5 w-6 bg-white" />
-                <span className="block h-0.5 w-6 bg-white" />
+              <div
+                className={`absolute inset-0 flex flex-col justify-center space-y-1 transition-all duration-300 ease-in-out ${
+                  open ? 'opacity-0 rotate-90' : 'opacity-100 rotate-0'
+                }`}
+              >
+                <span className="block h-0.5 w-6 bg-white rounded" />
+                <span className="block h-0.5 w-6 bg-white rounded" />
+                <span className="block h-0.5 w-6 bg-white rounded" />
               </div>
-            )}
+            </div>
           </button>
         </div>
       </div>
@@ -292,24 +297,21 @@ export default function Navbar() {
       {/* Blurred clickable overlay for mobile menu */}
       {open && (
         <div
-          className="fixed inset-0 z-40 md:hidden bg-black/60 backdrop-blur-sm transition-opacity duration-300 pointer-events-auto"
+          className="fixed inset-0 z-30 md:hidden bg-black/60 backdrop-blur-sm transition-opacity duration-300 pointer-events-auto"
           onClick={() => {
             setOpen(false);
             setProjectsOpen(false);
             setProjectsMobileOpen(false);
           }}
           aria-hidden="true"
-        >
-          {/* Prevent clicks on background */}
-          <div className="absolute inset-0 pointer-events-none" />
-        </div>
+        />
       )}
       <div
         id="mobile-menu"
         role="dialog"
         aria-modal="true"
         aria-label="Main navigation"
-        className={`md:hidden relative z-70 px-4 navbar-gradient transition-all duration-300 ease-out ${
+        className={`md:hidden relative z-40 px-4 navbar-gradient transition-all duration-300 ease-out ${
           open
             ? 'opacity-100 translate-y-0 max-h-[80vh] pb-3 overflow-y-auto pointer-events-auto'
             : 'opacity-0 -translate-y-2 max-h-0 overflow-hidden pointer-events-none'
