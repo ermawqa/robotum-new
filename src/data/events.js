@@ -25,8 +25,8 @@ export const events = [
     id: 'roboweek-2025',
     title: 'Roboweek',
     type: 'Conference',
-    start: '2025-02-10',
-    end: '2025-02-14',
+    start: '2026-02-10',
+    end: '2026-02-14',
     location: 'TUM Garching',
     cover: assets.eventRoboweek,
     blurb:
