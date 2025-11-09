@@ -1,65 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import * as assets from '@assets'
 import Button from '@components/ui/Button'
 import ImageFrame from '@components/ui/ImageFrame'
-
-const events = [
-  {
-    id: 1,
-    category: 'Hackathons',
-    title: 'Hackathon',
-    date: '17.07.2025',
-    description:
-      'A high-energy, team-based innovation sprint where participants collaboratively develop creative technical solutions to real-world challenges — all within 24 hours.',
-    image: assets.event1,
-  },
-  {
-    id: 2,
-    category: 'Conferences',
-    title: 'Robot Summit',
-    date: '24.07.2025',
-    description:
-      'An interdisciplinary event bringing together experts, researchers, and students to discuss the latest developments in robotics, AI, and automation.',
-    image: assets.event2,
-  },
-  {
-    id: 3,
-    category: 'Info events',
-    title: 'RoboTUM info session',
-    date: '28.07.2025',
-    description:
-      'An introductory session providing insights into RoboTUM’s mission, projects, and how students can get involved in one of the university’s leading robotics clubs.',
-    image: assets.event3,
-  },
-  {
-    id: 4,
-    category: 'Conferences',
-    title: 'RoboCast speaker series #3',
-    date: '30.07.2025',
-    description:
-      'The third edition of our expert talk series, featuring a guest speaker from academia or industry sharing cutting-edge insights into robotics and AI.',
-    image: assets.event4,
-  },
-  {
-    id: 5,
-    category: 'Conferences',
-    title: '1min paper review',
-    date: '04.08.2025',
-    description:
-      'A fast-paced session where recent robotics and AI publications are presented and discussed — each in just one minute. Designed to keep the community informed and inspired.',
-    image: assets.event5,
-  },
-];
-
-const categories = ['All', 'Hackathons', 'Conferences', 'Info events'];
+import { events, EVENT_CATEGORIES } from '@data/events'
 
 export default function EventsSection() {
-  const [activeCategory, setActiveCategory] = useState('All');
+  const [activeCategory, setActiveCategory] = useState('All')
 
+  // Filter events by category
   const filteredEvents =
     activeCategory === 'All'
       ? events
-      : events.filter((e) => e.category === activeCategory);
+      : events.filter((e) => e.type === activeCategory)
+
+  // Format event date range
+  const formatDateRange = (start, end) => {
+    const startDate = new Date(start)
+    const endDate = new Date(end)
+    const sameMonth = startDate.getMonth() === endDate.getMonth()
+    const options = { day: 'numeric', month: 'short', year: 'numeric' }
+    const startStr = startDate.toLocaleDateString('en-US', options)
+    const endStr = endDate.toLocaleDateString('en-US', options)
+    return sameMonth
+      ? `${startDate.getDate()}–${endDate.getDate()} ${startDate.toLocaleString('en-US', { month: 'short' })}, ${startDate.getFullYear()}`
+      : `${startStr} – ${endStr}`
+  }
 
   return (
     <section
@@ -69,12 +34,16 @@ export default function EventsSection() {
     >
       <div>
         {/* Heading */}
-        <h2 id="events-section-heading" className="heading heading-h1 leading-tight mb-8 text-center md:text-left">
+        <h2
+          id="events-section-heading"
+          className="heading heading-h1 leading-tight mb-8 text-center md:text-left"
+        >
           Upcoming Events
         </h2>
+
         {/* Category Filter */}
         <div className="flex justify-center mb-10 flex-wrap gap-3 sm:gap-4">
-          {categories.map((cat) => {
+          {['All', ...EVENT_CATEGORIES].map((cat) => {
             const active = activeCategory === cat
             return (
               <Button
@@ -83,9 +52,11 @@ export default function EventsSection() {
                 onClick={() => setActiveCategory(cat)}
                 className={`
                   text-sm md:text-base px-5 py-2 rounded-full transition-all duration-300
-                  ${active
-                    ? 'bg-accent text-white shadow-[0_0_15px_rgba(59,130,246,0.4)] scale-[1.05]'
-                    : 'bg-white/10 text-white/80 hover:bg-white/20 hover:text-white hover:scale-[1.03]'}
+                  ${
+                    active
+                      ? 'bg-accent text-white shadow-[0_0_15px_rgba(59,130,246,0.4)] scale-[1.05]'
+                      : 'bg-white/10 text-white/80 hover:bg-white/20 hover:text-white hover:scale-[1.03]'
+                  }
                 `}
               >
                 {cat}
@@ -103,7 +74,7 @@ export default function EventsSection() {
               className="flex flex-col bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 hover:border-accent transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:shadow-[0_8px_32px_rgba(59,130,246,0.3)]"
             >
               <ImageFrame
-                src={event.image}
+                src={event.cover}
                 alt={event.title}
                 aspect="3/2"
                 fit="cover"
@@ -115,24 +86,36 @@ export default function EventsSection() {
                 <h3 className="text-text1 md:text-h2 font-semibold mb-2 leading-tight text-white">
                   {event.title}
                 </h3>
-                <p className="text-sm text-white/70 mb-3">{event.date}</p>
+                <p className="text-sm text-white/70 mb-1">
+                  {formatDateRange(event.start, event.end)}
+                </p>
+                <p className="text-sm text-white/50 mb-3 italic">
+                  {event.location}
+                </p>
                 <p className="text-text2 text-white/80 mb-6 grow leading-relaxed">
-                  {event.description}
+                  {event.blurb}
                 </p>
 
-                <Button
-                  variant="secondary"
-                  as="link"
-                  to={`/events/${event.id}`}
-                  className="self-start text-sm px-5 py-2 mt-auto"
-                >
-                  Register →
-                </Button>
+                <div className="flex items-center justify-between mt-auto">
+                  <Button
+                    variant="secondary"
+                    as="link"
+                    to={event.links.register}
+                    className="text-sm px-5 py-2"
+                  >
+                    Register →
+                  </Button>
+                  {event.past && (
+                    <span className="text-xs text-white/50 italic">
+                      Past Event
+                    </span>
+                  )}
+                </div>
               </div>
             </article>
           ))}
         </div>
       </div>
     </section>
-  );
+  )
 }
