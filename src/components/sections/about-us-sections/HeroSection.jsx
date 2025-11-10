@@ -1,6 +1,6 @@
 import * as assets from '@assets'
 import ImageFrame from '@components/ui/ImageFrame'
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 /** Smooth counter that starts when `inView` is true */
 const Counter = ({ target, duration = 2000, inView = true }) => {

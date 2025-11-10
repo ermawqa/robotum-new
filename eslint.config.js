@@ -6,8 +6,12 @@ import unusedImports from "eslint-plugin-unused-imports"
 import globals from "globals"
 
 export default [
+  // Ignore build output and dependencies
   { ignores: ["dist/**", "node_modules/**"] },
+
+  // Base JS rules
   js.configs.recommended,
+
   {
     files: ["**/*.{js,jsx}"],
     languageOptions: {
@@ -16,20 +20,33 @@ export default [
       parserOptions: { ecmaFeatures: { jsx: true } },
       globals: { ...globals.browser, ...globals.node },
     },
-    plugins: { react, "react-hooks": reactHooks, "unused-imports": unusedImports },
-    settings: { react: { version: "detect" } },
+    plugins: {
+      react,
+      "react-hooks": reactHooks,
+      "unused-imports": unusedImports,
+    },
+    settings: {
+      react: { version: "detect" },
+    },
     rules: {
-      // ❌ DO NOT auto-delete imports anymore
-      "unused-imports/no-unused-imports": "off",
+      // ✅ Auto-fix unused imports
+      "unused-imports/no-unused-imports": "error",
 
-      // ✅ Just warn on unused vars/imports (no auto-fix)
+      // Warn for unused variables but don’t delete them automatically
       "no-unused-vars": [
         "warn",
-        { vars: "all", varsIgnorePattern: "^_", args: "after-used", argsIgnorePattern: "^_" }
+        {
+          vars: "all",
+          varsIgnorePattern: "^_",
+          args: "after-used",
+          argsIgnorePattern: "^_",
+        },
       ],
 
-      "react/jsx-uses-react": "off",
+      // React-specific rules
+      "react/jsx-uses-react": "off", // Not needed in React 17+
       "react/react-in-jsx-scope": "off",
+      "react/jsx-uses-vars": "warn",
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
     },

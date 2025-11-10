@@ -3,7 +3,7 @@ import Navbar from '@components/sections/common-sections/Navbar';
 import FooterSection from '@components/sections/common-sections/FooterSection';
 
 // Lazy load sections for performance
-import React, { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 const HeroSection = lazy(() => import('@components/sections/join-us-sections/HeroSection'));
 const WhyWeSection = lazy(() => import('@components/sections/join-us-sections/WhyWeSection'));
 const ApplicationSection = lazy(() => import('@components/sections/join-us-sections/ApplicationSection'));

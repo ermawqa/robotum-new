@@ -3,7 +3,7 @@ import Navbar from '@components/sections/common-sections/Navbar'
 import FooterSection from '@components/sections/common-sections/FooterSection'
 
 
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 
 export default function PrivacyPolicy() {
   useEffect(() => { document.title = 'Privacy Policy | RoboTUM';

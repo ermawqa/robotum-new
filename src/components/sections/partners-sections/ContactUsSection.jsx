@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import ImageFrame from '@components/ui/ImageFrame'
 import Button from '@components/ui/Button'
 import * as assets from '@assets'

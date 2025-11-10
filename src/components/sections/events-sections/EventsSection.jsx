@@ -1,5 +1,4 @@
-import React, { useMemo, useState } from 'react'
-import * as assets from '@assets'
+import { useMemo, useState } from 'react'
 import Button from '@components/ui/Button'
 import ImageFrame from '@components/ui/ImageFrame'
 import { events, EVENT_CATEGORIES } from '@data'

@@ -1,4 +1,3 @@
-import React from 'react'
 import * as assets from '@assets'
 import Button from '@components/ui/Button'
 import ImageFrame from '@components/ui/ImageFrame'

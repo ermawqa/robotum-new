@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline' // Importing Chevron icons from Heroicons
 import { faqs } from '@data'
 

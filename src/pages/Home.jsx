@@ -4,7 +4,7 @@ import FooterSection from '@components/sections/common-sections/FooterSection'
 import HeroSection from '@components/sections/homepage-sections/HeroSection'
 
 // Lazily load below-the-fold sections to reduce initial bundle size
-import React, { lazy, Suspense, useEffect } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
 const MissionSection = lazy(() => import('@components/sections/homepage-sections/MissionSection'))
 const ProjectSection = lazy(() => import('@components/sections/homepage-sections/ProjectSection'))
 const EventSection = lazy(() => import('@components/sections/homepage-sections/EventSection'))

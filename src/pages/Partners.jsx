@@ -3,7 +3,7 @@ import Navbar from '@components/sections/common-sections/Navbar'
 import FooterSection from '@components/sections/common-sections/FooterSection'
 
 // Lazy-load below-the-fold content for performance
-import React, { lazy, Suspense, useEffect } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
 const HeroSection = lazy(() => import('@components/sections/partners-sections/HeroSection'))
 const PartnerCategories = lazy(() => import('@components/sections/partners-sections/PartnerCategories'))
 const NextPrototypes = lazy(() => import('@components/sections/partners-sections/NextPrototypes'))

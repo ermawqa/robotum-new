@@ -3,7 +3,7 @@ import Navbar from '@components/sections/common-sections/Navbar';
 import FooterSection from '@components/sections/common-sections/FooterSection';
 
 // Lazy load sections for performance
-import React, { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 const HeroSection = lazy(() => import('@components/sections/about-us-sections/HeroSection'));
 const WhatIsRobotum = lazy(() => import('@components/sections/about-us-sections/WhatIsRobotum'));
 const TeamSection = lazy(() => import('@components/sections/about-us-sections/TeamSection'));
