@@ -1,6 +1,7 @@
 {
   "name": "robotum-frontend",
   "version": "1.0.0",
+  "type": "module",
   "description": "Frontend codebase for RoboTUM — a student-led robotics club. Built with React + Tailwind CSS. Designed to be fast, modular, and easy to scale.",
   "main": "index.js",
   "scripts": {
@@ -10,8 +11,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:clean": "npm run build && npm run css:purge",
     "css:purge": "purgecss --css 'dist/assets/*.css' --content 'index.html' 'src/**/*.{js,jsx}' --safelist 'html,body,#root,nav,section,header,footer' --output dist/assets",
-    "css:report": "purgecss --css 'dist/assets/*.css' --content 'index.html' 'src/**/*.{js,jsx}' --rejected --output dist/purged && echo 'See dist/purged for purged CSS; rejected selectors are printed above.'"
-    
+    "css:report": "purgecss --css 'dist/assets/*.css' --content 'index.html' 'src/**/*.{js,jsx}' --rejected --output dist/purged && echo 'See dist/purged for purged CSS; rejected selectors are printed above.'",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "depcheck": "depcheck --ignores='@tailwindcss/postcss' --skip-missing"
   },
   "repository": {
     "type": "git",
@@ -25,12 +28,15 @@
   },
   "homepage": "https://github.com/ermawqa/robotum-frontend#readme",
   "devDependencies": {
+    "@eslint/js": "^9.39.1",
     "@tailwindcss/postcss": "^4.1.14",
     "@vitejs/plugin-react": "^4.2.1",
-    "autoprefixer": "^10.4.21",
-    "postcss": "^8.5.6",
+    "depcheck": "^1.4.7",
+    "eslint": "^9.39.1",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-unused-imports": "^4.3.0",
     "purgecss": "^7.0.2",
-    "tailwindcss": "^4.1.16",
     "vite": "^5.4.10"
   },
   "dependencies": {
