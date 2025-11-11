@@ -38,7 +38,11 @@ export default function JoinUsSection() {
               <Button variant="primary" as="link" to="/join">
                 Apply Now →
               </Button>
-              <Button variant="secondary" to="join" scrollTarget="why-we-section">
+              <Button
+                variant="secondary"
+                to="join"
+                scrollTarget="why-we-section"
+              >
                 Learn More
               </Button>
             </div>
