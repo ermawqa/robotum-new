@@ -1,7 +1,6 @@
 import * as assets from "@assets";
 import Button from "@components/ui/Button";
 import ImageFrame from "@components/ui/ImageFrame";
-import { scrollToSection } from "@utils/scrollToSection";
 
 /**
  * Events → Hero Section (Refined)
