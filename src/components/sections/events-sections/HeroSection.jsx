@@ -1,7 +1,7 @@
 import * as assets from "@assets";
 import Button from "@components/ui/Button";
 import ImageFrame from "@components/ui/ImageFrame";
-import scrollToSection from "@utils/scrollToSection";
+import { scrollToSection } from "@utils/scrollToSection";
 
 /**
  * Events → Hero Section (Refined)
@@ -37,7 +37,7 @@ const HeroSection = () => {
           <div className="pt-2 flex flex-col sm:flex-row gap-3 sm:gap-5 justify-center lg:justify-start">
             <Button
               variant="primary"
-              onClick={() => scrollToSection("all-events")}
+              scrollTarget="all-events"
             >
               View all events
             </Button>

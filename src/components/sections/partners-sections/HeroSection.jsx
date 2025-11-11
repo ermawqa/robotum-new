@@ -45,8 +45,7 @@ const HeroSection = () => {
         {/* CTAs */}
         <div className="mt-6 md:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
           <Button
-            as="link"
-            to="/join#partners"
+            scrollTarget="contact"
             variant="primary"
             className="w-full sm:w-auto"
           >
