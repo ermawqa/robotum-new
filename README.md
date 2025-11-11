@@ -69,7 +69,9 @@ npm install
 npm run dev
 ```
 
-App runs at: http://localhost:5173/
+App runs at:  
+  ➜  Local:   http://localhost:5173/robotum-frontend/  
+  ➜  Network: http://192.168.15.104:5173/robotum-frontend/
 
 ### 5. Build for Production
 
