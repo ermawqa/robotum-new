@@ -4,6 +4,11 @@ import path from "node:path";
 
 export default defineConfig({
   plugins: [react()],
+  css: {
+    postcss: {
+      plugins: [tailwind()],
+    },
+  },
   server: { host: true }, // or '0.0.0.0'
   resolve: {
     alias: {
