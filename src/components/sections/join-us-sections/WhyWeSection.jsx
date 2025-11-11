@@ -66,7 +66,7 @@ const WhyWeSection = () => {
             You don’t need to be an expert — just bring motivation and
             willingness to learn. We’ll support you from day one.
           </p>
-          <Button variant="primary" as="link" to="/join">
+          <Button variant="primary" to="https://form.typeform.com/to/idCpmyGX?typeform-source=www.robotum.info" target="_blank">
             Join Now →
           </Button>
         </div>
