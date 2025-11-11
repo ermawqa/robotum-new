@@ -1,5 +1,6 @@
 {
   "name": "robotum-frontend",
+  "homepage": "https://ermawqa.github.io/robotum-frontend/",
   "version": "1.0.0",
   "type": "module",
   "description": "Frontend codebase for RoboTUM — a student-led robotics club. Built with React + Tailwind CSS. Designed to be fast, modular, and easy to scale.",
@@ -24,7 +25,9 @@
     "css:report": "purgecss --css 'dist/assets/*.css' --content 'index.html' 'src/**/*.{js,jsx}' --rejected --output dist/purged && echo 'See dist/purged for purged CSS; rejected selectors are printed above.'",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "depcheck": "depcheck --ignores='@tailwindcss/postcss' --skip-missing"
+    "depcheck": "depcheck --ignores='@tailwindcss/postcss' --skip-missing",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -36,7 +39,6 @@
   "bugs": {
     "url": "https://github.com/ermawqa/robotum-frontend/issues"
   },
-  "homepage": "https://github.com/ermawqa/robotum-frontend#readme",
   "devDependencies": {
     "@eslint/js": "^9.39.1",
     "@playwright/test": "^1.56.1",
@@ -50,6 +52,7 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-unused-imports": "^4.3.0",
+    "gh-pages": "^6.3.0",
     "jest-axe": "^10.0.0",
     "jsdom": "^27.1.0",
     "prettier": "^3.6.2",

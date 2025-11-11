@@ -4,12 +4,7 @@ import path from "node:path";
 
 export default defineConfig({
   plugins: [react()],
-  base: "/robotum-frontend",
-  css: {
-    postcss: {
-      plugins: [tailwind()],
-    },
-  },
+  base: '/robotum-frontend/',
   server: { host: true }, // or '0.0.0.0'
   resolve: {
     alias: {
