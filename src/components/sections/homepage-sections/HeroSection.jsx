@@ -12,7 +12,7 @@ export default function HeroSection({
   ctaPrimary = "Become a Member",
   ctaPrimaryTo = "/join",
   ctaSecondary = "Become a Partner",
-  ctaSecondaryTo = "/partners#contact",
+  ctaSecondaryTo = "/partners",
 }) {
   return (
     <section
@@ -56,7 +56,7 @@ export default function HeroSection({
             {ctaPrimary}
           </Button>
           {ctaSecondary && (
-            <Button variant="secondary" as="link" to={ctaSecondaryTo}>
+            <Button variant="secondary" to={ctaSecondaryTo} >
               {ctaSecondary}
             </Button>
           )}
