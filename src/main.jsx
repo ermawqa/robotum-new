@@ -4,7 +4,7 @@ import App from './App'
 import './styles/globals.css'
 import { BrowserRouter, HashRouter } from 'react-router-dom'
 
-// Use HashRouter when hosted under a subpath (GitHub Pages)
+// Use hash routing when hosted under a subpath (like GitHub Pages)
 const isSubpath = import.meta.env.BASE_URL !== '/'
 const Router = isSubpath ? HashRouter : BrowserRouter
 
