@@ -191,9 +191,9 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## 👥 Team
 
 **Project Lead:** Yermukhamed Shakhman  
-**UI/UX Designer:** TU Design Club
-**Developers:** Maryna Redka and Ediz Perez Landeros
-📩 Contact: outreach@robotum.info
+**UI/UX Designer:** TU Design Club  
+**Developers:** Maryna Redka and Ediz Perez Landeros  
+📩 Contact: outreach@robotum.info  
 
 ---
 
