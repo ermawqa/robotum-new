@@ -15,6 +15,10 @@ export default function Projects() {
   const [tag, setTag] = useState(params.get("tag") || "");
 
   useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, []);
+
+  useEffect(() => {
     const next = new URLSearchParams();
     next.set("type", active);
     if (query) next.set("q", query);

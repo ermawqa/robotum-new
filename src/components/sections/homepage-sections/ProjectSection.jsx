@@ -37,10 +37,13 @@ export default function ProjectSection() {
       id="projects"
       className="section-container text-white font-sans surface-1 edge-fade-top edge-fade-bottom surface-wrap surface-pattern"
     >
-      {/* Heading */}
-      <h2 className="heading heading-h1 font-bold leading-tight mb-10 md:mb-14 text-center md:text-left">
-        Main Project Showcase
-      </h2>
+      {/* Section header */}
+      <div className="mb-10 md:mb-14">
+        <p className="text-xs tracking-widest text-white/60 uppercase mb-2">Featured projects</p>
+        <h2 className="heading heading-h1 font-bold leading-tight text-center md:text-left">
+          Main Project Showcase
+        </h2>
+      </div>
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start justify-between gap-10 md:gap-16">
         {/* LEFT — Text Info */}
         <div className="hidden md:block w-full md:w-1/2 relative text-center md:text-left min-h-[300px]">
@@ -54,13 +57,15 @@ export default function ProjectSection() {
             <p className="text-text1 text-white/80 mb-6 leading-relaxed">
               {projects[current].summary}
             </p>
-            <Button
-              variant="secondary"
-              as="link"
-              to={`/projects/${projects[current].slug}`}
-            >
-              View more →
-            </Button>
+            <div className="mt-4 md:mt-6 flex flex-col items-start gap-3">
+              <Button
+                variant="secondary"
+                as="link"
+                to={`/projects/${projects[current].slug}`}
+              >
+                View more →
+              </Button>
+            </div>
           </div>
         </div>
 
@@ -142,6 +147,15 @@ export default function ProjectSection() {
               </div>
             ))}
           </div>
+          <div className="mt-6 flex justify-center">
+            <Button
+              variant="primary"
+              as="link"
+              to="/projects"
+            >
+              View All Projects →
+            </Button>
+          </div>
         </div>
       </div>
 
@@ -158,13 +172,21 @@ export default function ProjectSection() {
             role="tab"
             aria-selected={i === current}
             onClick={() => setCurrent(i)}
-            className={`cursor-pointer w-3.5 h-3.5 rounded-full transition-colors ${
-              i === current ? "bg-white" : "bg-white/30 hover:bg-white/50"
-            }`}
+            className={`cursor-pointer w-3.5 h-3.5 rounded-full transition-colors ${i === current ? "bg-white" : "bg-white/30 hover:bg-white/50"
+              }`}
           >
             <span className="sr-only">Go to slide {i + 1}</span>
           </button>
         ))}
+      </div>
+      <div className="mt-10 hidden md:flex justify-center">
+        <Button
+          variant="primary"
+          as="link"
+          to="/projects"
+        >
+          View All Projects →
+        </Button>
       </div>
     </section>
   );
