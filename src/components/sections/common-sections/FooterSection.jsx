@@ -1,4 +1,5 @@
 import * as assets from "@assets";
+import { Link } from 'react-router-dom'
 
 export default function FooterSection() {
   return (
@@ -22,34 +23,34 @@ export default function FooterSection() {
           <h3 className="font-semibold text-lg mb-3">Explore</h3>
           <ul className="flex flex-col gap-2 text-sm text-gray-300">
             <li>
-              <a href="/" className="hover:text-white">
+              <Link to="/" className="hover:text-white">
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/about" className="hover:text-white">
+              <Link to="/about" className="hover:text-white">
                 About us
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/projects" className="hover:text-white">
+              <Link to="/projects" className="hover:text-white">
                 Projects
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/events" className="hover:text-white">
+              <Link to="/events" className="hover:text-white">
                 Events
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/partners" className="hover:text-white">
+              <Link to="/partners" className="hover:text-white">
                 Partners
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/join" className="hover:text-white">
+              <Link to="/join" className="hover:text-white">
                 Join us
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -59,19 +60,19 @@ export default function FooterSection() {
           <h3 className="font-semibold text-lg mb-3">Legal</h3>
           <ul className="flex flex-col gap-2 text-sm text-gray-300">
             <li>
-              <a href="/impressum" className="hover:text-white">
+              <Link to="/impressum" className="hover:text-white">
                 Impressum
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/privacy-policy" className="hover:text-white">
+              <Link to="/privacy-policy" className="hover:text-white">
                 Privacy Policy
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/gender-and-diversity" className="hover:text-white">
+              <Link to="/gender-and-diversity" className="hover:text-white">
                 Gender and Diversity
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
