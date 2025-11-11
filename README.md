@@ -34,6 +34,7 @@ src/
 ├── pages/                # Route-based pages (Home, Partners, Projects…)
 ├── styles/               # globals.css, variables.css
 ├── utils/                # scrollToSection.js, hooks
+├── tests/                # global tests (integration, e2e, setup)
 ├── App.jsx               # Root app with routes
 ├── main.jsx              # Entry point
 └── vite.config.js        # Build & alias configuration
@@ -170,7 +171,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## 👥 Team
 
 **Project Lead:** Yermukhamed Shakhman  
-**UI/UX Designer:** [add when available]  
+**UI/UX Designer:** TU Design Club 
 **External Relations:** Marco Färber-Gonzalez  
 📩 Contact: outreach@robotum.info
 
