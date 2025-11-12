@@ -149,7 +149,7 @@ export default function ProjectSection() {
               </div>
             ))}
           </div>
-          </div>
+        </div>
       </div>
 
       {/* DOTS (only for desktop) */}

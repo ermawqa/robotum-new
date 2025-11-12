@@ -9,12 +9,15 @@ import { partners as partnerGroups } from "@data";
 export default function PartnersSection() {
   // Flatten all categories into a single list while retaining the group title
   const allPartners = partnerGroups.flatMap((group) =>
-    group.partners.map((p) => ({ ...p, groupTitle: group.title }))
+    group.partners.map((p) => ({ ...p, groupTitle: group.title })),
   );
 
   // Duplicate arrays to create seamless marquee loops
   const laneA = [...allPartners, ...allPartners];
-  const laneB = [...allPartners.slice().reverse(), ...allPartners.slice().reverse()];
+  const laneB = [
+    ...allPartners.slice().reverse(),
+    ...allPartners.slice().reverse(),
+  ];
 
   return (
     <section
@@ -23,16 +26,18 @@ export default function PartnersSection() {
       aria-labelledby="partners-heading"
     >
       {/* Header */}
-      <div className="mb-8 sm:mb-10 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
-        <h2
-          id="partners-heading"
-          className="heading heading-h1 font-bold leading-tight text-[#0A1A2F]"
-        >
-          Our Sponsors &amp; Partners
-        </h2>
-        <p className="text-[#0A1A2F]/60 text-sm md:text-base">
-          Thank you to our community of supporters
-        </p>
+      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+        <div className="text-left">
+          <p className="text-[#0A1A2F]/60 text-sm md:text-base">
+            Thank you to our community of supporters
+          </p>
+          <h2
+            id="partners-heading"
+            className="heading heading-h1 font-bold leading-tight text-[#0A1A2F]"
+          >
+            Our Sponsors &amp; Partners
+          </h2>
+        </div>
       </div>
 
       {/* Track wrapper */}
@@ -76,7 +81,8 @@ export default function PartnersSection() {
 
       {/* Small caption on mobile */}
       <p className="mt-4 md:hidden text-xs text-[#0A1A2F]/60 text-center">
-        Logos scroll automatically. Tap a logo to visit the partner&apos;s website.
+        Logos scroll automatically. Tap a logo to visit the partner&apos;s
+        website.
       </p>
     </section>
   );
