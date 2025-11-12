@@ -112,7 +112,7 @@ export default function ContactUsSection() {
             </div>
 
             <Button type="submit" variant="primary" className="mt-4">
-              Submit
+              Send Message
             </Button>
           </form>
 

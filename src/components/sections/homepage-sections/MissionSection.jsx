@@ -56,7 +56,7 @@ export default function MissionSection() {
             </p>
             <div className="mt-6">
               <Button variant="primary" as="link" to="/about">
-                About Us →
+                → Discover RoboTUM
               </Button>
             </div>
           </div>

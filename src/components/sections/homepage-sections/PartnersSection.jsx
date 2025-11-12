@@ -41,7 +41,7 @@ export default function PartnersSection() {
         </div>
         <div>
           <Button to="/partners" variant="primary-light">
-            View all partners →
+            Meet Our Partners →
           </Button>
         </div>
       </div>

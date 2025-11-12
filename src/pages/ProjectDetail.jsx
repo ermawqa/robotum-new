@@ -86,7 +86,7 @@ export default function ProjectDetail() {
                   variant="secondary"
                   className="whitespace-nowrap"
                 >
-                  All projects
+                  ← Back to Projects
                 </Button>
                 {project.links?.map((l) => (
                   <Button

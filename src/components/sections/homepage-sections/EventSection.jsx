@@ -76,7 +76,7 @@ export default function EventSection() {
         </div>
         <div className="hidden md:block">
           <Button as="link" to="/events" variant="secondary">
-            View all events →
+            View All Events →
           </Button>
         </div>
       </div>

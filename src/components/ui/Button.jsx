@@ -36,19 +36,21 @@ export default function Button({
   const Comp = isRouterLink ? Link : isAnchor ? "a" : as;
 
   // Maps for variants and sizes (classes live in globals.css)
-  const variantClass = {
-    primary: "btn-primary",
-    "primary-light": "btn-primary-light",
-    secondary: "btn-secondary",
-    ghost: "btn-ghost",
-    glow: "btn-glow",
-  }[variant] || "btn-primary";
+  const variantClass =
+    {
+      primary: "btn-primary",
+      "primary-light": "btn-primary-light",
+      secondary: "btn-secondary",
+      ghost: "btn-ghost",
+      glow: "btn-glow",
+    }[variant] || "btn-primary";
 
-  const sizeClass = {
-    sm: "btn-sm",
-    md: "btn-md",
-    lg: "btn-lg",
-  }[size] || "btn-md";
+  const sizeClass =
+    {
+      sm: "btn-sm",
+      md: "btn-md",
+      lg: "btn-lg",
+    }[size] || "btn-md";
 
   const handleClick = (e) => {
     if (disabled || loading) {
@@ -77,7 +79,9 @@ export default function Button({
   };
 
   // External link safety
-  const isExternal = (isAnchor && target === "_blank") || (isAnchor && /^https?:\/\//.test(href || ""));
+  const isExternal =
+    (isAnchor && target === "_blank") ||
+    (isAnchor && /^https?:\/\//.test(href || ""));
   const relSafe = isExternal ? clsx("noopener", "noreferrer", rel) : rel;
 
   // Common props
@@ -107,15 +111,22 @@ export default function Button({
   return (
     <Comp {...commonProps} {...elementProps}>
       {LeadingIcon ? (
-        <span className="mr-2 inline-flex items-center">{<LeadingIcon aria-hidden="true" />}</span>
+        <span className="mr-2 inline-flex items-center">
+          {<LeadingIcon aria-hidden="true" />}
+        </span>
       ) : null}
 
       <span className="inline-flex items-center">{children}</span>
 
       {loading ? (
-        <span className="ml-2 inline-block h-4 w-4 animate-spin rounded-full border-2 border-white/70 border-t-transparent" aria-hidden="true" />
+        <span
+          className="ml-2 inline-block h-4 w-4 animate-spin rounded-full border-2 border-white/70 border-t-transparent"
+          aria-hidden="true"
+        />
       ) : TrailingIcon ? (
-        <span className="ml-2 inline-flex items-center">{<TrailingIcon aria-hidden="true" />}</span>
+        <span className="ml-2 inline-flex items-center">
+          {<TrailingIcon aria-hidden="true" />}
+        </span>
       ) : null}
     </Comp>
   );
