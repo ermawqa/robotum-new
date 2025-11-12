@@ -22,7 +22,7 @@ export default function HeroSection({
       className="section-container relative min-h-screen flex flex-col items-center justify-center text-white font-sans surface-1 edge-fade-bottom surface-wrap surface-pattern overflow-hidden"
     >
       {/* Background overlay */}
-      <div className="pointer-events-none absolute inset-0 bg-black/30" />
+      <div className="pointer-events-none absolute inset-0 " />
       {/* Content container */}
       <div className="relative z-10 max-w-7xl w-full flex flex-col items-center text-center space-y-8">
         {/* Logo */}
