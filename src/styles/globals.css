@@ -12,8 +12,6 @@
   --color-secondary: #06142b;
   --color-accent: #2563eb;
   --color-light: #f1f5f9;
-  --color-brand: #0ea5e9;
-  --color-section-gradient: linear-gradient(to bottom, #020035, #000000);
   --color-surface-light: #e5f0ff;
 
   /* Typography scale */
@@ -55,19 +53,19 @@ body {
   font-size: var(--text-h2);
 }
 
-/* ==========================================================================
-   NAVIGATION (Glass Look)
-   ========================================================================== */
-.navbar-gradient {
-  background-color: rgba(0, 12, 33, 0.85);
-  background-image: radial-gradient(
-    circle at 20% 50%,
-    rgba(0, 49, 135, 0.5) 0%,
-    rgba(0, 12, 33, 0.85) 60%
-  );
-  backdrop-filter: blur(14px) saturate(140%);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+/* =============================
+   Gradient Text Utility
+   ============================= */
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-linear-to-r from-[#60A5FA] via-[#A78BFA] to-[#22D3EE];
+}
+
+.text-gradient-futuristic {
+  @apply bg-clip-text text-transparent bg-linear-to-r from-[#7C3AED] via-[#3B82F6] to-[#06B6D4];
+}
+
+.text-gradient-sunrise {
+  @apply bg-clip-text text-transparent bg-linear-to-r from-[#F59E0B] via-[#EC4899] to-[#8B5CF6];
 }
 
 /* ==========================================================================

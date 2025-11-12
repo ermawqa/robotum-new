@@ -69,11 +69,11 @@ export default function AboutHero() {
             id="about-hero-heading"
             className="heading heading-h1 leading-tight text-balance"
           >
-            More than a<br /> student club!
+            Built by <span className="text-gradient">Students</span> Powered by{" "}
+            <span className="text-gradient">Passion</span>
           </h1>
           <p className="mt-4 text-text2 md:text-text1 text-white/80 leading-relaxed">
-            We bring together students from all disciplines to turn ideas into
-            real robots — hands on and driven by passion.
+            Where students become innovators, and ideas become robots
           </p>
         </div>
 
@@ -103,7 +103,7 @@ export default function AboutHero() {
           className="rounded-xl p-6 bg-white/5 border border-white/10 backdrop-blur-sm"
           role="listitem"
         >
-          <p className="text-[2.5rem] md:text-[3.25rem] font-semibold text-accent/90 leading-none">
+          <p className="text-[2.5rem] md:text-[3.25rem] font-semibold text-gradient leading-none">
             +<Counter target={100} inView={statsInView} />
           </p>
           <p className="mt-2 text-text2 text-white/75">active members</p>
@@ -113,7 +113,7 @@ export default function AboutHero() {
           className="rounded-xl p-6 bg-white/5 border border-white/10 backdrop-blur-sm"
           role="listitem"
         >
-          <p className="text-[2.5rem] md:text-[3.25rem] font-semibold text-accent/90 leading-none">
+          <p className="text-[2.5rem] md:text-[3.25rem] font-semibold text-gradient leading-none">
             +<Counter target={21} inView={statsInView} />
           </p>
           <p className="mt-2 text-text2 text-white/75">
@@ -125,7 +125,7 @@ export default function AboutHero() {
           className="rounded-xl p-6 bg-white/5 border border-white/10 backdrop-blur-sm"
           role="listitem"
         >
-          <p className="text-[2.5rem] md:text-[3.25rem] font-semibold text-accent/90 leading-none">
+          <p className="text-[2.5rem] md:text-[3.25rem] font-semibold text-gradient leading-none">
             +<Counter target={14} inView={statsInView} />
           </p>
           <p className="mt-2 text-text2 text-white/75">

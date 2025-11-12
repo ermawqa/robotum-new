@@ -26,19 +26,12 @@ const HeroSection = () => {
         <header className="max-w-3xl">
           <h1
             id="partners-hero-heading"
-            className="heading heading-h1 text-white"
+            className="heading heading-h1 text-gradient"
           >
             Partnerships & Collaborations
           </h1>
           <p className="mt-4 md:mt-5 text-text1 text-white/80">
-            We work with{" "}
-            <span className="font-semibold text-white">lead sponsors</span>,{" "}
-            <span className="font-semibold text-white">sponsors</span>,{" "}
-            <span className="font-semibold text-white">industry</span>, and{" "}
-            <span className="font-semibold text-white">
-              academic collaborators
-            </span>{" "}
-            to accelerate robotics innovation at TUM and in Munich’s ecosystem.
+            Partnerships that turn vision into reality
           </p>
         </header>
 

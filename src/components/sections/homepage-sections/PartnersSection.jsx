@@ -36,7 +36,7 @@ export default function PartnersSection() {
             id="partners-heading"
             className="heading heading-h1 font-bold leading-tight text-[#0A1A2F]"
           >
-            Our Sponsors &amp; Partners
+            Our <span className="text-gradient">Sponsors &amp; Partners</span>
           </h2>
         </div>
         <div>

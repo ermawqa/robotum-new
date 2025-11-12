@@ -23,14 +23,13 @@ const HeroSection = () => {
             id="events-hero-heading"
             className="heading heading-h1 font-bold leading-tight text-balance"
           >
-            Where ideas <span className="text-accent">connect</span> and grow
+            Where ideas <span className="text-gradient">connect</span> &amp;{" "}
+            <span className="text-gradient">grow</span>
           </h1>
 
           <p className="text-text2 md:text-text1 text-white/80 leading-relaxed max-w-xl mx-auto lg:mx-0">
             Join thought‑provoking events that bring together students,
-            professionals, and innovators. From inspiring keynotes to
-            interactive workshops and networking — each event offers a space for
-            exchange, reflection, and growth.
+            professionals, and innovators
           </p>
 
           <div className="pt-2 flex flex-col sm:flex-row gap-3 sm:gap-5 justify-center lg:justify-start">

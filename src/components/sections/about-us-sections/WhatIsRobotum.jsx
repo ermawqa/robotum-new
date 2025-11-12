@@ -26,7 +26,7 @@ export default function WhatIsRobotum({ illustration }) {
             id="what-robotum-heading"
             className="heading heading-h1 mb-5 text-white leading-tight text-balance"
           >
-            What is <span className="text-accent">RoboTUM</span>?
+            What is <span className="text-gradient">RoboTUM</span>?
           </h2>
           <p className="text-text1 text-white/85 leading-relaxed mb-6">
             RoboTUM is a student-led robotics community at TUM. Our vision is to

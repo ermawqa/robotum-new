@@ -43,7 +43,7 @@ export default function ProjectSection() {
           Featured projects
         </p>
         <h2 className="heading heading-h1 font-bold leading-tight text-left">
-          Main Project Showcase
+          <span className="text-gradient">Engineering </span> the Future
         </h2>
       </div>
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start justify-between gap-10 md:gap-16">

@@ -71,7 +71,7 @@ export default function EventSection() {
             id="events-section-heading"
             className="heading heading-h1 font-bold leading-tight"
           >
-            Next up at RoboTUM
+            Where<span className="text-gradient"> Minds Meet</span>
           </h2>
         </div>
         <div className="hidden md:block">

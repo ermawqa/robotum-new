@@ -15,7 +15,7 @@ export default function MissionSection() {
       <div>
         {/* Heading */}
         <h2 className="heading heading-h1 font-bold leading-tight text-left mb-10 md:mb-14">
-          Foundations of RoboTUM
+          <span className="text-gradient">Foundations</span> of RoboTUM
         </h2>
 
         {/* Content container */}
@@ -56,7 +56,7 @@ export default function MissionSection() {
             </p>
             <div className="mt-6">
               <Button variant="primary" as="link" to="/about">
-                → Discover RoboTUM
+                Discover RoboTUM →
               </Button>
             </div>
           </div>
