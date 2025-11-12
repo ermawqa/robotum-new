@@ -149,12 +149,7 @@ export default function ProjectSection() {
               </div>
             ))}
           </div>
-          <div className="mt-6 flex justify-center">
-            <Button variant="primary" as="link" to="/projects">
-              View All Projects →
-            </Button>
           </div>
-        </div>
       </div>
 
       {/* DOTS (only for desktop) */}
@@ -178,7 +173,7 @@ export default function ProjectSection() {
           </button>
         ))}
       </div>
-      <div className="mt-10 hidden md:flex justify-center">
+      <div className="mt-10 md:flex justify-center">
         <Button variant="primary" as="link" to="/projects">
           View All Projects →
         </Button>
