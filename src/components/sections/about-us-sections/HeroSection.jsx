@@ -69,8 +69,8 @@ export default function AboutHero() {
             id="about-hero-heading"
             className="heading heading-h1 leading-tight text-balance"
           >
-            Built by <span className="text-gradient">Students</span> Powered by{" "}
-            <span className="text-gradient">Passion</span>
+            Built by <span className="text-gradient">Students</span> <br />{" "}
+            Powered by <span className="text-gradient">Passion</span>
           </h1>
           <p className="mt-4 text-text2 md:text-text1 text-white/80 leading-relaxed">
             Where students become innovators, and ideas become robots

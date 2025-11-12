@@ -8,11 +8,12 @@ const HeroSection = () => {
       {/* Left side: text content */}
       <div className="w-full lg:w-1/2 order-2 lg:order-1 space-y-6 text-center lg:text-left">
         <h1 className="heading text-hero md:text-display leading-tight text-balance">
-          Get inspired, <br /> get involved!
+          Get <span className="text-gradient">inspired</span> <br /> get{" "}
+          <span className="text-gradient">involved</span>!
         </h1>
         <p className="text-text2 md:text-text1 text-white/80 leading-relaxed max-w-xl mx-auto lg:mx-0">
           We are an interdisciplinary student club at TUM focused on robotics,
-          innovation, and teamwork.
+          innovation, and teamwork
         </p>
         <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-4">
           <Button
