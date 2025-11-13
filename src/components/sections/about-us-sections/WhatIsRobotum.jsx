@@ -19,7 +19,7 @@ export default function WhatIsRobotum({ illustration }) {
       <div className="grid gap-12 lg:gap-16 md:grid-cols-2 items-center">
         {/* Copy column */}
         <div className="animate-fadeIn">
-          <p className="mb-3 text-sm tracking-[0.15em] uppercase text-white/70">
+          <p className="text-xs tracking-widest text-white/60 uppercase mb-2">
             Student initiative @ TUM
           </p>
           <h2

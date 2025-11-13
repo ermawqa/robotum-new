@@ -60,7 +60,7 @@ export default function EventSection() {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
         <div className="text-left">
-          <p className="text-white/60 text-sm md:text-base mb-1">
+          <p className="text-xs tracking-widest text-white/60 uppercase mb-2">
             Don’t miss what’s next
           </p>
           <h2
