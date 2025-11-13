@@ -114,7 +114,7 @@ export default function AboutHero() {
           role="listitem"
         >
           <p className="text-[2.5rem] md:text-[3.25rem] font-semibold text-gradient leading-none">
-            +<Counter target={21} inView={statsInView} />
+            +<Counter target={20} inView={statsInView} />
           </p>
           <p className="mt-2 text-text2 text-white/75">
             partners &amp; sponsors
@@ -126,7 +126,7 @@ export default function AboutHero() {
           role="listitem"
         >
           <p className="text-[2.5rem] md:text-[3.25rem] font-semibold text-gradient leading-none">
-            +<Counter target={14} inView={statsInView} />
+            +<Counter target={10} inView={statsInView} />
           </p>
           <p className="mt-2 text-text2 text-white/75">
             projects in development
