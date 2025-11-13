@@ -7,14 +7,14 @@ const HeroSection = () => {
     <section className="section-container min-h-[70vh] lg:min-h-screen flex flex-col lg:flex-row items-center justify-between text-white font-sans surface-2 edge-fade-bottom surface-wrap surface-pattern overflow-hidden">
       {/* Left side: text content */}
       <div className="w-full lg:w-1/2 order-2 lg:order-1 space-y-6 text-center lg:text-left">
-        <h1 className="heading text-hero md:text-display leading-tight text-balance">
+        <h1 className="heading text-hero md:text-display leading-tight text-balance hero-animate">
           Get <span className="text-gradient">inspired</span> <br /> Get{" "}
           <span className="text-gradient">involved</span>
         </h1>
-        <p className="text-text2 md:text-text1 text-white/80 leading-relaxed max-w-xl mx-auto lg:mx-0">
+        <p className="text-text2 md:text-text1 text-white/80 leading-relaxed max-w-xl mx-auto lg:mx-0 hero-animate">
           Hands-on. Future-focused. Together.
         </p>
-        <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-4">
+        <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-4 hero-animate">
           <Button
             variant="primary"
             to="https://form.typeform.com/to/idCpmyGX?typeform-source=www.robotum.info"
@@ -29,7 +29,7 @@ const HeroSection = () => {
       </div>
 
       {/* Right side: image */}
-      <div className="w-full lg:w-1/2 order-1 lg:order-2 mt-10 lg:mt-0 flex justify-center">
+      <div className="w-full lg:w-1/2 order-1 lg:order-2 mt-10 lg:mt-0 flex justify-center hero-animate">
         <ImageFrame
           src={assets.allMembersImg}
           alt="Group of club members"

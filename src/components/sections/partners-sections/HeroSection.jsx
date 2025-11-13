@@ -11,7 +11,7 @@ const HeroSection = () => {
   return (
     <section
       id="partners-hero"
-      className="section-container surface-1 text-white surface-wrap edge-fade-bottom min-h-screen flex items-center"
+      className="section-container surface-1 text-white surface-wrap edge-fade-bottom min-h-screen flex items-center hero-orbit-bg"
       aria-labelledby="partners-hero-heading"
       role="region"
     >
@@ -26,17 +26,17 @@ const HeroSection = () => {
         <header className="max-w-3xl">
           <h1
             id="partners-hero-heading"
-            className="heading heading-h1 text-gradient"
+            className="heading heading-h1 text-gradient hero-animate"
           >
             Partnerships & Collaborations
           </h1>
-          <p className="mt-4 md:mt-5 text-text1 text-white/80">
+          <p className="mt-4 md:mt-5 text-text1 text-white/80 hero-animate">
             Partnerships that turn vision into reality
           </p>
         </header>
 
         {/* CTAs */}
-        <div className="mt-6 md:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
+        <div className="mt-6 md:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 hero-animate">
           <Button
             scrollTarget="contact"
             variant="primary"
@@ -47,7 +47,7 @@ const HeroSection = () => {
         </div>
 
         {/* Quick categories / chips */}
-        <ul className="mt-8 md:mt-10 flex flex-wrap items-center gap-2.5">
+        <ul className="mt-8 md:mt-10 flex flex-wrap items-center gap-2.5 hero-animate">
           {[
             "Lead Sponsors",
             "Sponsors",

@@ -18,29 +18,30 @@ export default function ContactUsSection() {
     setFormData({ ...formData, [name]: value });
   };
 
-const handleSubmit = (e) => {
-  e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-  emailjs.send(
-    "YOUR_SERVICE_ID",
-    "YOUR_TEMPLATE_ID",
-    {
-      name: formData.name,
-      company: formData.company,
-      email: formData.email,
-      message: formData.message,
-    },
-    "YOUR_PUBLIC_KEY"
-  )
-  .then(() => {
-    alert("Message sent successfully!");
-    setFormData({ name: "", company: "", email: "", message: "" });
-  })
-  .catch((error) => {
-    console.error("EmailJS error:", error);
-    alert("Failed to send message. Please try again.");
-  });
-};
+    emailjs
+      .send(
+        "YOUR_SERVICE_ID",
+        "YOUR_TEMPLATE_ID",
+        {
+          name: formData.name,
+          company: formData.company,
+          email: formData.email,
+          message: formData.message,
+        },
+        "YOUR_PUBLIC_KEY",
+      )
+      .then(() => {
+        alert("Message sent successfully!");
+        setFormData({ name: "", company: "", email: "", message: "" });
+      })
+      .catch((error) => {
+        console.error("EmailJS error:", error);
+        alert("Failed to send message. Please try again.");
+      });
+  };
 
   return (
     <section id="contact" className="surface-2 edge-fade-top edge-fade-bottom">

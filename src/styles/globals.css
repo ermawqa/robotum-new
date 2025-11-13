@@ -182,6 +182,63 @@ body {
   }
 }
 
+/* ========== HERO BACKGROUND ORBS (FASTER, STRONGER) ========== */
+
+.hero-orbit-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-orbit-bg::before,
+.hero-orbit-bg::after {
+  content: "";
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.7; /* make it more visible */
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Orb 1 — blue glow */
+.hero-orbit-bg::before {
+  width: 380px; /* bigger */
+  height: 380px;
+  background: radial-gradient(circle at 30% 30%, #60a5fa 0, transparent 70%);
+  top: -100px;
+  left: -60px;
+  animation: hero-orbit-left 2s ease-in-out infinite alternate; /* faster */
+}
+
+/* Orb 2 — violet glow */
+.hero-orbit-bg::after {
+  width: 440px; /* bigger */
+  height: 440px;
+  background: radial-gradient(circle at 70% 70%, #a855f7 0, transparent 75%);
+  bottom: -140px;
+  right: -80px;
+  animation: hero-orbit-right 2s ease-in-out infinite alternate; /* faster */
+}
+
+/* Movement animations */
+@keyframes hero-orbit-left {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(80px, 60px, 0); /* longer travel */
+  }
+}
+
+@keyframes hero-orbit-right {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-70px, -50px, 0); /* longer travel */
+  }
+}
+
 /* ==========================================================================
    ANIMATIONS (Shared)
    ========================================================================== */
@@ -239,6 +296,24 @@ body {
 
 .animate-fadeIn {
   animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* ========== HERO ENTRANCE ANIMATIONS ========== */
+
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.hero-animate {
+  opacity: 0;
+  animation: hero-fade-up 700ms cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
 }
 
 /* ==========================================================================

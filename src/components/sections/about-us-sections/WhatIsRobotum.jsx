@@ -119,7 +119,10 @@ export default function WhatIsRobotum({ illustration }) {
                 <div className="rounded-xl p-5 bg-white/5 border border-white/10">
                   <p className="text-sm text-white/70 mb-2">Focus</p>
                   <p className="text-text2 text-white/85">
-                    Robotics R&D • Community • Entrepreneurship
+                    Autonomous Robotics • Perception & Navigation • AI • ML •
+                    Manipulation & Control • Multi-Robot Systems • Human-Robot
+                    Interaction • Robotics Research & Education •
+                    Entrepreneurship
                   </p>
                 </div>
                 <div className="rounded-xl p-5 bg-white/5 border border-white/10">

@@ -19,7 +19,7 @@ export default function HeroSection({
       id="hero"
       role="region"
       aria-labelledby="hero-heading"
-      className="relative min-h-screen w-full overflow-hidden text-white font-sans surface-1 edge-fade-bottom"
+      className="relative w-full min-h-screen text-white font-sans surface-1 edge-fade-bottom hero-orbit-bg"
     >
       {/* ===== Background: layered glows + subtle grid ===== */}
       {/* Base dark fill */}
@@ -90,13 +90,13 @@ export default function HeroSection({
         {/* Heading with gradient accent on 'Robotics' */}
         <h1
           id="hero-heading"
-          className="heading heading-display text-hero md:text-display leading-tight [letter-spacing:var(--tracking-headings)] text-balance"
+          className="heading heading-display text-hero md:text-display leading-tight [letter-spacing:var(--tracking-headings)] text-balance hero-animate"
         >
           Shaping the Future of <span className="text-gradient">Robotics</span>
         </h1>
 
         {/* CTA Buttons */}
-        <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
+        <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 hero-animate">
           <Button variant="primary" as="link" to={ctaPrimaryTo}>
             {ctaPrimary}
           </Button>

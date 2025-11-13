@@ -21,18 +21,18 @@ const HeroSection = () => {
         <div className="w-full lg:w-1/2 text-center lg:text-left space-y-6">
           <h1
             id="events-hero-heading"
-            className="heading heading-h1 font-bold leading-tight text-balance"
+            className="heading heading-h1 font-bold leading-tight text-balance hero-animate"
           >
             Where ideas <span className="text-gradient">connect</span> &amp;{" "}
             <span className="text-gradient">grow</span>
           </h1>
 
-          <p className="text-text2 md:text-text1 text-white/80 leading-relaxed max-w-xl mx-auto lg:mx-0">
+          <p className="text-text2 md:text-text1 text-white/80 leading-relaxed max-w-xl mx-auto lg:mx-0 hero-animate">
             Join thought‑provoking events that bring together students,
             professionals, and innovators
           </p>
 
-          <div className="pt-2 flex flex-col sm:flex-row gap-3 sm:gap-5 justify-center lg:justify-start">
+          <div className="pt-2 flex flex-col sm:flex-row gap-3 sm:gap-5 justify-center lg:justify-start hero-animate">
             <Button variant="primary" scrollTarget="all-events">
               Explore Events ↓
             </Button>
@@ -40,7 +40,7 @@ const HeroSection = () => {
         </div>
 
         {/* Hero Image */}
-        <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
+        <div className="w-full lg:w-1/2 flex justify-center lg:justify-end hero-animate">
           <ImageFrame
             src={assets.eventsHero}
             alt="Robot and speaker at event"
