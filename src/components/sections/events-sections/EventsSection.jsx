@@ -138,9 +138,7 @@ export default function EventsSection() {
           <p className="text-sm text-white/70 mb-0.5">
             {formatDateRange(event.start, event.end)}
           </p>
-          <p className="text-sm text-white/50 italic mb-3">
-            {event.location}
-          </p>
+          <p className="text-sm text-white/50 italic mb-3">{event.location}</p>
           <p className="text-text2 text-white/80 leading-relaxed mb-5 grow">
             {event.blurb}
           </p>
