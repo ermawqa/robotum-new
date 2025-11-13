@@ -77,7 +77,7 @@ export default function JoinUsSection() {
               <Button variant="primary" as="link" to="/partners#contact">
                 Become a Partner
               </Button>
-              <Button variant="secondary" as="link" to="/partners">
+              <Button variant="secondary" as="link" to="/partners" scrollTarget="partner-categories">
                 View Partners
               </Button>
             </div>

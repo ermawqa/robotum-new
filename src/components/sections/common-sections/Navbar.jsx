@@ -297,16 +297,16 @@ export default function Navbar() {
           </ul>
 
           <button
-            className="md:hidden inline-flex items-center justify-center w-9 h-9 mr-2 rounded-md cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
+            className="md:hidden inline-flex items-center justify-center w-9 h-9 mr-2 rounded-md cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 transition-transform duration-200 active:scale-95"
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? "Close navigation menu" : "Open navigation menu"}
             onClick={() => setOpen((o) => !o)}
           >
             <span className="sr-only">Toggle navigation</span>
-            <div className="relative w-6 h-6 transition-transform duration-300 ease-in-out">
+            <div className="relative w-6 h-6 transition-transform duration-300 ease-out transform-gpu">
               <svg
-                className={`absolute inset-0 w-6 h-6 text-white transition-all duration-300 ease-in-out transform ${
+                className={`absolute inset-0 w-6 h-6 text-white transition-all duration-300 ease-out transform-gpu ${
                   open ? "opacity-100 rotate-0" : "opacity-0 -rotate-90"
                 }`}
                 fill="none"
@@ -322,7 +322,7 @@ export default function Navbar() {
                 />
               </svg>
               <div
-                className={`absolute inset-0 flex flex-col justify-center space-y-1 transition-all duration-300 ease-in-out ${
+                className={`absolute inset-0 flex flex-col justify-center space-y-1 transition-all duration-300 ease-out transform-gpu ${
                   open ? "opacity-0 rotate-90" : "opacity-100 rotate-0"
                 }`}
               >
@@ -338,7 +338,7 @@ export default function Navbar() {
       {/* Blurred clickable overlay for mobile menu */}
       {open && (
         <div
-          className="fixed inset-0 z-30 md:hidden bg-black/60 backdrop-blur-sm supports-backdrop-filter:backdrop-blur-md transition-opacity duration-300 pointer-events-auto"
+          className="fixed inset-0 z-30 md:hidden bg-black/60 backdrop-blur-sm supports-backdrop-filter:backdrop-blur-md transition-opacity duration-300 ease-out pointer-events-auto"
           onClick={() => {
             setOpen(false);
             setProjectsOpen(false);
@@ -352,21 +352,21 @@ export default function Navbar() {
         role="dialog"
         aria-modal="true"
         aria-label="Main navigation"
-        className={`md:hidden fixed top-14 left-0 right-0 z-40 px-4 bg-[#0E1C3D]/90 backdrop-blur-md border-t border-white/10 transition-all duration-300 ease-out ${
+        className={`md:hidden fixed top-14 left-0 right-0 z-40 px-4 bg-[#0E1C3D]/95 backdrop-blur-md border-t border-white/10 transform-gpu transition-all duration-350 ease-out ${
           open
-            ? "opacity-100 translate-y-0 max-h-[calc(100vh-56px)] pb-3 overflow-y-auto pointer-events-auto"
-            : "opacity-0 -translate-y-2 max-h-0 overflow-hidden pointer-events-none"
+            ? "opacity-100 translate-y-0 max-h-[calc(100vh-56px)] pb-4 overflow-y-auto pointer-events-auto"
+            : "opacity-0 -translate-y-3 max-h-0 overflow-hidden pointer-events-none"
         }`}
         ref={mobileMenuRef}
       >
-        <ul className="flex flex-col gap-1">
+        <ul className="flex flex-col gap-1.5">
           {links.map((l) => {
             if (l.subLinks) {
               return (
                 <li key={l.label}>
                   <button
                     onClick={() => setProjectsMobileOpen((v) => !v)}
-                    className="w-full flex items-center justify-between px-4 py-3 rounded-md bg-[#112238] text-white hover:bg-[#1A2E49] transition-colors focus:outline-none"
+                    className="w-full flex items-center justify-between px-4 py-3.5 rounded-lg bg-[#112238] text-white hover:bg-[#1A2E49] transition-colors focus:outline-none"
                     aria-expanded={projectsMobileOpen}
                   >
                     <span className="text-[14px] tracking-[0.8px] font-medium">
@@ -395,7 +395,7 @@ export default function Navbar() {
                         : "max-h-0 opacity-0"
                     }`}
                   >
-                    <ul className="ml-4 mt-2 bg-[#06142B]/95 rounded-md p-2">
+                    <ul className="ml-4 mt-2 bg-[#06142B]/95 rounded-lg px-2.5 py-2">
                       {l.subLinks.map((sub) => (
                         <li key={sub}>
                           <button
@@ -446,9 +446,9 @@ export default function Navbar() {
                     setProjectsOpen(false);
                   }}
                   className={({ isActive }) =>
-                    `block w-full px-4 py-3 text-[14px] tracking-[0.8px] rounded-md bg-[#112238] hover:bg-[#1A2E49] transition-colors focus:outline-none text-white ${
+                    `block w-full px-4 py-3.5 text-[14px] tracking-[0.8px] rounded-lg bg-[#112238] hover:bg-[#1A2E49] transition-colors focus:outline-none text-white ${
                       isActive || currentHash === l.href
-                        ? "text-indigo-300"
+                        ? "text-accent"
                         : ""
                     }`
                   }
