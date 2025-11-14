@@ -395,7 +395,7 @@ export default function Navbar() {
                         : "max-h-0 opacity-0"
                     }`}
                   >
-                    <ul className="ml-4 mt-2 bg-[#06142B]/95 rounded-lg px-2.5 py-2">
+                    <ul className="ml-4 mt-2 bg-secondary/95 rounded-lg px-2.5 py-2">
                       {l.subLinks.map((sub) => (
                         <li key={sub}>
                           <button

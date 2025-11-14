@@ -23,7 +23,7 @@ export default function HeroSection({
     >
       {/* ===== Background: layered glows + subtle grid ===== */}
       {/* Base dark fill */}
-      <div className="absolute inset-0 -z-20 bg-[#000C21]" />
+      <div className="absolute inset-0 -z-20 bg-primary" />
 
       {/* Soft radial glows (no heavy animation; motion-safe pulse) */}
       <div
@@ -90,7 +90,7 @@ export default function HeroSection({
         {/* Heading with gradient accent on 'Robotics' */}
         <h1
           id="hero-heading"
-          className="heading heading-display text-hero md:text-display leading-tight text-balance hero-animate"
+          className="heading heading-display leading-tight text-balance hero-animate"
         >
           Shaping the Future of <span className="text-gradient">Robotics</span>
         </h1>
