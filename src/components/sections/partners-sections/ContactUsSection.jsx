@@ -44,7 +44,7 @@ export default function ContactUsSection() {
   };
 
   return (
-    <section id="contact" className="surface-2 edge-fade-top edge-fade-bottom">
+    <section id="contact" className="section-dark-primary">
       <div className="section-container grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         {/* Left side: contact form */}
         <div>

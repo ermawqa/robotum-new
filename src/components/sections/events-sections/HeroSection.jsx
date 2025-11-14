@@ -13,7 +13,7 @@ import ImageFrame from "@components/ui/ImageFrame";
 const HeroSection = () => {
   return (
     <section
-      className="w-full min-h-screen font-sans text-white surface-2 edge-fade-bottom surface-wrap surface-pattern overflow-hidden flex items-center"
+      className="w-full min-h-screen font-sans text-white overflow-hidden flex items-center section-dark-primary"
       aria-labelledby="events-hero-heading"
     >
       <div className="section-container flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-20">

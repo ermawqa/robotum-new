@@ -83,6 +83,7 @@ body {
 /* ==========================================================================
    SECTION SURFACES & TRANSITIONS
    ========================================================================== */
+/* Base helpers (can stay as-is) */
 .surface-wrap {
   position: relative;
 }
@@ -192,6 +193,137 @@ body {
   .surface-pattern::before {
     display: none;
   }
+}
+
+/* High-level section skins — PURE CSS, no @apply */
+
+.section-dark-primary {
+  position: relative;
+  background:
+    radial-gradient(
+      40rem 30rem at 20% 20%,
+      rgba(0, 49, 135, 0.25),
+      transparent 60%
+    ),
+    radial-gradient(
+      60rem 50rem at 80% 10%,
+      rgba(0, 49, 135, 0.18),
+      transparent 70%
+    ),
+    var(--color-primary);
+  color: #eaf2ff;
+
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 32px,
+    black calc(100% - 32px),
+    transparent
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 32px,
+    black calc(100% - 32px),
+    transparent
+  );
+}
+
+.section-dark-primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.9) 0 1px,
+      transparent 1px 24px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.9) 0 1px,
+      transparent 1px 24px
+    );
+}
+
+.section-dark-secondary {
+  position: relative;
+  background:
+    radial-gradient(
+      42rem 32rem at 75% 25%,
+      rgba(0, 49, 135, 0.22),
+      transparent 60%
+    ),
+    radial-gradient(
+      50rem 40rem at 10% 60%,
+      rgba(0, 49, 135, 0.16),
+      transparent 70%
+    ),
+    var(--color-secondary);
+  color: #eaf2ff;
+
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 32px,
+    black calc(100% - 32px),
+    transparent
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 32px,
+    black calc(100% - 32px),
+    transparent
+  );
+}
+
+.section-dark-secondary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.9) 0 1px,
+      transparent 1px 24px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.9) 0 1px,
+      transparent 1px 24px
+    );
+}
+
+.section-light {
+  position: relative;
+  background:
+    radial-gradient(
+      60rem 50rem at 50% 10%,
+      rgba(0, 0, 0, 0.04),
+      transparent 60%
+    ),
+    #ffffff;
+  color: #0b1b2e;
+
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 32px,
+    black calc(100% - 32px),
+    transparent
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 32px,
+    black calc(100% - 32px),
+    transparent
+  );
 }
 
 /* ========== HERO BACKGROUND ORBS (FASTER, STRONGER) ========== */

@@ -59,7 +59,7 @@ export default function AboutHero() {
 
   return (
     <section
-      className="section-container text-white min-h-[70vh] lg:min-h-screen font-sans surface-1 edge-fade-bottom surface-wrap surface-pattern"
+      className="section-container text-white min-h-[70vh] lg:min-h-screen font-sans section-dark-primary"
       aria-labelledby="about-hero-heading"
     >
       <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-10 mb-12 md:mb-16">

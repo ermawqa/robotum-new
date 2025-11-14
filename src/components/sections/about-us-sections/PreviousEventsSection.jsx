@@ -15,7 +15,7 @@ const PreviousEventsSection = () => {
   };
 
   return (
-    <section className="section-container font-sans surface-1 edge-fade-top edge-fade-bottom surface-wrap surface-pattern">
+    <section className="section-container font-sans section-dark-secondary">
       <h2 className="heading heading-h2 font-bold text-center mb-8">
         Previous Events
       </h2>

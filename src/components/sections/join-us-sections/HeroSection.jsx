@@ -4,7 +4,7 @@ import ImageFrame from "@components/ui/ImageFrame";
 
 const HeroSection = () => {
   return (
-    <section className="section-container min-h-[70vh] lg:min-h-screen flex flex-col lg:flex-row items-center justify-between text-white font-sans surface-2 edge-fade-bottom surface-wrap surface-pattern overflow-hidden">
+    <section className="section-container min-h-[70vh] lg:min-h-screen flex flex-col lg:flex-row items-center justify-between text-white font-sans overflow-hidden section-dark-primary">
       {/* Left side: text content */}
       <div className="w-full lg:w-1/2 order-2 lg:order-1 space-y-6 text-center lg:text-left">
         <h1 className="heading heading-display md:text-display leading-tight text-balance hero-animate">

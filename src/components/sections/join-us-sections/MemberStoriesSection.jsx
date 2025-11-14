@@ -44,7 +44,7 @@ export default function MemberStoriesSection() {
   return (
     <section
       id="member-stories"
-      className="surface-2 edge-fade-top edge-fade-bottom surface-wrap surface-pattern"
+      className="section-dark-primary"
     >
       <div className="section-container max-w-6xl">
         {/* Heading block */}

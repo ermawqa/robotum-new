@@ -5,7 +5,7 @@ const NextPrototypes = () => {
   return (
     <section
       id="next-prototypes"
-      className="section-container surface-2 edge-fade-top edge-fade-bottom text-center font-sans overflow-hidden"
+      className="section-container text-center font-sans overflow-hidden section-dark-primary"
       role="region"
       aria-labelledby="next-prototypes-heading"
     >

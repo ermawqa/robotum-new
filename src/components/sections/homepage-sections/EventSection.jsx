@@ -53,7 +53,7 @@ export default function EventSection() {
   return (
     <section
       id="events"
-      className="section-container font-sans text-white surface-2 edge-fade-top edge-fade-bottom surface-wrap surface-pattern"
+      className="section-container font-sans text-white section-dark-primary"
       aria-labelledby="events-section-heading"
       role="region"
     >
