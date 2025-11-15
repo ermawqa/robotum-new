@@ -1,3 +1,5 @@
+import { lazy, Suspense, useEffect } from "react";
+
 // General imports
 import Navbar from "@components/sections/common-sections/Navbar";
 import FooterSection from "@components/sections/common-sections/FooterSection";
@@ -19,12 +21,9 @@ const Events = () => {
     <>
       <Navbar />
       <HeroSection />
-
-      {/* Lazy load sections */}
       <Suspense fallback={<PageLoader />}>
         <EventsSection />
       </Suspense>
-
       <FooterSection />
     </>
   );
