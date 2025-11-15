@@ -3,7 +3,7 @@ import Navbar from "@components/sections/common-sections/Navbar";
 import FooterSection from "@components/sections/common-sections/FooterSection";
 import PageLoader from "@components/sections/common-sections/PageLoader";
 
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 
 export default function Impressum() {
   useEffect(() => {
