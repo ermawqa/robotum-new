@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import Button from "@components/ui/Button";
 import ImageFrame from "@components/ui/ImageFrame";
 import { events, EVENT_CATEGORIES } from "@data";
-import { formatEventDateRange } from "@utils/date-range"; 
+import { formatEventDateRange } from "@utils/date-range";
 
 // Map EVENT_CATEGORIES (plural) to event.type (singular) for correct filtering
 const normalizeCategory = (label) => {
@@ -34,7 +34,6 @@ export default function EventsSection() {
       }
     }
   }, [hash]);
-
 
   // Derived lists
   const { filteredEvents, counts } = useMemo(() => {

@@ -1,4 +1,4 @@
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState, useEffect, Suspense } from "react";
 import { useSearchParams, Link } from "react-router-dom";
 import { TABS, projects } from "@data/projects";
 import ProjectCard from "@components/ui/ProjectCard";

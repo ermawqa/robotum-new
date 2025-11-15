@@ -25,7 +25,8 @@ const STORIES = [
     role: "Innovation & Entrepreneurship",
     track: "Innovation & Entrepreneurship",
     joined: "Joined in 2024",
-    highlight: "Co-created new formats like RoboTUM Podcast & Robo Spark Summit.",
+    highlight:
+      "Co-created new formats like RoboTUM Podcast & Robo Spark Summit.",
     quote:
       "RoboTUM felt like a startup inside the university — we prototype fast, learn faster, and actually ship things.",
   },
@@ -42,17 +43,14 @@ const STORIES = [
 
 export default function MemberStoriesSection() {
   return (
-    <section
-      id="member-stories"
-      className="section-dark-primary"
-    >
+    <section id="member-stories" className="section-dark-primary">
       <div className="section-container max-w-6xl">
         {/* Heading block */}
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-xs tracking-widest text-white/60 uppercase mb-2">
-            Member Stories
-          </p>
+              Member Stories
+            </p>
             <h2 className="mt-4 text-balance text-[clamp(1.8rem,3vw+0.4rem,2.4rem)] font-semibold leading-tight text-white">
               What it&apos;s like to build{" "}
               <span className="text-gradient">robots with us</span>

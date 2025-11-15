@@ -3,7 +3,10 @@ import { partners } from "@data";
 
 const PartnerCategories = () => {
   return (
-    <section id="partner-categories" className="section-container py-20 section-light">
+    <section
+      id="partner-categories"
+      className="section-container py-20 section-light"
+    >
       <div className="space-y-24">
         {partners.map((type, idx) => (
           <div key={idx} className="text-center relative animate-fadeIn">

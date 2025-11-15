@@ -447,9 +447,7 @@ export default function Navbar() {
                   }}
                   className={({ isActive }) =>
                     `block w-full px-4 py-3.5 text-[14px] tracking-[0.8px] rounded-lg bg-[#112238] hover:bg-[#1A2E49] transition-colors focus:outline-none text-white ${
-                      isActive || currentHash === l.href
-                        ? "text-accent"
-                        : ""
+                      isActive || currentHash === l.href ? "text-accent" : ""
                     }`
                   }
                 >

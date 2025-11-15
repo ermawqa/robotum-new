@@ -3,7 +3,7 @@ import * as assets from "@assets";
 import Button from "@components/ui/Button";
 import ImageFrame from "@components/ui/ImageFrame";
 import { events } from "@data";
-import { formatEventDateRange } from "@utils/date-range"; 
+import { formatEventDateRange } from "@utils/date-range";
 
 export default function EventSection() {
   const [activeIndex, setActiveIndex] = useState(-1);
@@ -97,7 +97,9 @@ export default function EventSection() {
                 <li key={event.id} role="listitem">
                   <button
                     type="button"
-                    onClick={() => setActiveIndex(activeIndex === index ? -1 : index)}
+                    onClick={() =>
+                      setActiveIndex(activeIndex === index ? -1 : index)
+                    }
                     aria-expanded={isActive ? "true" : "false"}
                     aria-controls={`event-panel-${index}`}
                     className={`group w-full text-left cursor-pointer p-5 md:p-6 rounded-2xl border transition-all duration-400 backdrop-blur-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/70 ${

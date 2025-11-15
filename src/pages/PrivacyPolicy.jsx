@@ -80,25 +80,26 @@ export default function PrivacyPolicy() {
                 2. Angaben gemäß §5 TMG (German Telemedia Act)
               </h2>
               <p>
-                Information in accordance with §5 TMG is provided above (see Owner
-                and Data Controller).
+                Information in accordance with §5 TMG is provided above (see
+                Owner and Data Controller).
               </p>
 
               <h3 className="text-text1 font-semibold mt-4">
                 Haftung für Inhalte (Liability for Content)
               </h3>
               <p>
-                Als Dienstanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte
-                auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.
-                Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht
-                verpflichtet, übermittelte oder gespeicherte fremde Informationen
-                zu überwachen oder nach Umständen zu forschen, die auf eine
-                rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung
-                oder Sperrung der Nutzung von Informationen nach den allgemeinen
-                Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung
-                ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten
-                Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden
-                Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.
+                Als Dienstanbieter sind wir gemäß § 7 Abs.1 TMG für eigene
+                Inhalte auf diesen Seiten nach den allgemeinen Gesetzen
+                verantwortlich. Nach §§ 8 bis 10 TMG sind wir als
+                Diensteanbieter jedoch nicht verpflichtet, übermittelte oder
+                gespeicherte fremde Informationen zu überwachen oder nach
+                Umständen zu forschen, die auf eine rechtswidrige Tätigkeit
+                hinweisen. Verpflichtungen zur Entfernung oder Sperrung der
+                Nutzung von Informationen nach den allgemeinen Gesetzen bleiben
+                hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst
+                ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung
+                möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen
+                werden wir diese Inhalte umgehend entfernen.
               </p>
 
               <h3 className="text-text1 font-semibold mt-4">
@@ -131,7 +132,8 @@ export default function PrivacyPolicy() {
               <p>
                 Complete details on each type of Personal Data collected are
                 provided in the dedicated sections of this Privacy Policy or by
-                specific explanation texts displayed prior to the Data collection.
+                specific explanation texts displayed prior to the Data
+                collection.
               </p>
 
               <ol>
@@ -141,36 +143,37 @@ export default function PrivacyPolicy() {
                   RoboTUM).
                 </li>
                 <li>
-                  <strong>Usage Data:</strong> Collected automatically when using
-                  this Application (e.g., IP addresses, browser type, operating
-                  system).
+                  <strong>Usage Data:</strong> Collected automatically when
+                  using this Application (e.g., IP addresses, browser type,
+                  operating system).
                 </li>
               </ol>
 
               <p>
-                Unless specified otherwise, all Data requested by this Application
-                is mandatory. Failure to provide this Data may make it impossible
-                for this Application to provide its services. Where this
-                Application specifically states Data is not mandatory, Users are
-                free not to communicate that Data without consequences to the
-                availability or the functioning of the Service. Users who are
-                uncertain about which Personal Data is mandatory are welcome to
-                contact the Owner.
+                Unless specified otherwise, all Data requested by this
+                Application is mandatory. Failure to provide this Data may make
+                it impossible for this Application to provide its services.
+                Where this Application specifically states Data is not
+                mandatory, Users are free not to communicate that Data without
+                consequences to the availability or the functioning of the
+                Service. Users who are uncertain about which Personal Data is
+                mandatory are welcome to contact the Owner.
               </p>
 
               <p>
                 Any use of Cookies – or of other tracking tools – by this
-                Application or by the owners of third-party services used by this
-                Application serves the purpose of providing the Service required
-                by the User, in addition to any other purposes described in this
-                document and in the Cookie Policy (if available).
+                Application or by the owners of third-party services used by
+                this Application serves the purpose of providing the Service
+                required by the User, in addition to any other purposes
+                described in this document and in the Cookie Policy (if
+                available).
               </p>
 
               <p>
-                Users are responsible for any third-party Personal Data obtained,
-                published, or shared through this Application and confirm that
-                they have the third party’s consent to provide the Data to the
-                Owner.
+                Users are responsible for any third-party Personal Data
+                obtained, published, or shared through this Application and
+                confirm that they have the third party’s consent to provide the
+                Data to the Owner.
               </p>
             </section>
 
@@ -192,14 +195,14 @@ export default function PrivacyPolicy() {
                 Data processing is carried out using computers and/or IT-enabled
                 tools, following organizational procedures and modes strictly
                 related to the purposes indicated. In addition to the Owner, in
-                some cases, the Data may be accessible to certain types of persons
-                in charge involved with the operation of this Application
-                (administration, sales, marketing, legal, system administration)
-                or external parties (such as third-party technical service
-                providers, mail carriers, hosting providers, IT companies,
-                communications agencies) appointed, if necessary, as Data
-                Processors by the Owner. The updated list of these parties may be
-                requested from the Owner at any time.
+                some cases, the Data may be accessible to certain types of
+                persons in charge involved with the operation of this
+                Application (administration, sales, marketing, legal, system
+                administration) or external parties (such as third-party
+                technical service providers, mail carriers, hosting providers,
+                IT companies, communications agencies) appointed, if necessary,
+                as Data Processors by the Owner. The updated list of these
+                parties may be requested from the Owner at any time.
               </p>
 
               <h3 className="text-text1 font-semibold mt-4">
@@ -215,8 +218,9 @@ export default function PrivacyPolicy() {
                   purposes.
                 </li>
                 <li>
-                  Provision of Data is necessary for the performance of a contract
-                  with the User and/or for any pre-contractual obligations.
+                  Provision of Data is necessary for the performance of a
+                  contract with the User and/or for any pre-contractual
+                  obligations.
                 </li>
                 <li>
                   Processing is necessary for compliance with a legal obligation
@@ -224,8 +228,8 @@ export default function PrivacyPolicy() {
                 </li>
                 <li>
                   Processing is related to a task that is carried out in the
-                  public interest or in the exercise of official authority vested
-                  in the Owner.
+                  public interest or in the exercise of official authority
+                  vested in the Owner.
                 </li>
                 <li>
                   Processing is necessary for the purposes of the legitimate
@@ -234,22 +238,23 @@ export default function PrivacyPolicy() {
               </ul>
               <p>
                 In any case, the Owner will gladly help to clarify the specific
-                legal basis that applies to the processing. In particular, whether
-                the provision of Personal Data is a statutory or contractual
-                requirement, or a requirement necessary to enter into a contract.
+                legal basis that applies to the processing. In particular,
+                whether the provision of Personal Data is a statutory or
+                contractual requirement, or a requirement necessary to enter
+                into a contract.
               </p>
 
               <h3 className="text-text1 font-semibold mt-4">Place</h3>
               <p>
-                The Data is processed at the Owner’s operating offices and in any
-                other places where the parties involved in the processing are
-                located.
+                The Data is processed at the Owner’s operating offices and in
+                any other places where the parties involved in the processing
+                are located.
               </p>
               <p>
                 Depending on the User’s location, data transfers may involve
-                transferring the User’s Data to a country other than their own. To
-                find out more about such transfers, Users can check the relevant
-                sections of this document or inquire with the Owner.
+                transferring the User’s Data to a country other than their own.
+                To find out more about such transfers, Users can check the
+                relevant sections of this document or inquire with the Owner.
               </p>
 
               <h3 className="text-text1 font-semibold mt-4">Retention Time</h3>
@@ -271,16 +276,16 @@ export default function PrivacyPolicy() {
               </ul>
               <p>
                 The Owner may be allowed to retain Personal Data for a longer
-                period whenever the User has given consent to such processing and
-                such consent is not withdrawn. Furthermore, the Owner may be
+                period whenever the User has given consent to such processing
+                and such consent is not withdrawn. Furthermore, the Owner may be
                 obliged to retain Personal Data for a longer period whenever
                 required by law or by an order of an authority.
               </p>
               <p>
-                Once the retention period expires, Personal Data shall be deleted.
-                Therefore, the right to access, erasure, rectification, and data
-                portability cannot be enforced after the expiration of the
-                retention period.
+                Once the retention period expires, Personal Data shall be
+                deleted. Therefore, the right to access, erasure, rectification,
+                and data portability cannot be enforced after the expiration of
+                the retention period.
               </p>
             </section>
 
@@ -297,8 +302,8 @@ export default function PrivacyPolicy() {
                 <li>Comply with its legal obligations</li>
                 <li>Respond to enforcement requests</li>
                 <li>
-                  Protect its rights and interests (or those of its Users or third
-                  parties)
+                  Protect its rights and interests (or those of its Users or
+                  third parties)
                 </li>
                 <li>Detect malicious or fraudulent activity</li>
                 <li>Conduct Analytics</li>
@@ -319,17 +324,19 @@ export default function PrivacyPolicy() {
               <h3 className="text-text1 font-semibold mt-2">Analytics</h3>
               <p>
                 This Application may use third-party analytics tools to monitor
-                and analyze web traffic. These tools help us understand how Users
-                interact with this Application, so we can improve its
-                functionality and user experience. The Personal Data collected can
-                include cookies and Usage Data (e.g., pages visited, time spent on
-                each page, and other similar information).
+                and analyze web traffic. These tools help us understand how
+                Users interact with this Application, so we can improve its
+                functionality and user experience. The Personal Data collected
+                can include cookies and Usage Data (e.g., pages visited, time
+                spent on each page, and other similar information).
               </p>
             </section>
 
             {/* 7. The Rights of Users */}
             <section className="mb-10">
-              <h2 className="text-text1 font-semibold">7. The Rights of Users</h2>
+              <h2 className="text-text1 font-semibold">
+                7. The Rights of Users
+              </h2>
               <p>
                 Users may exercise certain rights regarding their Data processed
                 by the Owner. In particular, Users have the right to do the
@@ -351,8 +358,8 @@ export default function PrivacyPolicy() {
                   controller.
                 </li>
                 <li>
-                  Lodge a complaint. Users have the right to bring a claim before
-                  their competent data protection authority.
+                  Lodge a complaint. Users have the right to bring a claim
+                  before their competent data protection authority.
                 </li>
               </ol>
 
@@ -361,10 +368,10 @@ export default function PrivacyPolicy() {
               </h3>
               <p>
                 Where Personal Data is processed for a public interest, in the
-                exercise of an official authority vested in the Owner, or for the
-                legitimate interests pursued by the Owner, Users may object to
-                such processing by providing a ground related to their particular
-                situation.
+                exercise of an official authority vested in the Owner, or for
+                the legitimate interests pursued by the Owner, Users may object
+                to such processing by providing a ground related to their
+                particular situation.
               </p>
               <p>
                 Users must know that, however, should their Personal Data be
@@ -376,10 +383,10 @@ export default function PrivacyPolicy() {
                 How to Exercise These Rights
               </h3>
               <p>
-                Any requests to exercise User rights can be directed to the Owner
-                through the contact details provided in this document. These
-                requests can be exercised free of charge and will be addressed as
-                early as possible and always within one month.
+                Any requests to exercise User rights can be directed to the
+                Owner through the contact details provided in this document.
+                These requests can be exercised free of charge and will be
+                addressed as early as possible and always within one month.
               </p>
             </section>
 
@@ -469,15 +476,15 @@ export default function PrivacyPolicy() {
                   allows for the identification of a natural person.
                 </li>
                 <li>
-                  <strong>Usage Data:</strong> Information collected automatically
-                  through this Application (or third-party services employed in
-                  this Application), which can include: the IP addresses or domain
-                  names of the computers utilized by the Users, the URI addresses,
-                  the time of the request, etc.
+                  <strong>Usage Data:</strong> Information collected
+                  automatically through this Application (or third-party
+                  services employed in this Application), which can include: the
+                  IP addresses or domain names of the computers utilized by the
+                  Users, the URI addresses, the time of the request, etc.
                 </li>
                 <li>
-                  <strong>User:</strong> The individual using this Application who
-                  must coincide with or be authorized by the Data Subject.
+                  <strong>User:</strong> The individual using this Application
+                  who must coincide with or be authorized by the Data Subject.
                 </li>
                 <li>
                   <strong>Data Subject:</strong> The natural person to whom the
@@ -485,14 +492,15 @@ export default function PrivacyPolicy() {
                 </li>
                 <li>
                   <strong>Data Processor (or Data Supervisor):</strong> The
-                  natural or legal person, public authority, agency, or other body
-                  which processes Personal Data on behalf of the Controller.
+                  natural or legal person, public authority, agency, or other
+                  body which processes Personal Data on behalf of the
+                  Controller.
                 </li>
                 <li>
                   <strong>Data Controller (or Owner):</strong> The natural or
                   legal person, public authority, agency, or other body which,
-                  alone or jointly with others, determines the purposes and means
-                  of the processing of Personal Data.
+                  alone or jointly with others, determines the purposes and
+                  means of the processing of Personal Data.
                 </li>
               </ul>
             </section>
@@ -501,8 +509,8 @@ export default function PrivacyPolicy() {
             <p className="text-white/80">Latest update: January 07, 2025</p>
 
             <p className="mt-4">
-              If you have any questions about this Privacy Policy, please contact
-              RoboTUM at:
+              If you have any questions about this Privacy Policy, please
+              contact RoboTUM at:
               <br />
               Email:{" "}
               <a

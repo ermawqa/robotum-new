@@ -28,23 +28,23 @@ export default function GenderAndDiversity() {
               <p>
                 RoboTUM fosters a culture of integrity, open mindedness, and
                 tolerance. It recognizes the value created through diversity and
-                respect as a central guiding principle for its proven success: It
-                is the diversity of its scientists, students, and employees that
-                makes RoboTUM an innovative and dynamic organization. RoboTUM is
-                thus committed to holistic diversity management that actively
-                promotes the equality of talent, irrespective of gender,
-                nationality, religion, ideology, physical ability, age, sexual
-                identity, or socioeconomic status. RoboTUM translates this
-                commitment into numerous concrete measures, many of which have
-                already been successfully implemented, established, and optimized
-                since the publication of the first Diversity &amp; Gender Equality
-                Plan at the end of 2024. With the publication of the current
-                Diversity &amp; Gender Equality Plan, RoboTUM reaffirms its
-                forward looking vision of establishing an ever more inclusive
-                organizational culture through ongoing efforts in the context of
-                systematic diversity management, which is reflected in the
-                continuation, further development, and renewal of diversity
-                measures.
+                respect as a central guiding principle for its proven success:
+                It is the diversity of its scientists, students, and employees
+                that makes RoboTUM an innovative and dynamic organization.
+                RoboTUM is thus committed to holistic diversity management that
+                actively promotes the equality of talent, irrespective of
+                gender, nationality, religion, ideology, physical ability, age,
+                sexual identity, or socioeconomic status. RoboTUM translates
+                this commitment into numerous concrete measures, many of which
+                have already been successfully implemented, established, and
+                optimized since the publication of the first Diversity &amp;
+                Gender Equality Plan at the end of 2024. With the publication of
+                the current Diversity &amp; Gender Equality Plan, RoboTUM
+                reaffirms its forward looking vision of establishing an ever
+                more inclusive organizational culture through ongoing efforts in
+                the context of systematic diversity management, which is
+                reflected in the continuation, further development, and renewal
+                of diversity measures.
               </p>
             </section>
 
@@ -60,11 +60,12 @@ export default function GenderAndDiversity() {
                 organization is committed to a focus on diversity and talent
                 management. The RoboTUM Board of Management fosters gender
                 equality and wholeheartedly supports the Diversity &amp; Gender
-                Equality Plan. In order to promote equality in a diverse community
-                in the best possible way, the implementation status of the
-                measures in the Diversity &amp; Gender Equality Plan is checked at
-                regular intervals and, if necessary, supplemented by other
-                innovative formats and measures in the sense of a living document.
+                Equality Plan. In order to promote equality in a diverse
+                community in the best possible way, the implementation status of
+                the measures in the Diversity &amp; Gender Equality Plan is
+                checked at regular intervals and, if necessary, supplemented by
+                other innovative formats and measures in the sense of a living
+                document.
               </p>
             </section>
 
