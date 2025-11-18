@@ -79,10 +79,11 @@ export default function FooterSection() {
         {/* Follow Us */}
         <div className="min-w-40">
           <h3 className="font-semibold text-lg mb-3">Follow us</h3>
-          <div className="flex justify-center md:justify-start gap-4 mt-2 bg-primary p-4 rounded-md">
+
+          <div className="flex flex-wrap gap-4 justify-start md:justify-start">
             <a
               href="https://www.instagram.com/therobotum/"
-              className="hover:opacity-80"
+              className="hover:opacity-80 transition-opacity"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -95,7 +96,7 @@ export default function FooterSection() {
 
             <a
               href="https://www.linkedin.com/company/therobotum"
-              className="hover:opacity-80"
+              className="hover:opacity-80 transition-opacity"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -108,7 +109,7 @@ export default function FooterSection() {
 
             <a
               href="https://chat.whatsapp.com/BZVTC6IfYwkFSvRfkJhn5e"
-              className="hover:opacity-80"
+              className="hover:opacity-80 transition-opacity"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -121,7 +122,7 @@ export default function FooterSection() {
 
             <a
               href="https://t.me/theRoboTUM"
-              className="hover:opacity-80"
+              className="hover:opacity-80 transition-opacity"
               target="_blank"
               rel="noopener noreferrer"
             >
