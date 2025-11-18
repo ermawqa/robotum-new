@@ -51,12 +51,12 @@ export default function MemberStoriesSection() {
         {/* Heading block */}
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between w-full">
           <div className="max-w-xl">
-            <p className="text-xs tracking-[0.22em] text-white/60 uppercase">
-              Member Stories
+            <p className="text-xs tracking-widest text-white/60 uppercase mb-2">
+              What it's like 
             </p>
             <h2 className="heading heading-h2">
-              What it&apos;s like to build{" "}
-              <span className="text-gradient">robots with us</span>
+              Member {""}
+              <span className="text-gradient">Stories</span>
             </h2>
           </div>
 
