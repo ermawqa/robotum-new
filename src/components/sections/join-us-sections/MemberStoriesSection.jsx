@@ -43,25 +43,24 @@ const STORIES = [
 
 export default function MemberStoriesSection() {
   return (
-    <section id="member-stories" className="section-dark-primary surface-pattern">
-      <div className="section-container max-w-6xl">
+    <section
+      id="member-stories"
+      className="section-dark-primary surface-pattern"
+    >
+      <div className="section-container">
         {/* Heading block */}
-        <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="text-xs tracking-widest text-white/60 uppercase mb-2">
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between w-full">
+          <div className="max-w-xl">
+            <p className="text-xs tracking-[0.22em] text-white/60 uppercase">
               Member Stories
             </p>
-            <h2 className="mt-4 text-balance text-[clamp(1.8rem,3vw+0.4rem,2.4rem)] font-semibold leading-tight text-white">
+            <h2 className="heading heading-h2">
               What it&apos;s like to build{" "}
               <span className="text-gradient">robots with us</span>
             </h2>
-            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/70">
-              Real experiences from people behind our projects — from technical
-              builds to community events and partnerships.
-            </p>
           </div>
 
-          <div className="mt-2 md:mt-0">
+          <div className="md:text-right">
             <Button
               as="link"
               to="/about"
@@ -74,62 +73,123 @@ export default function MemberStoriesSection() {
           </div>
         </div>
 
-        {/* Stories grid */}
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
-          {STORIES.map((story) => (
-            <article
-              key={story.name}
-              className="group relative overflow-hidden rounded-2xl border border-white/8 bg-white/5 p-6 shadow-[0_18px_45px_rgba(15,23,42,0.55)] backdrop-blur-md transition-all duration-300 hover:border-accent/60 hover:bg-white/8 hover:shadow-[0_22px_60px_rgba(15,23,42,0.75)]"
-            >
-              {/* Decorative gradient stripe */}
-              <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-linear-to-r from-[#60A5FA] via-[#A78BFA] to-[#22D3EE] opacity-60 transition-opacity duration-300 group-hover:opacity-100" />
+        {/* Stories – mobile slider, desktop grid */}
+        <div className="mt-9 md:mt-10">
+          {/* Mobile: horizontal scroll with snap */}
+          <div className="flex gap-4 overflow-x-auto pb-4 px-4 md:hidden snap-x snap-mandatory">
+            {STORIES.map((story) => (
+              <article
+                key={story.name}
+                className="group relative min-w-[260px] max-w-xs flex-1 shrink-0 snap-start overflow-hidden rounded-2xl border border-white/8 bg-white/5 p-6 shadow-[0_18px_45px_rgba(15,23,42,0.55)] backdrop-blur-md transition-all duration-300 hover:border-accent/60 hover:bg-white/8 hover:shadow-[0_22px_60px_rgba(15,23,42,0.75)]"
+              >
+                {/* Decorative gradient stripe */}
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-linear-to-r from-[#60A5FA] via-[#A78BFA] to-[#22D3EE] opacity-60 transition-opacity duration-300 group-hover:opacity-100" />
 
-              <div className="flex items-start gap-4">
-                {/* Initials avatar */}
-                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(15,23,42,0.7)]">
-                  {story.name
-                    .split(" ")
-                    .map((n) => n[0])
-                    .slice(0, 2)
-                    .join("")}
-                </div>
-
-                <div className="flex-1">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <h3 className="text-sm font-semibold leading-snug text-white">
-                      {story.name}
-                    </h3>
-                    <span className="rounded-full bg-white/10 px-2.5 py-0.5 text-[11px] font-medium uppercase tracking-[0.12em] text-white/70">
-                      {story.track}
-                    </span>
+                <div className="flex items-start gap-4">
+                  {/* Initials avatar */}
+                  <div className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(15,23,42,0.7)]">
+                    {story.name
+                      .split(" ")
+                      .map((n) => n[0])
+                      .slice(0, 2)
+                      .join("")}
                   </div>
-                  <p className="mt-1 text-xs font-medium text-white/60">
-                    {story.role}
-                  </p>
-                  <p className="mt-0.5 text-[11px] text-white/40">
-                    {story.joined}
+
+                  <div className="flex-1">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <h3 className="text-sm font-semibold leading-snug text-white">
+                        {story.name}
+                      </h3>
+                      <span className="rounded-full bg-white/10 px-2.5 py-0.5 text-[11px] font-medium uppercase tracking-[0.12em] text-white/70">
+                        {story.track}
+                      </span>
+                    </div>
+                    <p className="mt-1 text-xs font-medium text-white/60">
+                      {story.role}
+                    </p>
+                    <p className="mt-0.5 text-[11px] text-white/40">
+                      {story.joined}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Quote */}
+                <p className="mt-4 text-sm leading-relaxed text-white/80">
+                  <span className="mr-1 text-base text-gradient">“</span>
+                  {story.quote}
+                  <span className="ml-1 text-base text-gradient">”</span>
+                </p>
+
+                {/* Highlight line */}
+                <div className="mt-4 flex items-center justify-between gap-3 text-[11px] text-white/60">
+                  <p className="flex-1 leading-snug">
+                    <span className="font-semibold text-white/80">
+                      Impact:&nbsp;
+                    </span>
+                    {story.highlight}
                   </p>
                 </div>
-              </div>
+              </article>
+            ))}
+          </div>
 
-              {/* Quote */}
-              <p className="mt-4 text-sm leading-relaxed text-white/80">
-                <span className="mr-1 text-base text-gradient">“</span>
-                {story.quote}
-                <span className="ml-1 text-base text-gradient">”</span>
-              </p>
+          {/* Desktop / tablet: 2-column grid */}
+          <div className="hidden md:grid md:grid-cols-2 md:gap-8 lg:gap-10 w-full">
+            {STORIES.map((story) => (
+              <article
+                key={story.name}
+                className="group relative overflow-hidden rounded-2xl border border-white/8 bg-white/5 p-6 shadow-[0_18px_45px_rgba(15,23,42,0.55)] backdrop-blur-md transition-all duration-300 hover:border-accent/60 hover:bg-white/8 hover:shadow-[0_22px_60px_rgba(15,23,42,0.75)]"
+              >
+                {/* Decorative gradient stripe */}
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-linear-to-r from-[#60A5FA] via-[#A78BFA] to-[#22D3EE] opacity-60 transition-opacity duration-300 group-hover:opacity-100" />
 
-              {/* Highlight line */}
-              <div className="mt-4 flex items-center justify-between gap-3 text-[11px] text-white/60">
-                <p className="flex-1 leading-snug">
-                  <span className="font-semibold text-white/80">
-                    Impact:&nbsp;
-                  </span>
-                  {story.highlight}
+                <div className="flex items-start gap-4">
+                  {/* Initials avatar */}
+                  <div className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(15,23,42,0.7)]">
+                    {story.name
+                      .split(" ")
+                      .map((n) => n[0])
+                      .slice(0, 2)
+                      .join("")}
+                  </div>
+
+                  <div className="flex-1">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <h3 className="text-sm font-semibold leading-snug text-white">
+                        {story.name}
+                      </h3>
+                      <span className="rounded-full bg-white/10 px-2.5 py-0.5 text-[11px] font-medium uppercase tracking-[0.12em] text-white/70">
+                        {story.track}
+                      </span>
+                    </div>
+                    <p className="mt-1 text-xs font-medium text-white/60">
+                      {story.role}
+                    </p>
+                    <p className="mt-0.5 text-[11px] text-white/40">
+                      {story.joined}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Quote */}
+                <p className="mt-4 text-sm leading-relaxed text-white/80">
+                  <span className="mr-1 text-base text-gradient">“</span>
+                  {story.quote}
+                  <span className="ml-1 text-base text-gradient">”</span>
                 </p>
-              </div>
-            </article>
-          ))}
+
+                {/* Highlight line */}
+                <div className="mt-4 flex items-center justify-between gap-3 text-[11px] text-white/60">
+                  <p className="flex-1 leading-snug">
+                    <span className="font-semibold text-white/80">
+                      Impact:&nbsp;
+                    </span>
+                    {story.highlight}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     </section>
