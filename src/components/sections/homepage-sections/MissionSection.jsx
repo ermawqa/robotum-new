@@ -14,6 +14,9 @@ export default function MissionSection() {
     >
       <div>
         {/* Heading */}
+        <p className="text-xs tracking-widest text-white/60 uppercase mb-2">
+          Our Motivation
+        </p>
         <h2 className="heading heading-h1 font-bold leading-tight text-left mb-10 md:mb-14">
           <span className="text-gradient">Foundations</span> of RoboTUM
         </h2>
