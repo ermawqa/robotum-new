@@ -180,10 +180,11 @@ export default function Navbar() {
       role="navigation"
       aria-label="Main"
       style={{ paddingTop: "env(safe-area-inset-top, 0px)" }}
-      className={`fixed top-0 left-0 right-0 z-60 h-14 md:h-16 font-sans flex items-center transition-colors duration-500 border-b border-white/10 shadow-[0_4px_16px_rgba(0,0,0,0.2)] ${scrolled
+      className={`fixed top-0 left-0 right-0 z-60 h-14 md:h-16 font-sans flex items-center transition-colors duration-500 border-b border-white/10 shadow-[0_4px_16px_rgba(0,0,0,0.2)] ${
+        scrolled
           ? "backdrop-blur-2xl bg-[#0B1530]/80"
           : "backdrop-blur-xl bg-[#0B1530]/60"
-        }`}
+      }`}
     >
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="flex w-full items-center justify-between relative z-60">
@@ -266,23 +267,25 @@ export default function Navbar() {
                   <NavLink
                     to={l.href}
                     className={({ isActive }) =>
-                      `${itemBase} rounded-md ${isActive ||
+                      `${itemBase} rounded-md ${
+                        isActive ||
                         currentHash === l.href ||
                         (l.href !== "/" && pathname.startsWith(l.href))
-                        ? "text-accent"
-                        : ""
+                          ? "text-accent"
+                          : ""
                       }`
                     }
                   >
                     {l.label.toUpperCase()}
                     <span
                       aria-hidden
-                      className={`pointer-events-none absolute -bottom-0.5 left-3 right-3 h-0.5 rounded-full bg-accent transition-transform duration-300 ease-out origin-left ${pathname === l.href ||
-                          (l.href !== "/" && pathname.startsWith(l.href)) ||
-                          currentHash === l.href
+                      className={`pointer-events-none absolute -bottom-0.5 left-3 right-3 h-0.5 rounded-full bg-accent transition-transform duration-300 ease-out origin-left ${
+                        pathname === l.href ||
+                        (l.href !== "/" && pathname.startsWith(l.href)) ||
+                        currentHash === l.href
                           ? "scale-x-100"
                           : "scale-x-0 group-hover:scale-x-100"
-                        }`}
+                      }`}
                     />
                   </NavLink>
                 </li>
@@ -300,8 +303,9 @@ export default function Navbar() {
             <span className="sr-only">Toggle navigation</span>
             <div className="relative w-6 h-6 transition-transform duration-300 ease-out transform-gpu">
               <svg
-                className={`absolute inset-0 w-6 h-6 text-white transition-all duration-300 ease-out transform-gpu ${open ? "opacity-100 rotate-0" : "opacity-0 -rotate-90"
-                  }`}
+                className={`absolute inset-0 w-6 h-6 text-white transition-all duration-300 ease-out transform-gpu ${
+                  open ? "opacity-100 rotate-0" : "opacity-0 -rotate-90"
+                }`}
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -315,8 +319,9 @@ export default function Navbar() {
                 />
               </svg>
               <div
-                className={`absolute inset-0 flex flex-col justify-center space-y-1 transition-all duration-300 ease-out transform-gpu ${open ? "opacity-0 rotate-90" : "opacity-100 rotate-0"
-                  }`}
+                className={`absolute inset-0 flex flex-col justify-center space-y-1 transition-all duration-300 ease-out transform-gpu ${
+                  open ? "opacity-0 rotate-90" : "opacity-100 rotate-0"
+                }`}
               >
                 <span className="block h-0.5 w-6 bg-white rounded" />
                 <span className="block h-0.5 w-6 bg-white rounded" />
@@ -344,10 +349,11 @@ export default function Navbar() {
         role="dialog"
         aria-modal="true"
         aria-label="Main navigation"
-        className={`md:hidden fixed top-14 left-0 right-0 z-40 px-4 bg-[#0E1C3D]/95 backdrop-blur-md border-t border-white/10 transform-gpu transition-all duration-350 ease-out ${open
+        className={`md:hidden fixed top-14 left-0 right-0 z-40 px-4 bg-[#0E1C3D]/95 backdrop-blur-md border-t border-white/10 transform-gpu transition-all duration-350 ease-out ${
+          open
             ? "opacity-100 translate-y-0 max-h-[calc(100vh-56px)] pb-4 overflow-y-auto pointer-events-auto"
             : "opacity-0 -translate-y-3 max-h-0 overflow-hidden pointer-events-none"
-          }`}
+        }`}
         ref={mobileMenuRef}
       >
         <ul className="flex flex-col gap-1.5">
@@ -380,10 +386,11 @@ export default function Navbar() {
                   </button>
 
                   <div
-                    className={`transition-all duration-300 ease-in-out overflow-hidden ${projectsMobileOpen
+                    className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                      projectsMobileOpen
                         ? "max-h-96 opacity-100"
                         : "max-h-0 opacity-0"
-                      }`}
+                    }`}
                   >
                     <ul className="ml-4 mt-2 bg-secondary/95 rounded-lg px-2.5 py-2">
                       {l.subLinks.map((sub) => (
@@ -436,7 +443,8 @@ export default function Navbar() {
                     setProjectsOpen(false);
                   }}
                   className={({ isActive }) =>
-                    `block w-full px-4 py-3.5 text-[14px] tracking-[0.8px] rounded-lg bg-[#112238] hover:bg-[#1A2E49] transition-colors focus:outline-none text-white ${isActive || currentHash === l.href ? "text-accent" : ""
+                    `block w-full px-4 py-3.5 text-[14px] tracking-[0.8px] rounded-lg bg-[#112238] hover:bg-[#1A2E49] transition-colors focus:outline-none text-white ${
+                      isActive || currentHash === l.href ? "text-accent" : ""
                     }`
                   }
                 >

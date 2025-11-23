@@ -176,7 +176,7 @@ const ApplicationFormSection = () => {
         // Here you will later integrate Supabase:
         // e.g. call a mutation to insert into "Applications" + upload files
         // For now, just log and show thank-you screen.
-        // eslint-disable-next-line no-console
+
         console.log("Application submitted:", formData);
 
         setSubmitted(true);
@@ -195,13 +195,10 @@ const ApplicationFormSection = () => {
                     </h2>
                     <p className="max-w-2xl text-base md:text-lg text-white/80">
                         We&apos;ll review your application and get back to you via email.
-                        This usually takes a few days, especially during the main recruitment
-                        phase. In the meantime, feel free to drop by our events or say hi on
-                        social media. If you have any questions, reach out to{" "}
-                        <a
-                            href="mailto:operations@robotum.info"
-                            className="underline"
-                        >
+                        This usually takes a few days, especially during the main
+                        recruitment phase. In the meantime, feel free to drop by our events
+                        or say hi on social media. If you have any questions, reach out to{" "}
+                        <a href="mailto:operations@robotum.info" className="underline">
                             operations@robotum.info
                         </a>
                         .
@@ -212,7 +209,10 @@ const ApplicationFormSection = () => {
     }
 
     return (
-        <section id="application" className="section-dark-secondary surface-pattern">
+        <section
+            id="application"
+            className="section-dark-secondary surface-pattern"
+        >
             <div className="section-container">
                 {/* Progress header */}
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-10">
@@ -223,11 +223,6 @@ const ApplicationFormSection = () => {
                         <h2 className="heading heading-h2 text-3xl md:text-4xl mt-2">
                             Application form
                         </h2>
-                        <p className="mt-3 text-sm md:text-base text-white/80 max-w-2xl">
-                            Tell us who you are, what you love, and how you&apos;d like to
-                            contribute. The form takes around{" "}
-                            <span className="font-semibold text-white">10–15 minutes</span>.
-                        </p>
                     </div>
 
                     <div className="flex flex-col items-end gap-2">
@@ -239,10 +234,10 @@ const ApplicationFormSection = () => {
                                     <span
                                         key={idx}
                                         className={`h-2 w-2 rounded-full transition-all ${isActive
-                                            ? "w-8 bg-accent"
-                                            : isCompleted
-                                                ? "bg-accent/60"
-                                                : "bg-white/15"
+                                                ? "w-8 bg-accent"
+                                                : isCompleted
+                                                    ? "bg-accent/60"
+                                                    : "bg-white/15"
                                             }`}
                                     />
                                 );
@@ -256,31 +251,28 @@ const ApplicationFormSection = () => {
 
                 <form
                     onSubmit={handleSubmit}
-                                        className="mx-auto max-w-4xl bg-[#0F1C3A]/80 border border-white/10 rounded-3xl px-5 py-6 sm:px-8 sm:py-8 shadow-[0_20px_60px_rgba(0,0,0,0.45)] backdrop-blur-xl flex flex-col gap-6"
+                    className="mx-auto max-w-4xl bg-[#0F1C3A]/80 border border-white/10 rounded-3xl px-5 py-6 sm:px-8 sm:py-8 shadow-[0_20px_60px_rgba(0,0,0,0.45)] backdrop-blur-xl flex flex-col gap-6"
                 >
                     {/* STEP 0 – Intro */}
                     {step === 0 && (
                         <div className="flex flex-col md:flex-row gap-8 items-start md:items-center">
                             <div className="flex-1 space-y-4">
                                 <h3 className="heading text-2xl md:text-3xl">
-                                    Build robots with people who care.
+                                    Build robots with people who care
                                 </h3>
                                 <p className="text-sm md:text-base text-white/80">
-                                    RoboTUM is TUM&apos;s interdisciplinary robotics club. We bring
-                                    together students from engineering, informatics, management,
-                                    and many other fields to design, build, and test real robots —
-                                    from idea to prototype.
+                                    Tell us who you are, what you love, and how you&apos;d like to
+                                    contribute. The form takes around{" "}
+                                    <span className="font-semibold text-white">30-60 minutes</span>.
                                 </p>
                                 <ul className="mt-4 space-y-2 text-sm text-white/85">
-                                    <li>🧠 Learn: hands-on robotics, software, hardware, and teamwork.</li>
+                                    <li>
+                                        🧠 Learn: hands-on robotics, software, hardware, and
+                                        teamwork.
+                                    </li>
                                     <li>🤝 Community: work in small, motivated project teams.</li>
                                     <li>🤖 Build: turn your ideas into real robots and demos.</li>
                                 </ul>
-                                <p className="mt-4 text-xs text-white/60">
-                                    The application has 6 short steps and takes around 10–15
-                                    minutes. You can always go back and edit your answers before
-                                    sending.
-                                </p>
                             </div>
                             <div className="w-full md:w-[40%] flex flex-col items-center gap-4">
                                 <div className="rounded-2xl border border-accent/30 bg-[#101A34]/90 px-4 py-5 w-full text-sm text-white/85">
@@ -288,9 +280,12 @@ const ApplicationFormSection = () => {
                                         Before you start:
                                     </p>
                                     <ul className="space-y-1 list-disc list-inside text-white/80">
+                                        <li>The application has 6 steps.</li>
+                                        <li>It includes a short motivation letter section, please take your time to answer thoughtfully.</li>
                                         <li>Use your university email if possible.</li>
                                         <li>Have your CV ready as PDF.</li>
                                         <li>Think about 2–3 roles or projects that excite you.</li>
+                                        <li>You can always go back and edit your answers before sending.</li>
                                     </ul>
                                 </div>
                                 <Button
@@ -308,10 +303,13 @@ const ApplicationFormSection = () => {
                     {/* STEP 1 – Personal info */}
                     {step === 1 && (
                         <div className="space-y-6">
-                            <h3 className="heading text-2xl">Step 1 · Personal information</h3>
+                            <h3 className="heading text-2xl">
+                                Step 1 · Personal information
+                            </h3>
                             <p className="text-sm text-white/75">
-                                Tell us how we can reach you and a bit about your current studies.
-                                Fields with <span className="text-red-400">*</span> are required.
+                                Tell us how we can reach you and a bit about your current
+                                studies. Fields with <span className="text-red-400">*</span> are
+                                required.
                             </p>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -376,7 +374,8 @@ const ApplicationFormSection = () => {
 
                                 <div className="flex flex-col gap-2">
                                     <label className="label-sm">
-                                        Current level of study <span className="text-red-400">*</span>
+                                        Current level of study{" "}
+                                        <span className="text-red-400">*</span>
                                     </label>
                                     <select
                                         className="input border border-white/20 bg-[#050A1A]/60 focus:border-accent/70 focus:outline-none"
@@ -459,16 +458,20 @@ const ApplicationFormSection = () => {
                     {/* STEP 2 – Experience & background */}
                     {step === 2 && (
                         <div className="space-y-6">
-                            <h3 className="heading text-2xl">Step 2 · Experience & background</h3>
+                            <h3 className="heading text-2xl">
+                                Step 2 · Experience & background
+                            </h3>
                             <p className="text-sm text-white/75">
-                                We don&apos;t expect everyone to have robotics experience. We just want to
-                                understand where you&apos;re coming from.
+                                We don&apos;t expect everyone to have robotics experience. We
+                                just want to understand where you&apos;re coming from.
                             </p>
 
                             <div className="space-y-6">
                                 {/* Why join */}
                                 <div className="flex flex-col gap-2">
-                                    <label className="label-sm">Why do you want to join RoboTUM?</label>
+                                    <label className="label-sm">
+                                        Why do you want to join RoboTUM?
+                                    </label>
                                     <textarea
                                         className="input min-h-[100px] border border-white/20 bg-[#050A1A]/60 focus:border-accent/70 focus:outline-none"
                                         value={formData.whyJoin}
@@ -478,11 +481,11 @@ const ApplicationFormSection = () => {
 
                                 {/* Experience + Club experience */}
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-
                                     {/* Robotics / Programming / Teamwork experience */}
                                     <div className="flex flex-col gap-2">
                                         <label className="label-sm">
-                                            Do you have previous experience in robotics, programming, or teamwork?
+                                            Do you have previous experience in robotics, programming,
+                                            or teamwork?
                                         </label>
 
                                         <div className="flex gap-3 mt-1.5">
@@ -492,8 +495,8 @@ const ApplicationFormSection = () => {
                                                     type="button"
                                                     onClick={() => handleChange("hasExperience", val)}
                                                     className={`px-4 py-1.5 rounded-full text-xs font-medium border transition-colors ${formData.hasExperience === val
-                                                        ? "bg-accent text-white border-accent"
-                                                        : "border-white/25 text-white/75 hover:border-accent/60"
+                                                            ? "bg-accent text-white border-accent"
+                                                            : "border-white/25 text-white/75 hover:border-accent/60"
                                                         }`}
                                                 >
                                                     {val === "yes" ? "Yes" : "No"}
@@ -506,7 +509,9 @@ const ApplicationFormSection = () => {
                                                 className="input mt-3 min-h-[90px] border border-white/20 bg-[#050A1A]/60 focus:border-accent/70 focus:outline-none"
                                                 placeholder="Tell us briefly about your experience (courses, projects, competitions, work, etc.)."
                                                 value={formData.experienceDetails}
-                                                onChange={(e) => handleChange("experienceDetails", e.target.value)}
+                                                onChange={(e) =>
+                                                    handleChange("experienceDetails", e.target.value)
+                                                }
                                             />
                                         )}
                                     </div>
@@ -524,8 +529,8 @@ const ApplicationFormSection = () => {
                                                     type="button"
                                                     onClick={() => handleChange("hasClubExperience", val)}
                                                     className={`px-4 py-1.5 rounded-full text-xs font-medium border transition-colors ${formData.hasClubExperience === val
-                                                        ? "bg-accent text-white border-accent"
-                                                        : "border-white/25 text-white/75 hover:border-accent/60"
+                                                            ? "bg-accent text-white border-accent"
+                                                            : "border-white/25 text-white/75 hover:border-accent/60"
                                                         }`}
                                                 >
                                                     {val === "yes" ? "Yes" : "No"}
@@ -554,7 +559,9 @@ const ApplicationFormSection = () => {
                                     <select
                                         className="input mt-1 border border-white/20 bg-[#050A1A]/60 focus:border-accent/70 focus:outline-none"
                                         value={formData.hoursPerWeek}
-                                        onChange={(e) => handleChange("hoursPerWeek", e.target.value)}
+                                        onChange={(e) =>
+                                            handleChange("hoursPerWeek", e.target.value)
+                                        }
                                     >
                                         <option value="">Select...</option>
                                         {HOURS_PER_WEEK_OPTIONS.map((opt) => (
@@ -571,10 +578,13 @@ const ApplicationFormSection = () => {
                     {/* STEP 3 – Preferences (roles & projects) */}
                     {step === 3 && (
                         <div className="space-y-6">
-                            <h3 className="heading text-2xl">Step 3 · Roles & project preferences</h3>
+                            <h3 className="heading text-2xl">
+                                Step 3 · Roles & project preferences
+                            </h3>
                             <p className="text-sm text-white/75">
-                                Choose up to three profiles and three projects that feel like a good fit.
-                                This is not binding – it just helps us route your application.
+                                Choose up to three profiles and three projects that feel like a
+                                good fit. This is not binding – it just helps us route your
+                                application.
                             </p>
 
                             <div className="space-y-6">
@@ -584,8 +594,8 @@ const ApplicationFormSection = () => {
                                         Top profile choices (max {MAX_PROFILE_CHOICES})
                                     </label>
                                     <p className="text-[11px] text-white/55">
-                                        Think about how you&apos;d like to contribute – technical, operations, or
-                                        innovation-focused roles.
+                                        Think about how you&apos;d like to contribute – technical,
+                                        operations, or innovation-focused roles.
                                     </p>
 
                                     <div className="mt-2 flex flex-wrap gap-2">
@@ -597,11 +607,15 @@ const ApplicationFormSection = () => {
                                                     key={opt}
                                                     type="button"
                                                     onClick={() =>
-                                                        handleToggleChoice("topProfiles", opt, MAX_PROFILE_CHOICES)
+                                                        handleToggleChoice(
+                                                            "topProfiles",
+                                                            opt,
+                                                            MAX_PROFILE_CHOICES,
+                                                        )
                                                     }
                                                     className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-colors ${selected
-                                                        ? "bg-accent text-white border-accent"
-                                                        : "border-white/25 text-white/75 hover:border-accent/60"
+                                                            ? "bg-accent text-white border-accent"
+                                                            : "border-white/25 text-white/75 hover:border-accent/60"
                                                         }`}
                                                 >
                                                     {opt}
@@ -616,7 +630,9 @@ const ApplicationFormSection = () => {
                                             className="input mt-3 border border-white/20 bg-[#050A1A]/60 focus:border-accent/70 focus:outline-none"
                                             placeholder="If Other: what kind of role are you imagining?"
                                             value={formData.topProfilesOther}
-                                            onChange={(e) => handleChange("topProfilesOther", e.target.value)}
+                                            onChange={(e) =>
+                                                handleChange("topProfilesOther", e.target.value)
+                                            }
                                         />
                                     )}
                                 </div>
@@ -627,8 +643,8 @@ const ApplicationFormSection = () => {
                                         Top project choices (max {MAX_PROJECT_CHOICES})
                                     </label>
                                     <p className="mt-1 text-[11px] text-white/55">
-                                        You can pick projects from any category – technical, operations, or
-                                        innovation & entrepreneurship.
+                                        You can pick projects from any category – technical,
+                                        operations, or innovation & entrepreneurship.
                                     </p>
 
                                     <div className="mt-2 flex flex-wrap gap-2">
@@ -640,11 +656,15 @@ const ApplicationFormSection = () => {
                                                     key={opt}
                                                     type="button"
                                                     onClick={() =>
-                                                        handleToggleChoice("topProjects", opt, MAX_PROJECT_CHOICES)
+                                                        handleToggleChoice(
+                                                            "topProjects",
+                                                            opt,
+                                                            MAX_PROJECT_CHOICES,
+                                                        )
                                                     }
                                                     className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-colors ${selected
-                                                        ? "bg-accent text-white border-accent"
-                                                        : "border-white/25 text-white/75 hover:border-accent/60"
+                                                            ? "bg-accent text-white border-accent"
+                                                            : "border-white/25 text-white/75 hover:border-accent/60"
                                                         }`}
                                                 >
                                                     {opt}
@@ -662,11 +682,11 @@ const ApplicationFormSection = () => {
                         <div className="space-y-6">
                             <h3 className="heading text-2xl">Step 4 · Motivation & links</h3>
                             <p className="text-sm text-white/75">
-                                This helps us understand your goals and how RoboTUM can support you.
+                                This helps us understand your goals and how RoboTUM can support
+                                you.
                             </p>
 
                             <div className="space-y-6">
-
                                 {/* Motivation Letter */}
                                 <div className="flex flex-col gap-2">
                                     <label className="label-sm">
@@ -692,25 +712,32 @@ const ApplicationFormSection = () => {
                                             className="input min-h-[90px] border border-white/20 bg-[#050A1A]/60 focus:border-accent/70"
                                             placeholder="e.g., personal growth, network, technical skills, fun projects..."
                                             value={formData.whatToGain}
-                                            onChange={(e) => handleChange("whatToGain", e.target.value)}
+                                            onChange={(e) =>
+                                                handleChange("whatToGain", e.target.value)
+                                            }
                                         />
                                     </div>
 
                                     <div className="flex flex-col gap-2">
                                         <label className="label-sm">
-                                            Fun question: If you could build any robot, what would it do?
+                                            Fun question: If you could build any robot, what would it
+                                            do?
                                         </label>
                                         <textarea
                                             className="input min-h-[90px] border border-white/20 bg-[#050A1A]/60 focus:border-accent/70"
                                             value={formData.dreamRobot}
-                                            onChange={(e) => handleChange("dreamRobot", e.target.value)}
+                                            onChange={(e) =>
+                                                handleChange("dreamRobot", e.target.value)
+                                            }
                                         />
                                     </div>
                                 </div>
 
                                 {/* Heard from */}
                                 <div className="flex flex-col gap-2">
-                                    <label className="label-sm">How did you hear about RoboTUM?</label>
+                                    <label className="label-sm">
+                                        How did you hear about RoboTUM?
+                                    </label>
 
                                     <select
                                         className="input bg-[#0D1730] border border-white/20 focus:border-accent/70"
@@ -778,7 +805,6 @@ const ApplicationFormSection = () => {
                                         </button>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     )}
@@ -790,8 +816,8 @@ const ApplicationFormSection = () => {
                                 Step 5 · Attachments & consent
                             </h3>
                             <p className="text-sm text-white/75">
-                                Your data will be used only for processing your application and internal statistics.
-                                You can request deletion at any time.
+                                Your data will be used only for processing your application and
+                                internal statistics. You can request deletion at any time.
                             </p>
 
                             <div className="space-y-6">
@@ -807,7 +833,9 @@ const ApplicationFormSection = () => {
                                                 type="file"
                                                 accept=".pdf,.doc,.docx"
                                                 className="block w-full text-xs sm:text-sm text-white/80 file:mr-3 file:rounded-full file:border-0 file:bg-accent file:px-4 file:py-1.5 file:text-[11px] file:font-medium file:text-white hover:file:bg-accent/90"
-                                                onChange={(e) => handleFileChange("cvFile", e.target.files)}
+                                                onChange={(e) =>
+                                                    handleFileChange("cvFile", e.target.files)
+                                                }
                                             />
                                         </div>
                                         {formData.cvFile && (
@@ -827,7 +855,9 @@ const ApplicationFormSection = () => {
                                                 type="file"
                                                 accept=".pdf,.doc,.docx"
                                                 className="block w-full text-xs sm:text-sm text-white/80 file:mr-3 file:rounded-full file:border-0 file:bg-white/10 file:px-4 file:py-1.5 file:text-[11px] file:font-medium file:text-white hover:file:bg-white/20"
-                                                onChange={(e) => handleFileChange("extraFile", e.target.files)}
+                                                onChange={(e) =>
+                                                    handleFileChange("extraFile", e.target.files)
+                                                }
                                             />
                                         </div>
                                         {formData.extraFile && (
@@ -850,7 +880,8 @@ const ApplicationFormSection = () => {
                                             }
                                         />
                                         <span>
-                                            I confirm that the information I provided is accurate to the best of my knowledge.
+                                            I confirm that the information I provided is accurate to
+                                            the best of my knowledge.
                                         </span>
                                     </label>
 
@@ -864,9 +895,9 @@ const ApplicationFormSection = () => {
                                             }
                                         />
                                         <span>
-                                            I agree that RoboTUM can store and process my application data for the
-                                            purpose of evaluating my application, in accordance with the applicable
-                                            data protection rules.
+                                            I agree that RoboTUM can store and process my application
+                                            data for the purpose of evaluating my application, in
+                                            accordance with the applicable data protection rules.
                                         </span>
                                     </label>
                                 </div>
@@ -879,22 +910,27 @@ const ApplicationFormSection = () => {
                         <div className="space-y-6">
                             <h3 className="heading text-2xl">Step 6 · Review & submit</h3>
                             <p className="text-sm text-white/75">
-                                Please quickly review your answers. If everything looks good, submit your application.
+                                Please quickly review your answers. If everything looks good,
+                                submit your application.
                             </p>
 
                             <div className="space-y-6 text-sm text-white/85">
-
                                 {/* Personal info */}
                                 <div className="rounded-2xl border border-white/15 bg-[#050A1A]/40 p-5 flex flex-col gap-2">
-                                    <h4 className="font-semibold text-white mb-1">Personal info</h4>
-                                    <p>{formData.firstName} {formData.surname}</p>
+                                    <h4 className="font-semibold text-white mb-1">
+                                        Personal info
+                                    </h4>
+                                    <p>
+                                        {formData.firstName} {formData.surname}
+                                    </p>
                                     <p>{formData.email}</p>
                                     {formData.phone && <p>{formData.phone}</p>}
                                     {formData.linkedin && <p>LinkedIn: {formData.linkedin}</p>}
 
                                     <p className="mt-1">
                                         {formData.studyLevel}
-                                        {formData.studyLevel === "Other" && formData.studyLevelOther &&
+                                        {formData.studyLevel === "Other" &&
+                                            formData.studyLevelOther &&
                                             ` (${formData.studyLevelOther})`}
                                         {formData.fieldOfStudy && ` · ${formData.fieldOfStudy}`}
                                     </p>
@@ -913,7 +949,8 @@ const ApplicationFormSection = () => {
 
                                     {formData.whyJoin && (
                                         <p>
-                                            <span className="font-medium">Why join RoboTUM:</span> {formData.whyJoin}
+                                            <span className="font-medium">Why join RoboTUM:</span>{" "}
+                                            {formData.whyJoin}
                                         </p>
                                     )}
 
@@ -940,7 +977,9 @@ const ApplicationFormSection = () => {
                                     )}
 
                                     {formData.hoursPerWeek && (
-                                        <p className="mt-2">Availability: {formData.hoursPerWeek}</p>
+                                        <p className="mt-2">
+                                            Availability: {formData.hoursPerWeek}
+                                        </p>
                                     )}
                                 </div>
 
@@ -968,23 +1007,28 @@ const ApplicationFormSection = () => {
 
                                 {/* Motivation & links */}
                                 <div className="rounded-2xl border border-white/15 bg-[#050A1A]/40 p-5 flex flex-col gap-2">
-                                    <h4 className="font-semibold text-white mb-1">Motivation & links</h4>
+                                    <h4 className="font-semibold text-white mb-1">
+                                        Motivation & links
+                                    </h4>
 
                                     {formData.motivationLetter && (
                                         <p>
-                                            <span className="font-medium">Motivation:</span> {formData.motivationLetter}
+                                            <span className="font-medium">Motivation:</span>{" "}
+                                            {formData.motivationLetter}
                                         </p>
                                     )}
 
                                     {formData.whatToGain && (
                                         <p>
-                                            <span className="font-medium">What to gain:</span> {formData.whatToGain}
+                                            <span className="font-medium">What to gain:</span>{" "}
+                                            {formData.whatToGain}
                                         </p>
                                     )}
 
                                     {formData.dreamRobot && (
                                         <p>
-                                            <span className="font-medium">Dream robot:</span> {formData.dreamRobot}
+                                            <span className="font-medium">Dream robot:</span>{" "}
+                                            {formData.dreamRobot}
                                         </p>
                                     )}
 
@@ -992,7 +1036,8 @@ const ApplicationFormSection = () => {
                                         <p>
                                             <span className="font-medium">Heard from:</span>{" "}
                                             {formData.heardFrom}
-                                            {formData.heardFrom === "Other" && formData.heardFromOther &&
+                                            {formData.heardFrom === "Other" &&
+                                                formData.heardFromOther &&
                                                 ` (${formData.heardFromOther})`}
                                         </p>
                                     )}
@@ -1007,24 +1052,29 @@ const ApplicationFormSection = () => {
 
                                 {/* Files & consent */}
                                 <div className="rounded-2xl border border-white/15 bg-[#050A1A]/40 p-5 flex flex-col gap-2 text-xs text-white/80">
-                                    <h4 className="font-semibold text-white mb-1">Files & consent</h4>
+                                    <h4 className="font-semibold text-white mb-1">
+                                        Files & consent
+                                    </h4>
 
                                     <p>
                                         CV:{" "}
-                                        {formData.cvFile ? formData.cvFile.name : "Not attached (required)"}
+                                        {formData.cvFile
+                                            ? formData.cvFile.name
+                                            : "Not attached (required)"}
                                     </p>
                                     <p>
-                                        Extra file: {formData.extraFile ? formData.extraFile.name : "—"}
+                                        Extra file:{" "}
+                                        {formData.extraFile ? formData.extraFile.name : "—"}
                                     </p>
 
                                     <p className="mt-1">
                                         Info accurate: {formData.confirmInfoAccurate ? "Yes" : "No"}
                                     </p>
                                     <p>
-                                        Data processing consent: {formData.consentDataProcessing ? "Yes" : "No"}
+                                        Data processing consent:{" "}
+                                        {formData.consentDataProcessing ? "Yes" : "No"}
                                     </p>
                                 </div>
-
                             </div>
                         </div>
                     )}

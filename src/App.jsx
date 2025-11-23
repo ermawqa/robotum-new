@@ -17,9 +17,7 @@ const ProjectDetail = lazy(() => import("@pages/ProjectDetail"));
 
 export default function App() {
   return (
-    <Suspense
-      fallback={<PageLoader />}
-    >
+    <Suspense fallback={<PageLoader />}>
       <ScrollToHashElement />
       <Routes>
         <Route path="/" element={<Home />} />
