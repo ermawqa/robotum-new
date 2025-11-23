@@ -28,7 +28,7 @@ export default function EventSection() {
   return (
     <section
       id="events"
-      className="section-container font-sans text-white section-dark-primary"
+      className="section-container font-sans text-white section-dark-primary surface-pattern"
       aria-labelledby="events-section-heading"
       role="region"
     >
@@ -40,7 +40,7 @@ export default function EventSection() {
           </p>
           <h2
             id="events-section-heading"
-            className="heading heading-h1 font-bold leading-tight"
+            className="heading heading-h2 font-bold leading-tight"
           >
             Where<span className="text-gradient"> Minds Meet</span>
           </h2>

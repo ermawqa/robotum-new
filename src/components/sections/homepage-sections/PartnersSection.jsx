@@ -22,19 +22,19 @@ export default function PartnersSection() {
 
   return (
     <section
-      className="section-container font-sans section-light"
+      className="section-container font-sans section-light surface-pattern"
       role="region"
       aria-labelledby="partners-heading"
     >
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
         <div className="text-left">
-          <p className="text-xs tracking-widest text-[#0A1A2F]/60 uppercase mb-2">
+          <p className="text-xs tracking-widest text-white/60 uppercase mb-2">
             Thank you to our community of supporters
           </p>
           <h2
             id="partners-heading"
-            className="heading heading-h1 font-bold leading-tight text-[#0A1A2F]"
+            className="heading heading-h2 font-bold leading-tight"
           >
             Our <span className="text-gradient">Sponsors &amp; Partners</span>
           </h2>

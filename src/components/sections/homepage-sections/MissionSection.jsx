@@ -10,16 +10,19 @@ export default function MissionSection() {
   return (
     <section
       id="mission"
-      className="section-container text-white font-sans section-dark-primary"
+      className="section-container text-white font-sans section-dark-primary surface-pattern"
     >
       <div>
         {/* Heading */}
+        <p className="text-xs tracking-widest text-white/60 uppercase mb-2">
+          Our Motivation
+        </p>
         <h2 className="heading heading-h1 font-bold leading-tight text-left mb-10 md:mb-14">
           <span className="text-gradient">Foundations</span> of RoboTUM
         </h2>
 
         {/* Content container */}
-        <div className="surface-light text-[#0B1B2E] rounded-2xl p-8 md:p-12 grid grid-cols-1 md:grid-cols-2 gap-10 shadow-[0_6px_24px_rgba(0,0,0,0.25)]">
+        <div className="bg-white/90 backdrop-blur-xl border border-white/10 text-white rounded-2xl p-8 md:p-12 grid grid-cols-1 md:grid-cols-2 gap-10 shadow-xl">
           {/* Vision */}
           <div className="flex flex-col gap-4">
             <h3 className="heading heading-h2 text-[1.5rem] md:text-[1.75rem] font-semibold text-primary">
