@@ -17,6 +17,7 @@ export { default as logo } from "./images/robotum-logos/robotum-logo-blue-white.
 export { default as auditoryImg } from "./images/others/auditory.png";
 export { default as allMembersImg } from "./images/others/foundations-team.jpg";
 export { default as eventsHero } from "./images/others/eventsHero.png";
+export { default as partnership } from "./images/others/partnership.jpg";
 
 // Partners
 // Lead Sponsors
