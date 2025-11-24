@@ -18,20 +18,26 @@ export default function ContactUsSection() {
     setFormData({ ...formData, [name]: value });
   };
 
+  const {
+    VITE_EMAILJS_SERVICE_ID,
+    VITE_EMAILJS_TEMPLATE_ID,
+    VITE_EMAILJS_PUBLIC_KEY,
+  } = import.meta.env;
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     emailjs
       .send(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
+        VITE_EMAILJS_SERVICE_ID,
+        VITE_EMAILJS_TEMPLATE_ID,
         {
           name: formData.name,
           company: formData.company,
           email: formData.email,
           message: formData.message,
         },
-        "YOUR_PUBLIC_KEY",
+        VITE_EMAILJS_PUBLIC_KEY,
       )
       .then(() => {
         alert("Message sent successfully!");
