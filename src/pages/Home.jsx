@@ -34,13 +34,13 @@ const Home = () => {
     <>
       <Navbar />
       <main className="pt-13 md:pt-15">
-        <NewsTicker
+        {/* <NewsTicker
           messages={[
             "Winter 2025 applications are open — join RoboTUM and build robots with us",
             "Humanoid team recruiting now",
             "RoboTUM Precelerator starts soon",
           ]}
-        />
+        /> */}
         <HeroSection />
 
         <Suspense fallback={<PageLoader />}>
