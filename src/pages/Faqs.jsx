@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 // General imports
 import Navbar from "@components/sections/common-sections/Navbar";
@@ -6,10 +6,8 @@ import FooterSection from "@components/sections/common-sections/FooterSection";
 import PageLoader from "@components/sections/common-sections/PageLoader";
 import { supabase } from "@lib/supabaseClient";
 
-// Lazy load section for performance
-const FaqSection = lazy(
-  () => import("@/components/sections/faqs-sections/FaqSection"),
-);
+// Normal import instead of lazy
+import FaqSection from "@/components/sections/faqs-sections/FaqSection";
 
 const Faqs = () => {
   const [faqs, setFaqs] = useState([]);
@@ -42,7 +40,7 @@ const Faqs = () => {
     loadFaqs();
   }, []);
 
-  // 🔵 Page-level loading: whole Q&A page is basically this content
+  // Page-level loading
   if (loading) {
     return (
       <>
@@ -56,10 +54,7 @@ const Faqs = () => {
   return (
     <>
       <Navbar />
-      {/* Suspense is only for code-splitting the section component */}
-      <Suspense fallback={<PageLoader />}>
-        <FaqSection faqs={faqs} errorMsg={errorMsg} />
-      </Suspense>
+      <FaqSection faqs={faqs} errorMsg={errorMsg} />
       <FooterSection />
     </>
   );
