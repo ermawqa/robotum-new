@@ -6,7 +6,7 @@ import FooterSection from "@components/sections/common-sections/FooterSection";
 import PageLoader from "@components/sections/common-sections/PageLoader";
 import FaqSection from "@/components/sections/faqs-sections/FaqSection";
 
-import { fetchFaqs } from "@data/faqsApi"; // ✅ use your helper
+import { fetchFaqs } from "@data"; // ✅ use your helper
 
 const Faqs = () => {
   const [faqs, setFaqs] = useState([]);

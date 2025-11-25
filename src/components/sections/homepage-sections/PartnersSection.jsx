@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Button from "@components/ui/Button";
 import SectionLoader from "@components/sections/common-sections/SectionLoader";
-import { fetchActivePartners } from "@data/partnersApi"; // ✅ centralized data logic
+import { fetchActivePartners } from "@data"; // ✅ centralized data logic
 
 /**
  * PartnersSection

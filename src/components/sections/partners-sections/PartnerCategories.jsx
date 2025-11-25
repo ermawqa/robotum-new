@@ -1,7 +1,7 @@
 import * as assets from "@assets";
 import ImageFrame from "@components/ui/ImageFrame";
 import { useEffect, useState } from "react";
-import { fetchActivePartners } from "@data/partnersApi";
+import { fetchActivePartners } from "@data";
 
 const PartnerCategories = () => {
   const [partners, setPartners] = useState([]);
