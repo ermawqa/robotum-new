@@ -99,6 +99,7 @@ export default function ContactUsSection() {
                 type="text"
                 id="name"
                 name="name"
+                autoComplete="name"
                 value={formData.name}
                 onChange={handleChange}
                 required
@@ -118,6 +119,7 @@ export default function ContactUsSection() {
                 type="text"
                 id="company"
                 name="company"
+                autoComplete="company"
                 value={formData.company}
                 onChange={handleChange}
                 required
@@ -137,6 +139,7 @@ export default function ContactUsSection() {
                 type="email"
                 id="email"
                 name="email"
+                autoComplete="email"
                 value={formData.email}
                 onChange={handleChange}
                 required
@@ -155,6 +158,7 @@ export default function ContactUsSection() {
               <textarea
                 id="message"
                 name="message"
+                autoComplete="off"
                 rows="4"
                 value={formData.message}
                 onChange={handleChange}
