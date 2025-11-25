@@ -1,12 +1,33 @@
 import { useMemo, useState, useEffect } from "react";
 import { useSearchParams, Link } from "react-router-dom";
-import { TABS } from "@data/projectTabs";
-import { fetchProjects } from "@data";
+import { fetchProjects } from "@data"; // Supabase
 import ProjectCard from "@components/ui/ProjectCard";
 import Button from "@components/ui/Button";
 import Navbar from "@components/sections/common-sections/Navbar";
 import FooterSection from "@components/sections/common-sections/FooterSection";
 import PageLoader from "@components/sections/common-sections/PageLoader";
+
+// Top tabs (now local, no dependency on projects.js)
+// Keys MUST match Supabase `projects.category` values.
+const TABS = [
+  { key: "technical", label: "Technical" },
+  { key: "operations", label: "Operations" },
+  { key: "innovation-and-entrepreneurship", label: "Innovation & Entrepreneurship" },
+];
+
+// Fixed curated tag list (10 tags only)
+const CURATED_TAGS = [
+  "robotics",
+  "ai",
+  "autonomy",
+  "ros2",
+  "hardware",
+  "software",
+  "humanoid robots",
+  "drones",
+  "web development",
+  "community",
+];
 
 export default function Projects() {
   const [params, setParams] = useSearchParams();
@@ -15,18 +36,21 @@ export default function Projects() {
   const [loading, setLoading] = useState(true);
   const [errorMsg, setErrorMsg] = useState("");
 
+  // top tabs (technical, operations, innovation)
   const initial =
     TABS.find((t) => t.key === params.get("type"))?.key || "technical";
   const [active, setActive] = useState(initial);
+
+  // search + tag filters
   const [query, setQuery] = useState(params.get("q") || "");
   const [tag, setTag] = useState(params.get("tag") || "");
 
-  // Scroll to top on mount
+  // scroll to top
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    window.scrollTo({ top: 0, behavior: "auto" });
   }, []);
 
-  // Sync URL with filters
+  // sync URL
   useEffect(() => {
     const next = new URLSearchParams();
     next.set("type", active);
@@ -35,14 +59,14 @@ export default function Projects() {
     setParams(next, { replace: true });
   }, [active, query, tag, setParams]);
 
-  // Load projects from Supabase
+  // load Supabase projects
   useEffect(() => {
     const load = async () => {
       setLoading(true);
       setErrorMsg("");
 
       try {
-        const data = await fetchProjects();
+        const data = await fetchProjects(); // loads all projects
         setProjects(data);
       } catch (err) {
         console.error("Error loading projects:", err);
@@ -55,36 +79,31 @@ export default function Projects() {
     load();
   }, []);
 
-  // Filtered list based on active tab, search, and tag
+  // Filtering logic
   const filtered = useMemo(() => {
     return projects.filter((p) => {
+      // 1) filter by category tab
       if (p.category !== active) return false;
 
+      // 2) search text
       const content = (
         p.title +
         (p.summary || "") +
         (p.tags || []).join(" ")
       ).toLowerCase();
-
       const okQ = query ? content.includes(query.toLowerCase()) : true;
-      const okTag = tag ? p.tags?.includes(tag) : true;
+
+      // 3) curated tag filter
+      const okTag = tag ? (p.tags || []).includes(tag) : true;
 
       return okQ && okTag;
     });
   }, [active, query, tag, projects]);
 
-  // Tags available for current tab
-  const availableTags = useMemo(() => {
-    const set = new Set();
-    projects.forEach((p) => {
-      if (p.category === active) {
-        p.tags?.forEach((t) => set.add(t));
-      }
-    });
-    return Array.from(set);
-  }, [active, projects]);
+  // curated tags show always
+  const availableTags = CURATED_TAGS;
 
-  // Full-page loader while fetching
+  // loader
   if (loading) {
     return (
       <>
@@ -106,9 +125,7 @@ export default function Projects() {
               Explore our initiatives across engineering, operations, and
               entrepreneurship.
             </p>
-            {errorMsg && (
-              <p className="text-sm text-red-400 mt-3">{errorMsg}</p>
-            )}
+            {errorMsg && <p className="text-sm text-red-400 mt-3">{errorMsg}</p>}
           </header>
 
           {/* Tabs */}
@@ -119,13 +136,12 @@ export default function Projects() {
                 <button
                   key={t.key}
                   onClick={() => setActive(t.key)}
-                  className={`cursor-pointer px-4 py-2 rounded-full text-sm transition-colors duration-300 ease-in-out
-                    ${
-                      activeTab
-                        ? "bg-accent text-white shadow-[0_0_20px_rgba(59,130,246,.35)]"
-                        : "bg-white/10 text-white/80 hover:bg-white/20"
-                    }`}
-                  type="button"
+                  className={`cursor-pointer px-4 py-2 rounded-full text-sm transition-colors duration-300 
+                  ${
+                    activeTab
+                      ? "bg-accent text-white shadow-[0_0_20px_rgba(59,130,246,.35)]"
+                      : "bg-white/10 text-white/80 hover:bg-white/20"
+                  }`}
                 >
                   {t.label}
                 </button>
@@ -135,38 +151,42 @@ export default function Projects() {
 
           {/* Controls */}
           <div className="flex flex-wrap items-center gap-3 mb-8">
+            {/* Search */}
             <input
               type="search"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search projects"
-              className="w-full sm:w-72 px-3 py-2 rounded-md bg-white/10 border border-white/10 text-white placeholder-white/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent transition-colors duration-300"
+              className="w-full sm:w-72 px-3 py-2 rounded-md bg-white/10 border border-white/10 text-white placeholder-white/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent transition-colors"
               aria-label="Search projects"
             />
+
+            {/* Tag chips */}
             <div className="flex gap-2 overflow-x-auto">
               <button
                 type="button"
                 onClick={() => setTag("")}
-                className={`px-3 py-1.5 rounded-full text-xs transition-colors duration-300
-                  ${
-                    !tag
-                      ? "bg-white/20 text-white"
-                      : "bg-white/10 text-white/80 hover:bg-white/20"
-                  }`}
+                className={`px-3 py-1.5 rounded-full text-xs transition-colors 
+                ${
+                  !tag
+                    ? "bg-white/20 text-white"
+                    : "bg-white/10 text-white/80 hover:bg-white/20"
+                }`}
               >
                 All
               </button>
+
               {availableTags.map((t) => (
                 <button
                   key={t}
                   type="button"
                   onClick={() => setTag(t)}
-                  className={`cursor-pointer px-3 py-1.5 rounded-full text-xs transition-colors duration-300
-                    ${
-                      tag === t
-                        ? "bg-white/20 text-white"
-                        : "bg-white/10 text-white/80 hover:bg-white/20"
-                    }`}
+                  className={`cursor-pointer px-3 py-1.5 rounded-full text-xs transition-colors 
+                  ${
+                    tag === t
+                      ? "bg-white/20 text-white"
+                      : "bg-white/10 text-white/80 hover:bg-white/20"
+                  }`}
                 >
                   {t}
                 </button>
@@ -176,24 +196,20 @@ export default function Projects() {
 
           {/* Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {filtered.length === 0 && (
-              <p className="col-span-full text-center text-sm text-white/70">
-                No projects match your filters yet.
-              </p>
-            )}
             {filtered.map((p) => (
               <ProjectCard key={p.slug} project={p} />
             ))}
+
+            {filtered.length === 0 && (
+              <p className="text-center text-sm text-white/60 col-span-full">
+                No matching projects yet.
+              </p>
+            )}
           </div>
 
           {/* CTA */}
           <div className="mt-10 text-center">
-            <Button
-              as={Link}
-              to="/join"
-              variant="primary"
-              className="transition-colors duration-300 ease-in-out"
-            >
+            <Button as={Link} to="/join" variant="primary">
               Join a project
             </Button>
           </div>

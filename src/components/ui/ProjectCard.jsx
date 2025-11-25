@@ -3,11 +3,14 @@ import ImageFrame from "@components/ui/ImageFrame";
 import Button from "@components/ui/Button";
 
 export default function ProjectCard({ project }) {
+  // prefer Supabase `cover_url`, fallback to legacy `cover`
+  const imageSrc = project.cover_url || project.cover || "/placeholder.png";
+
   return (
     <article className="group bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 hover:border-white/20 transition-all duration-300">
       <div className="relative">
         <ImageFrame
-          src={project.cover}
+          src={imageSrc}
           alt={project.title}
           aspect="16/9"
           fit="cover"
@@ -21,6 +24,7 @@ export default function ProjectCard({ project }) {
       <div className="p-5">
         <h3 className="text-text1 font-semibold mb-1">{project.title}</h3>
         <p className="text-text2 text-white/70 mb-4">{project.summary}</p>
+
         <div className="flex flex-wrap gap-2 mb-4">
           {project.tags?.map((t) => (
             <span
@@ -31,6 +35,7 @@ export default function ProjectCard({ project }) {
             </span>
           ))}
         </div>
+
         <Button
           as={Link}
           to={`/projects/${project.slug}`}
