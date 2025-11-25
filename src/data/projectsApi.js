@@ -3,36 +3,32 @@ import { supabase } from "@lib/supabaseClient";
 
 /**
  * Base column list for all project queries.
- * Adjust once here if you add/remove fields in the DB.
+ * Must match your actual DB schema.
  */
 const PROJECT_FIELDS = `
   id,
   created_at,
   slug,
   title,
-  tags,
-  is_feature,
   category,
-  description,
   summary,
-  status,
+  description,
   team_name,
   used_tools,
   future_plans,
-  cover_url
+  cover_url,
+  tags,
+  is_featured
 `;
 
 /**
  * Fetch featured projects (for homepage section)
- * - Only is_feature = true
- * - Ordered by created_at DESC (newest first)
- * - Optional limit
  */
 export async function fetchFeaturedProjects({ limit } = {}) {
   let query = supabase
     .from("projects")
     .select(PROJECT_FIELDS)
-    .eq("is_feature", true)
+    .eq("is_featured", true)              // ✅ correct column
     .order("created_at", { ascending: false });
 
   if (typeof limit === "number") {
@@ -57,7 +53,7 @@ export async function fetchProjectBySlug(slug) {
     .from("projects")
     .select(PROJECT_FIELDS)
     .eq("slug", slug)
-    .maybeSingle(); // returns null if not found
+    .maybeSingle();
 
   if (error) {
     console.error("Error loading project by slug:", error);
@@ -69,20 +65,11 @@ export async function fetchProjectBySlug(slug) {
 
 /**
  * Fetch projects with optional filters (for Projects list page).
- * This is generic so your tabs can translate to these filters.
- *
- * options:
- *  - category: enum value from project_category
- *  - status: enum value from project_status
- *  - teamName: exact team_name match
- *  - tag: filter projects that have this tag in tags[]
- *  - search: full-text-ish search on title/summary (simple ILIKE)
- *  - isFeatured: true/false if you want to filter by feature flag
  */
 export async function fetchProjects(options = {}) {
   const {
     category,
-    status,
+    // status,    // ❌ comment out unless you actually add this column
     teamName,
     tag,
     search,
@@ -98,30 +85,26 @@ export async function fetchProjects(options = {}) {
     query = query.eq("category", category);
   }
 
-  if (status) {
-    query = query.eq("status", status);
-  }
+  // If you *do* later add a `status` column, you can restore this:
+  // if (status) {
+  //   query = query.eq("status", status);
+  // }
 
   if (teamName) {
     query = query.eq("team_name", teamName);
   }
 
   if (typeof isFeatured === "boolean") {
-    query = query.eq("is_feature", isFeatured);
+    query = query.eq("is_featured", isFeatured);   // ✅ correct
   }
 
   if (tag) {
-    // checks if `tag` exists in tags[]
     query = query.contains("tags", [tag]);
   }
 
   if (search) {
-    // simple case-insensitive search on title + summary
-    // (you can later switch to full-text search)
     const pattern = `%${search}%`;
-    query = query.or(
-      `title.ilike.${pattern},summary.ilike.${pattern}`
-    );
+    query = query.or(`title.ilike.${pattern},summary.ilike.${pattern}`);
   }
 
   const { data, error } = await query;
