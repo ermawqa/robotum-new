@@ -3,10 +3,18 @@ import Navbar from "@components/sections/common-sections/Navbar";
 import FooterSection from "@components/sections/common-sections/FooterSection";
 import HeroSection from "@components/sections/homepage-sections/HeroSection";
 import PageLoader from "@components/sections/common-sections/PageLoader";
+import SectionLoader from "@/components/sections/common-sections/SectionLoader";
 import NewsTicker from "@components/sections/common-sections/NewsTicker";
 
 // Lazily load below-the-fold sections to reduce initial bundle size
 import { lazy, Suspense, useEffect } from "react";
+
+// FOR TESTING PURPOSES ONLY
+// const MissionSection = lazy(
+//   () => new Promise(resolve =>
+//     setTimeout(() => resolve(import("@components/sections/homepage-sections/MissionSection")), 5500)
+//   )
+// );
 
 const MissionSection = lazy(
   () => import("@components/sections/homepage-sections/MissionSection"),
@@ -43,7 +51,7 @@ const Home = () => {
         /> */}
         <HeroSection />
 
-        <Suspense fallback={<PageLoader />}>
+        <Suspense fallback={<SectionLoader />}>
           <MissionSection />
           <ProjectSection />
           <EventSection />

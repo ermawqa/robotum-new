@@ -1,39 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
-import { supabase } from "@lib/supabaseClient"; // adjust path if needed
 
-const FaqSection = () => {
-  const [faqs, setFaqs] = useState([]);
+const FaqSection = ({ faqs, errorMsg }) => {
   const [openIndex, setOpenIndex] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [errorMsg, setErrorMsg] = useState("");
 
   const toggleAnswer = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
-
-  useEffect(() => {
-    const loadFaqs = async () => {
-      setLoading(true);
-      setErrorMsg("");
-
-      const { data, error } = await supabase
-        .from("faqs") // table name in Supabase
-        .select("id, question, answer, category, created_at")
-        .order("created_at", { ascending: true });
-
-      if (error) {
-        console.error("Error loading FAQs:", error);
-        setErrorMsg("Failed to load FAQs. Please try again later.");
-      } else {
-        setFaqs(data || []);
-      }
-
-      setLoading(false);
-    };
-
-    loadFaqs();
-  }, []);
 
   return (
     <section className="section-container font-sans section-dark-primary surface-pattern">
@@ -42,19 +15,13 @@ const FaqSection = () => {
           Frequently Asked <span className="text-gradient">Questions</span>
         </h2>
 
-        {loading && (
-          <div className="text-center text-sm text-white/60">
-            Loading FAQs…
-          </div>
-        )}
-
-        {!loading && errorMsg && (
-          <div className="text-center text-sm text-red-400">
+        {errorMsg && (
+          <div className="text-center text-sm text-red-400 mb-6">
             {errorMsg}
           </div>
         )}
 
-        {!loading && !errorMsg && (
+        {!errorMsg && (
           <div className="space-y-8">
             {faqs.map((item, index) => (
               <div key={item.id ?? index} className="space-y-3">
