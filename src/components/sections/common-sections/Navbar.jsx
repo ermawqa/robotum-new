@@ -22,7 +22,7 @@ const NAV_LINKS = [
 const PROJECT_TABS = [
   { label: "Technical", key: "technical" },
   { label: "Operations", key: "operations" },
-  { label: "Innovation & Entrepreneurship", key: "innovation" },
+  { label: "Innovation & Entrepreneurship", key: "innovation-and-entrepreneurship" },
 ];
 
 function ProjectDropdown({
