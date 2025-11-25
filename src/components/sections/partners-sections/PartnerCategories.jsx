@@ -1,8 +1,54 @@
 import * as assets from "@assets";
 import ImageFrame from "@components/ui/ImageFrame";
-import { partners } from "@data";
+import { useEffect, useState } from "react";
+import { supabase } from "@lib/supabaseClient";
 
 const PartnerCategories = () => {
+  const [partners, setPartners] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [errorMsg, setErrorMsg] = useState("");
+
+  useEffect(() => {
+    const loadPartners = async () => {
+      setLoading(true);
+      setErrorMsg("");
+
+      const { data, error } = await supabase
+        .from("partners")
+        .select("id, name, category, logo_url, website_url, is_active, priority, created_at")
+        .eq("is_active", true)
+        .order("category", { ascending: true })
+        .order("priority", { ascending: true });
+
+      if (error) {
+        console.error("Error loading partners:", error);
+        setErrorMsg("Failed to load partners.");
+      } else {
+        setPartners(data ?? []);
+      }
+
+      setLoading(false);
+    };
+
+    loadPartners();
+  }, []);
+
+  const grouped = partners.reduce((acc, item) => {
+    const cat = formatCategory(item.category);
+    if (!acc[cat]) acc[cat] = [];
+    acc[cat].push(item);
+    return acc;
+  }, {});
+
+  function formatCategory(category) {
+    if (!category) return "Partner";
+    return category
+      .toString()
+      .toLowerCase()
+      .replace(/_/g, " ")
+      .replace(/\b\w/g, (c) => c.toUpperCase());
+  }
+
   return (
     <section
       id="partner-categories"
@@ -31,10 +77,8 @@ const PartnerCategories = () => {
           </div>
         </div>
 
-        {/* Partner categories grid */}
-        {partners.map((type, idx) => (
-          <div key={idx} className="text-center relative animate-fadeIn">
-            {/* Decorative divider with gradient */}
+        {Object.entries(grouped).map(([category, items], idx) => (
+          <div key={category} className="text-center relative animate-fadeIn">
             {idx > 0 && (
               <div
                 className="absolute -top-10 left-1/2 -translate-x-1/2 w-2/3 h-px 
@@ -43,16 +87,16 @@ const PartnerCategories = () => {
             )}
 
             <h3 className="heading heading-h2 text-slate-50 mb-12 font-semibold">
-              {type.title}
+              {category}
             </h3>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 sm:gap-10 place-items-center">
-              {type.partners.map((p, i) => (
+              {items.map((p) => (
                 <a
-                  key={i}
-                  href={p.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  key={p.id}
+                  href={p.website_url || "#"}
+                  target={p.website_url ? "_blank" : undefined}
+                  rel={p.website_url ? "noopener noreferrer" : undefined}
                   aria-label={p.name}
                   title={p.name}
                   className="group relative w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center 
@@ -63,7 +107,7 @@ const PartnerCategories = () => {
                 >
                   <div className="absolute inset-0 bg-linear-to-tr from-accent/0 via-accent/10 to-[#7C3AED]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
                   <ImageFrame
-                    src={p.logo}
+                    src={p.logo_url}
                     alt={p.name}
                     fit="contain"
                     variant="none"
