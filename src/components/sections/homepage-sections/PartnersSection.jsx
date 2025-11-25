@@ -1,5 +1,7 @@
-import { partners as partnerGroups } from "@data";
+import { useEffect, useState } from "react";
 import Button from "@components/ui/Button";
+import SectionLoader from "@components/sections/common-sections/SectionLoader";
+import { supabase } from "@lib/supabaseClient";
 
 /**
  * PartnersSection
@@ -8,10 +10,41 @@ import Button from "@components/ui/Button";
  * - Accessible, responsive, and uses globals.css tokens.
  */
 export default function PartnersSection() {
-  // Flatten all categories into a single list while retaining the group title
-  const allPartners = partnerGroups.flatMap((group) =>
-    group.partners.map((p) => ({ ...p, groupTitle: group.title })),
-  );
+  const [partners, setPartners] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [errorMsg, setErrorMsg] = useState("");
+
+  useEffect(() => {
+    const loadPartners = async () => {
+      setLoading(true);
+      setErrorMsg("");
+
+      const { data, error } = await supabase
+        .from("partners")
+        .select("id, name, category, logo_url, website_url, is_active, priority, created_at")
+        .eq("is_active", true)
+        .order("priority", { ascending: true })
+        .order("created_at", { ascending: true });
+
+      if (error) {
+        console.error("Error loading partners:", error);
+        setErrorMsg("Failed to load partners. Please try again later.");
+        setPartners([]);
+      } else {
+        setPartners(data ?? []);
+      }
+
+      setLoading(false);
+    };
+
+    loadPartners();
+  }, []);
+
+  // Map Supabase rows into the shape used by the UI
+  const allPartners = partners.map((p) => ({
+    ...p,
+    groupTitle: formatCategory(p.category),
+  }));
 
   // Duplicate arrays to create seamless marquee loops (for desktop/tablet)
   const laneA = [...allPartners, ...allPartners];
@@ -46,64 +79,77 @@ export default function PartnersSection() {
         </div>
       </div>
 
-      {/* DESKTOP / TABLET: marquee lanes */}
-      <div className="hidden sm:block">
-        <div
-          className="relative w-full overflow-hidden rounded-2xl bg-white ring-1 ring-accent/15"
-          aria-live="polite"
-        >
-          {/* Left/Right decorative fades */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-linear-to-r from-white to-transparent z-20" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-linear-to-l from-white to-transparent z-20" />
-
-          {/* Lane A (left to right) */}
-          <div
-            className="group whitespace-nowrap"
-            aria-label="Partners marquee lane A"
-            role="list"
-          >
-            <div className="flex min-w-full items-center gap-10 sm:gap-12 py-5 sm:py-6 px-6 animate-marquee motion-reduce:animate-none">
-              {laneA.map((partner, idx) => (
-                <LogoItem key={`A-${partner.name}-${idx}`} partner={partner} />
-              ))}
-            </div>
-          </div>
-
-          {/* Divider between lanes */}
-          <div className="h-px bg-accent/10" />
-
-          {/* Lane B (right to left) */}
-          <div
-            className="group whitespace-nowrap"
-            aria-label="Partners marquee lane B"
-            role="list"
-          >
-            <div className="flex min-w-full items-center gap-10 sm:gap-12 py-5 sm:py-6 px-6 animate-marquee-reverse motion-reduce:animate-none">
-              {laneB.map((partner, idx) => (
-                <LogoItem key={`B-${partner.name}-${idx}`} partner={partner} />
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* MOBILE: uniform logo tiles (no animation) */}
-      <div className="sm:hidden">
-        <div
-          className="w-full rounded-2xl bg-white ring-1 ring-accent/15 px-4 py-5"
-          aria-label="Partners logos"
-        >
-          <div className="grid grid-cols-2 gap-3">
-            {allPartners.map((partner) => (
-              <LogoItem key={partner.name} partner={partner} variant="tile" />
-            ))}
-          </div>
-        </div>
-
-        <p className="mt-4 text-xs text-[#0A1A2F]/60 text-center">
-          Tap a logo to visit the partner&apos;s website.
+      {/* Loading / Error / Content states */}
+      {loading ? (
+        <SectionLoader />
+      ) : errorMsg ? (
+        <p className="text-center text-sm text-red-400">{errorMsg}</p>
+      ) : allPartners.length === 0 ? (
+        <p className="text-center text-sm text-white/60">
+          Partners will appear here soon.
         </p>
-      </div>
+      ) : (
+        <>
+          {/* DESKTOP / TABLET: marquee lanes */}
+          <div className="hidden sm:block">
+            <div
+              className="relative w-full overflow-hidden rounded-2xl bg-white ring-1 ring-accent/15"
+              aria-live="polite"
+            >
+              {/* Left/Right decorative fades */}
+              <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-linear-to-r from-white to-transparent z-20" />
+              <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-linear-to-l from-white to-transparent z-20" />
+
+              {/* Lane A (left to right) */}
+              <div
+                className="group whitespace-nowrap"
+                aria-label="Partners marquee lane A"
+                role="list"
+              >
+                <div className="flex min-w-full items-center gap-10 sm:gap-12 py-5 sm:py-6 px-6 animate-marquee motion-reduce:animate-none">
+                  {laneA.map((partner, idx) => (
+                    <LogoItem key={`A-${partner.id ?? idx}`} partner={partner} />
+                  ))}
+                </div>
+              </div>
+
+              {/* Divider between lanes */}
+              <div className="h-px bg-accent/10" />
+
+              {/* Lane B (right to left) */}
+              <div
+                className="group whitespace-nowrap"
+                aria-label="Partners marquee lane B"
+                role="list"
+              >
+                <div className="flex min-w-full items-center gap-10 sm:gap-12 py-5 sm:py-6 px-6 animate-marquee-reverse motion-reduce:animate-none">
+                  {laneB.map((partner, idx) => (
+                    <LogoItem key={`B-${partner.id ?? idx}`} partner={partner} />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* MOBILE: uniform logo tiles (no animation) */}
+          <div className="sm:hidden">
+            <div
+              className="w-full rounded-2xl bg-white ring-1 ring-accent/15 px-4 py-5"
+              aria-label="Partners logos"
+            >
+              <div className="grid grid-cols-2 gap-3">
+                {allPartners.map((partner) => (
+                  <LogoItem key={partner.id} partner={partner} variant="tile" />
+                ))}
+              </div>
+            </div>
+
+            <p className="mt-4 text-xs text-[#0A1A2F]/60 text-center">
+              Tap a logo to visit the partner&apos;s website.
+            </p>
+          </div>
+        </>
+      )}
     </section>
   );
 }
@@ -115,18 +161,24 @@ export default function PartnersSection() {
  */
 function LogoItem({ partner, variant = "default" }) {
   const isTile = variant === "tile";
+  const hasLink = !!partner.website_url;
+
+  const commonClasses =
+    "cursor-pointer select-none group/logo focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/60";
+
+  const wrapperClassName = isTile
+    ? `group/logo block rounded-xl bg-[#F3F4F6] px-3 py-3 border border-accent/10 items-center justify-center ${commonClasses}`
+    : `inline-flex flex-col items-center justify-center rounded-md ${commonClasses}`;
+
+  const Wrapper = hasLink ? "a" : "div";
 
   return (
-    <a
-      href={partner.link}
-      target="_blank"
-      rel="noopener noreferrer"
+    <Wrapper
+      href={hasLink ? partner.website_url : undefined}
+      target={hasLink ? "_blank" : undefined}
+      rel={hasLink ? "noopener noreferrer" : undefined}
       role="listitem"
-      className={
-        isTile
-          ? "group/logo block rounded-xl bg-[#F3F4F6] px-3 py-3 border border-accent/10 items-center justify-center cursor-pointer select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
-          : "inline-flex flex-col items-center justify-center cursor-pointer select-none group/logo focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 rounded-md"
-      }
+      className={wrapperClassName}
       aria-label={partner.name}
       title={partner.name}
     >
@@ -139,7 +191,7 @@ function LogoItem({ partner, variant = "default" }) {
 
       {/* Logo */}
       <img
-        src={partner.logo}
+        src={partner.logo_url}
         alt={partner.name}
         className={
           isTile
@@ -149,6 +201,19 @@ function LogoItem({ partner, variant = "default" }) {
         loading="lazy"
         draggable="false"
       />
-    </a>
+    </Wrapper>
   );
+}
+
+/**
+ * Format enum category into a human-readable group title.
+ * Example: "industry_partner" -> "Industry Partner"
+ */
+function formatCategory(category) {
+  if (!category) return "Partner";
+  return category
+    .toString()
+    .toLowerCase()
+    .replace(/_/g, " ")
+    .replace(/\b\w/g, (c) => c.toUpperCase());
 }
