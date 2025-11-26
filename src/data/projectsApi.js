@@ -13,6 +13,7 @@ const PROJECT_FIELDS = `
   category,
   summary,
   description,
+  status,
   team_name,
   used_tools,
   future_plans,
@@ -28,7 +29,7 @@ export async function fetchFeaturedProjects({ limit } = {}) {
   let query = supabase
     .from("projects")
     .select(PROJECT_FIELDS)
-    .eq("is_featured", true)              // ✅ correct column
+    .eq("is_featured", true)
     .order("created_at", { ascending: false });
 
   if (typeof limit === "number") {
@@ -67,14 +68,7 @@ export async function fetchProjectBySlug(slug) {
  * Fetch projects with optional filters (for Projects list page).
  */
 export async function fetchProjects(options = {}) {
-  const {
-    category,
-    // status,    // ❌ comment out unless you actually add this column
-    teamName,
-    tag,
-    search,
-    isFeatured,
-  } = options;
+  const { category, teamName, tag, search, isFeatured } = options;
 
   let query = supabase
     .from("projects")
@@ -85,17 +79,12 @@ export async function fetchProjects(options = {}) {
     query = query.eq("category", category);
   }
 
-  // If you *do* later add a `status` column, you can restore this:
-  // if (status) {
-  //   query = query.eq("status", status);
-  // }
-
   if (teamName) {
     query = query.eq("team_name", teamName);
   }
 
   if (typeof isFeatured === "boolean") {
-    query = query.eq("is_featured", isFeatured);   // ✅ correct
+    query = query.eq("is_featured", isFeatured);
   }
 
   if (tag) {
@@ -115,4 +104,110 @@ export async function fetchProjects(options = {}) {
   }
 
   return data ?? [];
+}
+
+/* -------------------------------------------------------
+   ADMIN HELPERS
+   Used by AdminProjects page (CRUD)
+------------------------------------------------------- */
+
+/**
+ * Admin: fetch all projects (no filters).
+ * You can reuse this for the admin list.
+ */
+export async function adminFetchProjects() {
+  const { data, error } = await supabase
+    .from("projects")
+    .select(PROJECT_FIELDS)
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    console.error("Error fetching projects (admin):", error);
+    throw error;
+  }
+
+  return data ?? [];
+}
+
+/**
+ * Admin: insert OR update a project.
+ * Expects a `project` object (from your admin form).
+ */
+export async function adminUpsertProject(project) {
+  // Slug: either from form, or auto-generated from title
+  let slug = (project.slug || "").trim();
+  if (!slug && project.title) {
+    slug = project.title
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+  }
+
+  // Tags: allow either array or comma-separated string
+  const tags = Array.isArray(project.tags)
+    ? project.tags
+    : (project.tags || "")
+        .split(",")
+        .map((t) => t.trim())
+        .filter((t) => t.length > 0);
+
+  const payload = {
+    slug,
+    title: project.title?.trim(),
+    category: project.category, // must match project_category enum
+    summary: project.summary?.trim(),
+    description: project.description?.trim(),
+    status: project.status || null, // if you use project_status enum
+    team_name: project.team_name?.trim(),
+    used_tools: project.used_tools?.trim() || null,
+    future_plans: project.future_plans?.trim() || null,
+    cover_url: project.cover_url?.trim(),
+    tags,
+    is_featured: !!project.is_featured,
+  };
+
+  // Basic validation to avoid DB errors
+  if (!payload.title) throw new Error("Title is required.");
+  if (!payload.slug) throw new Error("Slug is required.");
+  if (!payload.summary) throw new Error("Summary is required.");
+  if (!payload.description) throw new Error("Description is required.");
+  if (!payload.team_name) throw new Error("Team name is required.");
+  if (!payload.cover_url) throw new Error("Cover image URL is required.");
+  if (!payload.category) throw new Error("Category is required.");
+  if (!Array.isArray(payload.tags) || payload.tags.length === 0) {
+    throw new Error("At least one tag is required.");
+  }
+
+  if (project.id) {
+    // Update existing project
+    const { error } = await supabase
+      .from("projects")
+      .update(payload)
+      .eq("id", project.id);
+
+    if (error) {
+      console.error("Error updating project:", error);
+      throw error;
+    }
+  } else {
+    // Insert new project
+    const { error } = await supabase.from("projects").insert(payload);
+
+    if (error) {
+      console.error("Error inserting project:", error);
+      throw error;
+    }
+  }
+}
+
+/**
+ * Admin: delete project by id
+ */
+export async function adminDeleteProject(id) {
+  const { error } = await supabase.from("projects").delete().eq("id", id);
+
+  if (error) {
+    console.error("Error deleting project:", error);
+    throw error;
+  }
 }
