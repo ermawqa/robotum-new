@@ -15,3 +15,45 @@ export async function fetchFaqs() {
 
   return data ?? [];
 }
+
+const FAQ_SELECT = `
+  id,
+  created_at,
+  question,
+  answer,
+  category
+`;
+
+export async function adminFetchFaqs() {
+  const { data, error } = await supabase
+    .from("faqs")
+    .select(FAQ_SELECT)
+    .order("created_at", { ascending: true });
+
+  if (error) throw error;
+  return data ?? [];
+}
+
+export async function adminUpsertFaq(faq) {
+  const payload = {
+    question: faq.question.trim(),
+    answer: faq.answer.trim(),
+    category: faq.category.trim(), // enum, NOT NULL
+  };
+
+  if (faq.id) {
+    const { error } = await supabase
+      .from("faqs")
+      .update(payload)
+      .eq("id", faq.id);
+    if (error) throw error;
+  } else {
+    const { error } = await supabase.from("faqs").insert(payload);
+    if (error) throw error;
+  }
+}
+
+export async function adminDeleteFaq(id) {
+  const { error } = await supabase.from("faqs").delete().eq("id", id);
+  if (error) throw error;
+}

@@ -22,6 +22,7 @@ const Faqs = lazy(() => import("@pages/Faqs"));
 // 🔐 Admin pages (we'll create these)
 const AdminLogin = lazy(() => import("@pages/admin/AdminLogin"));
 const AdminDashboard = lazy(() => import("@pages/admin/AdminDashboard"));
+const AdminFaqs = lazy(() => import("@pages/admin/AdminFaqs"));
 
 export default function App() {
   return (
@@ -50,6 +51,15 @@ export default function App() {
           element={
             <AdminRoute>
               <AdminDashboard />
+            </AdminRoute>
+          }
+        />
+        {/* Admin Faqs area */}
+        <Route
+          path="/admin/faqs"
+          element={
+            <AdminRoute>
+              <AdminFaqs />
             </AdminRoute>
           }
         />
