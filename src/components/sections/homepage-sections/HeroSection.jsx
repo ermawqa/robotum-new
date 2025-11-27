@@ -1,6 +1,5 @@
 import * as assets from "@assets";
 import Button from "@components/ui/Button";
-import NewsTicker from "@components/sections/common-sections/NewsTicker";
 
 /**
  * HeroSection — minimal, creative, and responsive

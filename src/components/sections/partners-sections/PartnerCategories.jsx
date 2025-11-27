@@ -5,8 +5,8 @@ import { fetchActivePartners } from "@data";
 
 const PartnerCategories = () => {
   const [partners, setPartners] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [errorMsg, setErrorMsg] = useState("");
+  const [, setLoading] = useState(true);
+  const [, setErrorMsg] = useState("");
 
   useEffect(() => {
     const loadPartners = async () => {
