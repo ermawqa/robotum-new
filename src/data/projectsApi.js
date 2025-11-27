@@ -16,7 +16,6 @@ export const PROJECT_STATUS = [
   { value: "completed", label: "Completed" },
 ];
 
-
 /**
  * Base column list for all project queries.
  * Must match your actual DB schema.
@@ -83,7 +82,7 @@ export async function fetchProjectBySlug(slug) {
  * Fetch projects with optional filters (for Projects list page).
  */
 export async function fetchProjects(options = {}) {
-  const { category, teamName, tag, search, isFeatured } = options;
+  const { category, tag, search, isFeatured } = options;
 
   let query = supabase
     .from("projects")

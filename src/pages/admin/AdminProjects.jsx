@@ -6,8 +6,8 @@ import {
   adminFetchProjects,
   adminUpsertProject,
   adminDeleteProject,
-  PROJECT_CATEGORIES, 
-  PROJECT_STATUS, 
+  PROJECT_CATEGORIES,
+  PROJECT_STATUS,
 } from "@data";
 
 import AdminErrorBanner from "@components/admin/AdminErrorBanner";

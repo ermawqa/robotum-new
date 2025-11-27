@@ -2,7 +2,12 @@ import { useEffect, useState } from "react";
 import AdminLayout from "@components/admin/AdminLayout";
 import Button from "@components/ui/Button";
 
-import { adminFetchFaqs, adminUpsertFaq, adminDeleteFaq, FAQ_CATEGORIES } from "@data";
+import {
+  adminFetchFaqs,
+  adminUpsertFaq,
+  adminDeleteFaq,
+  FAQ_CATEGORIES,
+} from "@data";
 import AdminErrorBanner from "@components/admin/AdminErrorBanner";
 import AdminListHeader from "@components/admin/AdminListHeader";
 import AdminSideCard from "@components/admin/AdminSideCard";
