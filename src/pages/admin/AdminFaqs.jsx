@@ -2,7 +2,10 @@ import { useEffect, useState } from "react";
 import AdminLayout from "@components/admin/AdminLayout";
 import Button from "@components/ui/Button";
 
-import { adminFetchFaqs, adminUpsertFaq, adminDeleteFaq } from "@data/faqsApi";
+import { adminFetchFaqs, adminUpsertFaq, adminDeleteFaq } from "@data";
+import AdminErrorBanner from "@components/admin/AdminErrorBanner";
+import AdminListHeader from "@components/admin/AdminListHeader";
+import AdminSideCard from "@components/admin/AdminSideCard";
 
 const FAQ_CATEGORIES = [
   { value: "About RoboTUM", label: "About RoboTUM" },
@@ -24,7 +27,7 @@ export default function AdminFaqs() {
   const [form, setForm] = useState({
     question: "",
     answer: "",
-    category: FAQ_CATEGORIES[0].value, // 👈 default to first enum value
+    category: FAQ_CATEGORIES[0].value,
   });
 
   const loadFaqs = async () => {
@@ -51,7 +54,7 @@ export default function AdminFaqs() {
     setForm({
       question: "",
       answer: "",
-      category: FAQ_CATEGORIES[0].value, // 👈 same default
+      category: FAQ_CATEGORIES[0].value,
     });
   };
 
@@ -60,7 +63,7 @@ export default function AdminFaqs() {
     setForm({
       question: faq.question || "",
       answer: faq.answer || "",
-      category: faq.category || "",
+      category: faq.category || FAQ_CATEGORIES[0].value,
     });
   };
 
@@ -101,28 +104,23 @@ export default function AdminFaqs() {
     }
   };
 
+  const isEditing = Boolean(editingFaq);
+
   return (
     <AdminLayout
       title="FAQs"
       description="Manage questions and answers shown on the public FAQ page."
     >
-      {errorMsg && (
-        <div className="mb-4 rounded-lg border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-200">
-          {errorMsg}
-        </div>
-      )}
+      <AdminErrorBanner message={errorMsg} />
 
       <div className="grid gap-8 md:grid-cols-[2fr_minmax(0,1.5fr)] items-start">
         {/* List */}
         <div>
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-sm font-semibold text-white/80">
-              Existing FAQs
-            </h2>
-            <Button size="sm" variant="secondary" onClick={startNew}>
-              + New FAQ
-            </Button>
-          </div>
+          <AdminListHeader
+            title="Existing FAQs"
+            buttonLabel="+ New FAQ"
+            onButtonClick={startNew}
+          />
 
           {loading ? (
             <p className="text-sm text-white/60">Loading…</p>
@@ -173,10 +171,14 @@ export default function AdminFaqs() {
         </div>
 
         {/* Form */}
-        <div className="rounded-xl border border-white/10 bg-white/5 px-4 py-5">
-          <h2 className="text-sm font-semibold text-white/80 mb-3">
-            {editingFaq ? "Edit FAQ" : "New FAQ"}
-          </h2>
+        <AdminSideCard
+          title={isEditing ? "Edit FAQ" : "New FAQ"}
+          description={
+            isEditing
+              ? "Update the FAQ content and category."
+              : "Create a new FAQ entry for the public page."
+          }
+        >
           <form className="space-y-4" onSubmit={handleSave}>
             <div className="space-y-1">
               <label className="text-xs text-white/70" htmlFor="faq-question">
@@ -231,7 +233,7 @@ export default function AdminFaqs() {
             </div>
 
             <div className="flex justify-end gap-2 pt-2">
-              {editingFaq && (
+              {isEditing && (
                 <Button
                   type="button"
                   variant="secondary"
@@ -251,7 +253,7 @@ export default function AdminFaqs() {
               </Button>
             </div>
           </form>
-        </div>
+        </AdminSideCard>
       </div>
     </AdminLayout>
   );

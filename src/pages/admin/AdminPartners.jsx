@@ -1,12 +1,16 @@
-// src/pages/admin/AdminPartners.jsx
 import { useEffect, useState } from "react";
 import AdminLayout from "@components/admin/AdminLayout";
 import Button from "@components/ui/Button";
+
 import {
   adminFetchPartners,
   adminUpsertPartner,
   adminDeletePartner,
-} from "@data/partnersApi";
+} from "@data";
+
+import AdminErrorBanner from "@components/admin/AdminErrorBanner";
+import AdminListHeader from "@components/admin/AdminListHeader";
+import AdminSideCard from "@components/admin/AdminSideCard";
 
 // ⚠️ MUST match your partner_category enum values in Supabase
 const PARTNER_CATEGORIES = [
@@ -33,7 +37,7 @@ export default function AdminPartners() {
   const [errorMsg, setErrorMsg] = useState("");
 
   const [editingPartner, setEditingPartner] = useState(null);
-  const [form, setForm] = useState(emptyForm);
+  const [form, setForm] = useState(emptyForm());
 
   const loadPartners = async () => {
     setLoading(true);
@@ -112,28 +116,23 @@ export default function AdminPartners() {
     }
   };
 
+  const isEditing = Boolean(editingPartner);
+
   return (
     <AdminLayout
       title="Partners"
       description="Manage RoboTUM partners shown on the public site."
     >
-      {errorMsg && (
-        <div className="mb-4 rounded-lg border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-200">
-          {errorMsg}
-        </div>
-      )}
+      <AdminErrorBanner message={errorMsg} />
 
       <div className="grid gap-8 md:grid-cols-[2fr_minmax(0,1.6fr)] items-start">
         {/* List */}
         <div>
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-sm font-semibold text-white/80">
-              Existing partners
-            </h2>
-            <Button size="sm" variant="secondary" onClick={startNew}>
-              + New partner
-            </Button>
-          </div>
+          <AdminListHeader
+            title="Existing partners"
+            buttonLabel="+ New partner"
+            onButtonClick={startNew}
+          />
 
           {loading ? (
             <p className="text-sm text-white/60">Loading…</p>
@@ -171,7 +170,7 @@ export default function AdminPartners() {
                           }`}
                         >
                           <span className="h-1.5 w-1.5 rounded-full bg-current" />
-                          {partner.is_active ? "Active" : "Hidden"}
+                          {partner.is_active ? "Active" : "Inactive"}
                         </span>
                       </div>
                       <p className="text-[11px] text-white/60">
@@ -187,7 +186,7 @@ export default function AdminPartners() {
                           href={partner.website_url}
                           target="_blank"
                           rel="noreferrer"
-                          className="text-[11px] text-accent hover:underline"
+                          className="text-[11px] text-accent hover:underline break-all"
                         >
                           {partner.website_url}
                         </a>
@@ -218,10 +217,14 @@ export default function AdminPartners() {
         </div>
 
         {/* Form */}
-        <div className="rounded-xl border border-white/10 bg-white/5 px-4 py-5">
-          <h2 className="text-sm font-semibold text-white/80 mb-3">
-            {editingPartner ? "Edit partner" : "New partner"}
-          </h2>
+        <AdminSideCard
+          title={isEditing ? "Edit partner" : "New partner"}
+          description={
+            isEditing
+              ? "Update partner details and visibility."
+              : "Create a new partner entry for the public site."
+          }
+        >
           <form className="space-y-4" onSubmit={handleSave}>
             {/* Name */}
             <div className="space-y-1">
@@ -357,7 +360,7 @@ export default function AdminPartners() {
 
             {/* Actions */}
             <div className="flex justify-end gap-2 pt-2">
-              {editingPartner && (
+              {isEditing && (
                 <Button
                   type="button"
                   variant="secondary"
@@ -377,7 +380,7 @@ export default function AdminPartners() {
               </Button>
             </div>
           </form>
-        </div>
+        </AdminSideCard>
       </div>
     </AdminLayout>
   );

@@ -1,60 +1,39 @@
+// src/pages/admin/AdminEvents.jsx
 import { useEffect, useState } from "react";
 import AdminLayout from "@components/admin/AdminLayout";
 import Button from "@components/ui/Button";
-import { adminFetchEvents, adminUpsertEvent, adminDeleteEvent } from "@data";
+
+import {
+  adminFetchEvents,
+  adminUpsertEvent,
+  adminDeleteEvent,
+  EVENT_CATEGORY_OPTIONS,
+  EVENT_FORMAT_OPTIONS,
+  emptyForm,
+  toLocalInputValue,
+} from "@data";
+
+import AdminErrorBanner from "@components/admin/AdminErrorBanner";
+import AdminListHeader from "@components/admin/AdminListHeader";
+import AdminSideCard from "@components/admin/AdminSideCard";
+
 import { formatEventDateRange } from "@utils/date-range";
-
-// Adjust these to match your Supabase enums
-const EVENT_CATEGORY_OPTIONS = [
-  { value: "Hackathon", label: "Hackathon" },
-  { value: "Workshop", label: "Workshop" },
-  { value: "Meetup", label: "Meetup" },
-  { value: "Conference", label: "Conference" },
-  { value: "Info Event", label: "Info Event" },
-];
-
-const EVENT_FORMAT_OPTIONS = [
-  { value: "Offline", label: "Offline" },
-  { value: "Online", label: "Online" },
-];
-
-// helper to convert ISO (or timestamptz string) -> datetime-local value
-function toLocalInputValue(value) {
-  if (!value) return "";
-  const d = new Date(value);
-  if (Number.isNaN(d.getTime())) return "";
-  // YYYY-MM-DDTHH:mm (browser local)
-  return d.toISOString().slice(0, 16);
-}
 
 export default function AdminEvents() {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+  const [successMsg, setSuccessMsg] = useState("");
 
   const [editing, setEditing] = useState(null); // null = new
-
-  const [form, setForm] = useState({
-    title: "",
-    slug: "",
-    category: EVENT_CATEGORY_OPTIONS[0].value,
-    format: EVENT_FORMAT_OPTIONS[0].value,
-    start_at: "",
-    end_at: "",
-    location_name: "",
-    location_url: "",
-    is_featured: false,
-    registration_url: "",
-    summary: "",
-    description: "",
-    cover_url: "",
-  });
+  const [form, setForm] = useState(emptyForm());
 
   // Load events
   const loadEvents = async () => {
     setLoading(true);
     setErrorMsg("");
+    setSuccessMsg("");
 
     try {
       const data = await adminFetchEvents();
@@ -62,7 +41,8 @@ export default function AdminEvents() {
     } catch (err) {
       console.error("Error loading events (admin):", err);
       setErrorMsg(
-        "Failed to load events. Please try again or contact an admin.",
+        err.message ||
+          "Failed to load events. Please try again or contact an admin.",
       );
     } finally {
       setLoading(false);
@@ -75,25 +55,14 @@ export default function AdminEvents() {
 
   const resetForm = () => {
     setEditing(null);
-    setForm({
-      title: "",
-      slug: "",
-      category: EVENT_CATEGORY_OPTIONS[0].value,
-      format: EVENT_FORMAT_OPTIONS[0].value,
-      start_at: "",
-      end_at: "",
-      location_name: "",
-      location_url: "",
-      is_featured: false,
-      registration_url: "",
-      summary: "",
-      description: "",
-      cover_url: "",
-    });
+    setForm(emptyForm());
   };
 
   const handleEdit = (ev) => {
     setEditing(ev);
+    setErrorMsg("");
+    setSuccessMsg("");
+
     setForm({
       title: ev.title || "",
       slug: ev.slug || "",
@@ -123,6 +92,7 @@ export default function AdminEvents() {
     e.preventDefault();
     setSaving(true);
     setErrorMsg("");
+    setSuccessMsg("");
 
     try {
       await adminUpsertEvent({
@@ -130,6 +100,7 @@ export default function AdminEvents() {
         ...form,
       });
 
+      setSuccessMsg("Event saved successfully.");
       await loadEvents();
       resetForm();
     } catch (err) {
@@ -147,35 +118,39 @@ export default function AdminEvents() {
 
     try {
       await adminDeleteEvent(ev.id);
+      setSuccessMsg("Event deleted.");
       await loadEvents();
+      if (editing && editing.id === ev.id) {
+        resetForm();
+      }
     } catch (err) {
       console.error("Error deleting event:", err);
       setErrorMsg("Failed to delete event.");
     }
   };
 
+  const isEditing = Boolean(editing);
+
   return (
     <AdminLayout
       title="Events"
       description="Create, edit, and organize RoboTUM events."
     >
-      {errorMsg && (
-        <div className="mb-4 rounded-lg border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-200">
-          {errorMsg}
+      <AdminErrorBanner message={errorMsg} />
+      {successMsg && (
+        <div className="mb-4 rounded-lg border border-emerald-500/40 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-200">
+          {successMsg}
         </div>
       )}
 
       <div className="grid gap-8 lg:grid-cols-[2fr_minmax(0,1.4fr)] items-start">
         {/* LEFT: list of events */}
         <div>
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-sm font-semibold text-white/80">
-              Existing events
-            </h2>
-            <Button size="sm" variant="secondary" onClick={resetForm}>
-              + New event
-            </Button>
-          </div>
+          <AdminListHeader
+            title="Existing events"
+            buttonLabel="+ New event"
+            onButtonClick={resetForm}
+          />
 
           {loading ? (
             <p className="text-sm text-white/60">Loading events…</p>
@@ -186,7 +161,7 @@ export default function AdminEvents() {
           ) : (
             <ul className="space-y-3">
               {events.map((ev) => {
-                const isPast = new Date(ev.end_at) < new Date();
+                const isPast = new Date(ev.end_at || ev.start_at) < new Date();
                 return (
                   <li
                     key={ev.id}
@@ -256,11 +231,14 @@ export default function AdminEvents() {
         </div>
 
         {/* RIGHT: form */}
-        <div className="rounded-xl border border-white/10 bg-white/5 px-4 py-5">
-          <h2 className="text-sm font-semibold text-white/80 mb-3">
-            {editing ? "Edit event" : "New event"}
-          </h2>
-
+        <AdminSideCard
+          title={isEditing ? "Edit event" : "New event"}
+          description={
+            isEditing
+              ? "Update event details, schedule, and homepage visibility."
+              : "Create a new event that will appear on the events page and homepage."
+          }
+        >
           <form className="space-y-4" onSubmit={handleSave}>
             {/* Title + slug */}
             <div className="space-y-1">
@@ -478,21 +456,30 @@ export default function AdminEvents() {
             </div>
 
             {/* Featured */}
-            <div className="flex items-center gap-2 pt-1">
-              <input
-                id="ev-featured"
-                name="is_featured"
-                type="checkbox"
-                checked={form.is_featured}
-                onChange={handleChange}
-                className="h-4 w-4 rounded border-white/30 bg-black/40 text-accent focus-visible:ring-2 focus-visible:ring-accent"
-              />
+            <div className="flex items-center justify-between gap-3 pt-1">
               <label
                 htmlFor="ev-featured"
-                className="text-xs text-white/80 select-none"
+                className="flex items-center gap-2 text-xs text-white/80 select-none"
               >
-                Mark as featured (show in homepage events section)
+                <input
+                  id="ev-featured"
+                  name="is_featured"
+                  type="checkbox"
+                  checked={form.is_featured}
+                  onChange={handleChange}
+                  className="h-4 w-4 rounded border-white/30 bg-black/40 text-accent focus-visible:ring-2 focus-visible:ring-accent"
+                />
+                <span>Mark as featured (show on homepage)</span>
               </label>
+
+              {editing && (
+                <span className="text-[11px] text-white/40">
+                  Event ID:{" "}
+                  <span className="font-mono text-[10px]">
+                    {editing.id.slice(0, 8)}…
+                  </span>
+                </span>
+              )}
             </div>
 
             {/* Actions */}
@@ -517,7 +504,7 @@ export default function AdminEvents() {
               </Button>
             </div>
           </form>
-        </div>
+        </AdminSideCard>
       </div>
     </AdminLayout>
   );

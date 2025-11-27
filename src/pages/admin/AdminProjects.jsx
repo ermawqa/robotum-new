@@ -2,11 +2,16 @@
 import { useEffect, useState } from "react";
 import AdminLayout from "@components/admin/AdminLayout";
 import Button from "@components/ui/Button";
+
 import {
   adminFetchProjects,
   adminUpsertProject,
   adminDeleteProject,
-} from "@data"; // make sure these are exported from src/data/index.js
+} from "@data";
+
+import AdminErrorBanner from "@components/admin/AdminErrorBanner";
+import AdminListHeader from "@components/admin/AdminListHeader";
+import AdminSideCard from "@components/admin/AdminSideCard";
 
 // Enums (must match Supabase project_category & project_status)
 const PROJECT_CATEGORIES = [
@@ -24,7 +29,7 @@ const PROJECT_STATUS = [
   { value: "completed", label: "Completed" },
 ];
 
-const EMPTY_FORM = {
+const emptyForm = () => ({
   id: null,
   title: "",
   slug: "",
@@ -38,7 +43,7 @@ const EMPTY_FORM = {
   cover_url: "",
   tagsText: "", // comma-separated in the form
   is_featured: false,
-};
+});
 
 export default function AdminProjects() {
   const [projects, setProjects] = useState([]);
@@ -47,7 +52,7 @@ export default function AdminProjects() {
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
 
-  const [form, setForm] = useState(EMPTY_FORM);
+  const [form, setForm] = useState(emptyForm());
 
   // ---------- Load projects ----------
   const loadProjects = async () => {
@@ -74,7 +79,7 @@ export default function AdminProjects() {
 
   // ---------- Helpers ----------
   const resetForm = () => {
-    setForm(EMPTY_FORM);
+    setForm(emptyForm());
   };
 
   const startNew = () => {
@@ -99,7 +104,6 @@ export default function AdminProjects() {
       used_tools: project.used_tools || "",
       future_plans: project.future_plans || "",
       cover_url: project.cover_url || "",
-      // tags[] → comma string
       tagsText: (project.tags || []).join(", "),
       is_featured: !!project.is_featured,
     });
@@ -164,7 +168,6 @@ export default function AdminProjects() {
       await adminDeleteProject(project.id);
       setSuccessMsg("Project deleted.");
       await loadProjects();
-      // If we were editing this project, reset form
       if (form.id === project.id) {
         resetForm();
       }
@@ -184,17 +187,14 @@ export default function AdminProjects() {
     });
   };
 
+  const isEditing = Boolean(form.id);
+
   return (
     <AdminLayout
       title="Projects"
       description="Manage technical, operations, and innovation projects shown on the public site."
     >
-      {/* Messages */}
-      {errorMsg && (
-        <div className="mb-4 rounded-lg border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-200">
-          {errorMsg}
-        </div>
-      )}
+      <AdminErrorBanner message={errorMsg} />
       {successMsg && (
         <div className="mb-4 rounded-lg border border-emerald-500/40 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-200">
           {successMsg}
@@ -204,14 +204,11 @@ export default function AdminProjects() {
       <div className="grid gap-8 xl:grid-cols-[1.7fr_minmax(0,1.3fr)] items-start">
         {/* LEFT: List */}
         <div>
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-sm font-semibold text-white/80">
-              Existing projects
-            </h2>
-            <Button size="sm" variant="secondary" onClick={startNew}>
-              + New project
-            </Button>
-          </div>
+          <AdminListHeader
+            title="Existing projects"
+            buttonLabel="+ New project"
+            onButtonClick={startNew}
+          />
 
           {loading ? (
             <p className="text-sm text-white/60">Loading…</p>
@@ -305,11 +302,14 @@ export default function AdminProjects() {
         </div>
 
         {/* RIGHT: Form */}
-        <div className="rounded-xl border border-white/10 bg-white/5 px-4 py-5 max-h-[80vh] overflow-y-auto">
-          <h2 className="text-sm font-semibold text-white/80 mb-3">
-            {form.id ? "Edit project" : "New project"}
-          </h2>
-
+        <AdminSideCard
+          title={isEditing ? "Edit project" : "New project"}
+          description={
+            isEditing
+              ? "Update project details, tags, and homepage visibility."
+              : "Create a new project entry for the public site."
+          }
+        >
           <form className="space-y-4" onSubmit={handleSave}>
             {/* Title & slug */}
             <div className="space-y-1">
@@ -528,7 +528,7 @@ export default function AdminProjects() {
                 placeholder="robotics, ai, humanoid robots"
               />
               <p className="text-[11px] text-white/40">
-                These are stored as a text[] in the database.
+                These are stored as a <code>text[]</code> in the database.
               </p>
             </div>
 
@@ -557,7 +557,7 @@ export default function AdminProjects() {
 
             {/* Buttons */}
             <div className="flex justify-end gap-2 pt-3">
-              {form.id && (
+              {isEditing && (
                 <Button
                   type="button"
                   size="sm"
@@ -577,7 +577,7 @@ export default function AdminProjects() {
               </Button>
             </div>
           </form>
-        </div>
+        </AdminSideCard>
       </div>
     </AdminLayout>
   );
