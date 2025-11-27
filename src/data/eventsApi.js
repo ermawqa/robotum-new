@@ -1,20 +1,13 @@
 // src/data/eventsApi.js
 import { supabase } from "@lib/supabaseClient";
 
-export const EVENT_CATEGORIES = [
-  "Hackathons",
-  "Info Events",
-  "Conferences",
-  "Workshops",
-  "Meetups",
-];
 // Adjust these to match your Supabase enums
 export const EVENT_CATEGORY_OPTIONS = [
-  { value: "Hackathon", label: "Hackathon" },
   { value: "Workshop", label: "Workshop" },
-  { value: "Meetup", label: "Meetup" },
-  { value: "Conference", label: "Conference" },
-  { value: "Info Event", label: "Info Event" },
+  { value: "Tech & Robotics", label: "Tech & Robotics" },
+  { value: "Social & Community", label: "Social & Community" },
+  { value: "Hackathon", label: "Hackathon" },
+  { value: "Info & Orientation", label: "Info & Orientation" },
 ];
 
 export const EVENT_FORMAT_OPTIONS = [

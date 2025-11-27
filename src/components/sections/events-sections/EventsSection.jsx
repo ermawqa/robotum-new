@@ -1,25 +1,20 @@
-// src/components/sections/events-sections/EventsSection.jsx
-
 import { useState, useMemo, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Button from "@components/ui/Button";
 import ImageFrame from "@components/ui/ImageFrame";
-import { EVENT_CATEGORIES } from "@data"; // keep your existing labels
-import { fetchEvents } from "@data"; // from eventsApi.js
+import { EVENT_CATEGORY_OPTIONS, fetchEvents } from "@data"; // use options from eventsApi.js
 import { formatEventDateRange } from "@utils/date-range";
 
-// Map EVENT_CATEGORIES (plural) labels → DB event.category values
-// Adjust these strings to match your event_category enum exactly.
+// Map UI labels → DB event.category values (from EVENT_CATEGORY_OPTIONS)
 const normalizeCategory = (label) => {
   if (!label || label === "All") return "All";
-  const map = {
-    Hackathons: "Hackathon",
-    "Info Events": "Info Event",
-    Conferences: "Conference",
-    Workshops: "Workshop",
-    Meetups: "Meetup",
-  };
-  return map[label] || label;
+
+  const match = EVENT_CATEGORY_OPTIONS.find(
+    (opt) => opt.label === label || opt.value === label,
+  );
+
+  // fall back to label if no match (defensive)
+  return match?.value || label;
 };
 
 export default function EventsSection() {
@@ -221,31 +216,34 @@ export default function EventsSection() {
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-3">
           {/* Category chips */}
           <div className="flex flex-wrap gap-2 sm:gap-3">
-            {["All", ...EVENT_CATEGORIES].map((cat) => {
-              const active = activeCategory === cat;
-              const singular = normalizeCategory(cat);
-              const countLabel =
-                singular === "All" ? undefined : counts[singular] || 0;
+            {["All", ...EVENT_CATEGORY_OPTIONS.map((opt) => opt.label)].map(
+              (cat) => {
+                const active = activeCategory === cat;
+                const singular = normalizeCategory(cat);
+                const countLabel =
+                  singular === "All" ? undefined : counts[singular] || 0;
 
-              return (
-                <button
-                  key={cat}
-                  onClick={() => setActiveCategory(cat)}
-                  className={`cursor-pointer px-5 py-2 text-sm md:text-base font-medium rounded-full transition-all duration-300 border ${
-                    active
-                      ? "bg-accent text-white border-accent shadow-[0_0_15px_rgba(59,130,246,0.4)] scale-[1.03]"
-                      : "border-white/20 text-white/80 hover:border-white/40 hover:text-white"
-                  }`}
-                >
-                  {cat}
-                  {typeof countLabel === "number" && singular !== "All" && (
-                    <span className="ml-2 inline-flex items-center justify-center rounded-full bg-white/10 px-2 py-0.5 text-[11px]">
-                      {countLabel}
-                    </span>
-                  )}
-                </button>
-              );
-            })}
+                return (
+                  <button
+                    key={cat}
+                    onClick={() => setActiveCategory(cat)}
+                    className={`cursor-pointer px-5 py-2 text-sm md:text-base font-medium rounded-full transition-all duration-300 border ${
+                      active
+                        ? "bg-accent text-white border-accent shadow-[0_0_15px_rgba(59,130,246,0.4)] scale-[1.03]"
+                        : "border-white/20 text-white/80 hover:border-white/40 hover:text-white"
+                    }`}
+                  >
+                    {cat}
+                    {typeof countLabel === "number" &&
+                      singular !== "All" && (
+                        <span className="ml-2 inline-flex items-center justify-center rounded-full bg-white/10 px-2 py-0.5 text-[11px]">
+                          {countLabel}
+                        </span>
+                      )}
+                  </button>
+                );
+              },
+            )}
           </div>
 
           {/* Timeframe segmented control */}
