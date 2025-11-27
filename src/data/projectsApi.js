@@ -13,7 +13,6 @@ const PROJECT_FIELDS = `
   summary,
   description,
   status,
-  team_name,
   used_tools,
   future_plans,
   cover_url,
@@ -76,10 +75,6 @@ export async function fetchProjects(options = {}) {
 
   if (category) {
     query = query.eq("category", category);
-  }
-
-  if (teamName) {
-    query = query.eq("team_name", teamName);
   }
 
   if (typeof isFeatured === "boolean") {
@@ -157,7 +152,6 @@ export async function adminUpsertProject(project) {
     summary: project.summary?.trim(),
     description: project.description?.trim(),
     status: project.status || null, // if you use project_status enum
-    team_name: project.team_name?.trim(),
     used_tools: project.used_tools?.trim() || null,
     future_plans: project.future_plans?.trim() || null,
     cover_url: project.cover_url?.trim(),
@@ -170,7 +164,6 @@ export async function adminUpsertProject(project) {
   if (!payload.slug) throw new Error("Slug is required.");
   if (!payload.summary) throw new Error("Summary is required.");
   if (!payload.description) throw new Error("Description is required.");
-  if (!payload.team_name) throw new Error("Team name is required.");
   if (!payload.cover_url) throw new Error("Cover image URL is required.");
   if (!payload.category) throw new Error("Category is required.");
   if (!Array.isArray(payload.tags) || payload.tags.length === 0) {
