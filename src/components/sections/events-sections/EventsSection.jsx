@@ -234,12 +234,11 @@ export default function EventsSection() {
                     }`}
                   >
                     {cat}
-                    {typeof countLabel === "number" &&
-                      singular !== "All" && (
-                        <span className="ml-2 inline-flex items-center justify-center rounded-full bg-white/10 px-2 py-0.5 text-[11px]">
-                          {countLabel}
-                        </span>
-                      )}
+                    {typeof countLabel === "number" && singular !== "All" && (
+                      <span className="ml-2 inline-flex items-center justify-center rounded-full bg-white/10 px-2 py-0.5 text-[11px]">
+                        {countLabel}
+                      </span>
+                    )}
                   </button>
                 );
               },

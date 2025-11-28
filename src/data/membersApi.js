@@ -52,10 +52,10 @@ export async function fetchTeamMembers() {
         membershipType === "Founders"
           ? "Founder"
           : membershipType === "Department Heads"
-          ? "Department Head"
-          : membershipType === "Project Leads"
-          ? "Project Lead"
-          : membershipType;
+            ? "Department Head"
+            : membershipType === "Project Leads"
+              ? "Project Lead"
+              : membershipType;
 
       return {
         id: m.id,
