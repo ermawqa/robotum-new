@@ -17,7 +17,7 @@ import AdminSideCard from "@components/admin/AdminSideCard";
 
 const emptyForm = () => ({
   id: null,
-  title: "",
+  name: "",
   slug: "",
   category: "technical",
   summary: "",
@@ -79,7 +79,7 @@ export default function AdminProjects() {
 
     setForm({
       id: project.id,
-      title: project.title || "",
+      name: project.name || "",
       slug: project.slug || "",
       category: project.category || "technical",
       summary: project.summary || "",
@@ -111,7 +111,7 @@ export default function AdminProjects() {
     try {
       const payload = {
         id: form.id,
-        title: form.title,
+        name: form.name,
         slug: form.slug,
         category: form.category,
         summary: form.summary,
@@ -141,7 +141,7 @@ export default function AdminProjects() {
   const handleDelete = async (project) => {
     if (
       !window.confirm(
-        `Delete project "${project.title}"? This cannot be undone.`,
+        `Delete project "${project.name}"? This cannot be undone.`,
       )
     ) {
       return;
@@ -209,7 +209,7 @@ export default function AdminProjects() {
                   <div className="space-y-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
                       <p className="text-sm font-medium text-white truncate">
-                        {p.title}
+                        {p.name}
                       </p>
                       <span className="inline-flex items-center gap-1 rounded-full bg-white/10 border border-white/15 px-2 py-0.5 text-[11px] text-white/70 capitalize">
                         {p.category === "innovation-and-entrepreneurship"
@@ -289,17 +289,17 @@ export default function AdminProjects() {
           }
         >
           <form className="space-y-4" onSubmit={handleSave}>
-            {/* Title & slug */}
+            {/* Name & slug */}
             <div className="space-y-1">
-              <label className="text-xs text-white/70" htmlFor="proj-title">
-                Title
+              <label className="text-xs text-white/70" htmlFor="proj-name">
+                Name
               </label>
               <input
-                id="proj-title"
-                name="title"
+                id="proj-name"
+                name="name"
                 type="text"
                 required
-                value={form.title}
+                value={form.name}
                 onChange={handleChange}
                 className="w-full rounded-lg border border-white/15 bg-black/30 px-3 py-2 text-sm text-white placeholder:text-white/40 outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:border-accent"
                 placeholder="Autonomous humanoid navigation stack"
@@ -308,7 +308,7 @@ export default function AdminProjects() {
 
             <div className="space-y-1">
               <label className="text-xs text-white/70" htmlFor="proj-slug">
-                Slug (optional, generated from title if empty)
+                Slug (optional, generated from name if empty)
               </label>
               <input
                 id="proj-slug"

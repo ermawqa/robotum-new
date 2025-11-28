@@ -11,7 +11,7 @@ export default function ProjectCard({ project }) {
       <div className="relative">
         <ImageFrame
           src={imageSrc}
-          alt={project.title}
+          alt={project.name}
           aspect="16/9"
           fit="cover"
           variant="soft"
@@ -22,7 +22,7 @@ export default function ProjectCard({ project }) {
       </div>
 
       <div className="p-5">
-        <h3 className="text-text1 font-semibold mb-1">{project.title}</h3>
+        <h3 className="text-text1 font-semibold mb-1">{project.name}</h3>
         <p className="text-text2 text-white/70 mb-4">{project.summary}</p>
 
         <div className="flex flex-wrap gap-2 mb-4">

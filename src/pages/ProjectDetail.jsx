@@ -42,7 +42,7 @@ export default function ProjectDetail() {
   // Update document title when project is loaded
   useEffect(() => {
     document.title = project
-      ? `${project.title} | RoboTUM`
+      ? `${project.name} | RoboTUM`
       : "Project | RoboTUM";
   }, [project]);
 
@@ -104,7 +104,7 @@ export default function ProjectDetail() {
             <div>
               <ImageFrame
                 src={project.cover_url}
-                alt={project.title}
+                alt={project.name}
                 aspect="16/9"
                 fit="cover"
                 variant="border"
@@ -113,7 +113,7 @@ export default function ProjectDetail() {
               />
             </div>
             <div className="flex flex-col">
-              <h1 className="heading heading-h1 mb-4">{project.title}</h1>
+              <h1 className="heading heading-h1 mb-4">{project.name}</h1>
               <span className="inline-block px-4 py-1 rounded-full text-xs md:text-sm bg-white/10 border border-white/10 mb-6 capitalize">
                 {formattedCategory}
               </span>

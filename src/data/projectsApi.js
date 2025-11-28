@@ -24,7 +24,7 @@ const PROJECT_FIELDS = `
   id,
   created_at,
   slug,
-  title,
+  name,
   category,
   summary,
   description,
@@ -103,7 +103,7 @@ export async function fetchProjects(options = {}) {
 
   if (search) {
     const pattern = `%${search}%`;
-    query = query.or(`title.ilike.${pattern},summary.ilike.${pattern}`);
+    query = query.or(`name.ilike.${pattern},summary.ilike.${pattern}`);
   }
 
   const { data, error } = await query;
@@ -144,10 +144,10 @@ export async function adminFetchProjects() {
  * Expects a `project` object (from your admin form).
  */
 export async function adminUpsertProject(project) {
-  // Slug: either from form, or auto-generated from title
+  // Slug: either from form, or auto-generated from name
   let slug = (project.slug || "").trim();
-  if (!slug && project.title) {
-    slug = project.title
+  if (!slug && project.name) {
+    slug = project.name
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, "-")
       .replace(/^-+|-+$/g, "");
@@ -163,7 +163,7 @@ export async function adminUpsertProject(project) {
 
   const payload = {
     slug,
-    title: project.title?.trim(),
+    name: project.name?.trim(),
     category: project.category, // must match project_category enum
     summary: project.summary?.trim(),
     description: project.description?.trim(),
@@ -176,7 +176,7 @@ export async function adminUpsertProject(project) {
   };
 
   // Basic validation to avoid DB errors
-  if (!payload.title) throw new Error("Title is required.");
+  if (!payload.name) throw new Error("Name is required.");
   if (!payload.slug) throw new Error("Slug is required.");
   if (!payload.summary) throw new Error("Summary is required.");
   if (!payload.description) throw new Error("Description is required.");
