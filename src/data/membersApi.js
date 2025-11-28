@@ -1,4 +1,3 @@
-// src/data/membersApi.js
 import { supabase } from "@lib/supabaseClient";
 
 // These must match your enum labels in public.membership_type
@@ -36,18 +35,16 @@ export async function fetchTeamMembers() {
   }
 
   if (!rows || rows.length === 0) {
-    // No rows = no members visible
     return [];
   }
 
   // 2) Flatten rows into simple member objects (one per membership_type)
   const flatMembers = rows
-    .filter((row) => row.member) // safety in case of dangling FKs
+    .filter((row) => row.member) // safety
     .map((row) => {
       const m = row.member;
       const membershipType = row.membership_type;
 
-      // "role" text displayed under the name – you can customize mapping if you want
       const roleLabel =
         membershipType === "Founders"
           ? "Founder"
@@ -60,11 +57,11 @@ export async function fetchTeamMembers() {
       return {
         id: m.id,
         name: m.full_name,
-        photo: m.avatar_url, // avatar_url from members_personal
-        linkedin: m.linkedin_url, // linkedin_url from members_personal
-        category: membershipType, // used for filtering by tab
+        photo: m.avatar_url,
+        linkedin: m.linkedin_url,
+        category: membershipType, // "Founders" | "Department Heads" | "Project Leads"
         role: roleLabel,
-        projects: [], // we’ll fill this for project leads below
+        projects: [], // filled below for project leads
       };
     });
 
@@ -93,7 +90,7 @@ export async function fetchTeamMembers() {
       if (!acc[p.project_lead_id]) acc[p.project_lead_id] = [];
       acc[p.project_lead_id].push({
         id: p.id,
-        title: p.title,
+        name: p.name, // 🔴 FIXED: was `title`
       });
       return acc;
     }, {});
