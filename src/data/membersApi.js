@@ -102,3 +102,62 @@ export async function fetchTeamMembers() {
     projects: projectsByLead[m.id] || [],
   }));
 }
+
+export async function fetchMemberStories() {
+  const { data, error } = await supabase
+    .from("members_personal")
+    .select(
+      `
+      id,
+      full_name,
+      avatar_url,
+      story,
+      created_at,
+      study_program,
+      university,
+      member_projects:member_projects (
+        role,
+        department_slug,
+        department:departments (
+          name
+        )
+      )
+    `,
+    )
+    // only rows where story is NOT NULL
+    .not("story", "is", null);
+
+  if (error) {
+    console.error("Error fetching member stories:", error);
+    throw error;
+  }
+
+  if (!data || data.length === 0) {
+    return [];
+  }
+
+  return data.map((row) => {
+    const mp = Array.isArray(row.member_projects)
+      ? row.member_projects[0]
+      : null;
+
+    const departmentName =
+      mp?.department?.name || mp?.department_slug;
+
+    const joinedYear = row.created_at
+      ? new Date(row.created_at).getFullYear()
+      : null;
+
+    return {
+      id: row.id,
+      name: row.full_name,
+      avatarUrl: row.avatar_url,
+      story: row.story,
+      joinedYear,
+      studyProgram: row.study_program,
+      university: row.university,
+      role: mp?.role || "Member",
+      department: departmentName,
+    };
+  });
+}
