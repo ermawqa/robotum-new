@@ -443,16 +443,28 @@ body {
   background-color: rgba(255, 255, 255, 0.05);
 }
 
-/* Ghost / text-only */
-.btn-ghost {
-  @apply inline-flex items-center justify-center rounded-full px-4 py-2 font-medium transition-colors duration-200;
-  @apply text-[#3B82F6] hover:text-[#60A5FA] bg-transparent;
-  @apply focus-visible:ring-1 focus-visible:ring-[#3B82F6];
+/* Looks like secondary border gradient but NOT animated and NOT hoverable */
+.btn-secondary-static {
+  position: relative;
+  isolation: isolate;
+  @apply px-6 py-3 rounded-full font-semibold text-white opacity-80 cursor-default select-none;
+  @apply bg-transparent;
+
+  /* Static gradient stroke (no animation, no hover) */
+  border: 1px solid transparent;
+  background:
+    linear-gradient(#0A0F1C, #0A0F1C) padding-box,
+    linear-gradient(90deg, #2563eb, #7c3aed) border-box;
 }
 
-/* Disabled state */
-.btn:disabled {
-  @apply opacity-50 cursor-not-allowed;
+.btn-secondary-static:hover {
+  /* no hover effects */
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-secondary-static:disabled {
+  @apply opacity-80 cursor-default;
 }
 
 /* ==========================================================================

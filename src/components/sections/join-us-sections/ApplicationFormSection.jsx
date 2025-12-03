@@ -233,13 +233,12 @@ const ApplicationFormSection = () => {
                 return (
                   <span
                     key={idx}
-                    className={`h-2 w-2 rounded-full transition-all ${
-                      isActive
+                    className={`h-2 w-2 rounded-full transition-all ${isActive
                         ? "w-8 bg-accent"
                         : isCompleted
                           ? "bg-accent/60"
                           : "bg-white/15"
-                    }`}
+                      }`}
                   />
                 );
               })}
@@ -298,13 +297,16 @@ const ApplicationFormSection = () => {
                     </li>
                   </ul>
                 </div>
-                <Button
+                {/* <Button
                   type="button"
                   variant="primary"
                   className="w-full md:w-auto"
                   onClick={goNext}
                 >
                   Start application →
+                </Button> */}
+                <Button variant="secondaryStatic" disabled>
+                  Applications closed
                 </Button>
               </div>
             </div>
@@ -504,11 +506,10 @@ const ApplicationFormSection = () => {
                           key={val}
                           type="button"
                           onClick={() => handleChange("hasExperience", val)}
-                          className={`px-4 py-1.5 rounded-full text-xs font-medium border transition-colors ${
-                            formData.hasExperience === val
+                          className={`px-4 py-1.5 rounded-full text-xs font-medium border transition-colors ${formData.hasExperience === val
                               ? "bg-accent text-white border-accent"
                               : "border-white/25 text-white/75 hover:border-accent/60"
-                          }`}
+                            }`}
                         >
                           {val === "yes" ? "Yes" : "No"}
                         </button>
@@ -539,11 +540,10 @@ const ApplicationFormSection = () => {
                           key={val}
                           type="button"
                           onClick={() => handleChange("hasClubExperience", val)}
-                          className={`px-4 py-1.5 rounded-full text-xs font-medium border transition-colors ${
-                            formData.hasClubExperience === val
+                          className={`px-4 py-1.5 rounded-full text-xs font-medium border transition-colors ${formData.hasClubExperience === val
                               ? "bg-accent text-white border-accent"
                               : "border-white/25 text-white/75 hover:border-accent/60"
-                          }`}
+                            }`}
                         >
                           {val === "yes" ? "Yes" : "No"}
                         </button>
@@ -625,11 +625,10 @@ const ApplicationFormSection = () => {
                               MAX_PROFILE_CHOICES,
                             )
                           }
-                          className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-colors ${
-                            selected
+                          className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-colors ${selected
                               ? "bg-accent text-white border-accent"
                               : "border-white/25 text-white/75 hover:border-accent/60"
-                          }`}
+                            }`}
                         >
                           {opt}
                         </button>
@@ -675,11 +674,10 @@ const ApplicationFormSection = () => {
                               MAX_PROJECT_CHOICES,
                             )
                           }
-                          className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-colors ${
-                            selected
+                          className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-colors ${selected
                               ? "bg-accent text-white border-accent"
                               : "border-white/25 text-white/75 hover:border-accent/60"
-                          }`}
+                            }`}
                         >
                           {opt}
                         </button>

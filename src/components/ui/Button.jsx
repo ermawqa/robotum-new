@@ -4,7 +4,7 @@ import { scrollToSection } from "@utils/scrollToSection";
 
 /**
  * Polymorphic Button
- * - Variants: primary | primary-light | secondary | ghost | glow
+ * - Variants: primary | primary-light | secondary | secondaryStatic
  * - Sizes: sm | md | lg
  * - Supports Link navigation (`to`), external links (`as="a" href`), and in-page scrolling (`scrollTarget`).
  * - Accessible: proper aria-disabled, aria-busy; preserves focus styles from globals.css.
@@ -41,8 +41,7 @@ export default function Button({
       primary: "btn-primary",
       "primary-light": "btn-primary-light",
       secondary: "btn-secondary",
-      ghost: "btn-ghost",
-      glow: "btn-glow",
+      secondaryStatic: "btn-secondary-static",   // ✅ NEW VARIANT
     }[variant] || "btn-primary";
 
   const sizeClass =
