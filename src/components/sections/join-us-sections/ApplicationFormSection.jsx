@@ -14,11 +14,11 @@ const PROFILE_OPTIONS = [
 ];
 
 const PROJECT_OPTIONS = [
-  "Humanoid Project",
+  "Humanoid",
   "Creative Robotics",
   "Website Development",
-  "ITQ Plastix Project",
-  "Reply Challenge Team",
+  "ITQ Plastix",
+  "Reply Puma Collab",
   "HR, Finance & Legal",
   "Community Engagement",
   "Bookclub & DnD Project",
