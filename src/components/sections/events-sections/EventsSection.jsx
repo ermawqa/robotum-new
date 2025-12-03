@@ -1,8 +1,9 @@
 import { useState, useMemo, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import * as assets from "@assets";
 import Button from "@components/ui/Button";
 import ImageFrame from "@components/ui/ImageFrame";
-import { EVENT_CATEGORY_OPTIONS, fetchEvents } from "@data"; 
+import { EVENT_CATEGORY_OPTIONS, fetchEvents } from "@data";
 import { formatEventDateRange } from "@utils/date-range";
 
 // Map UI labels → DB event.category values (from EVENT_CATEGORY_OPTIONS)
@@ -111,9 +112,15 @@ export default function EventsSection() {
         href={event.location_url}
         target="_blank"
         rel="noreferrer"
-        className="underline decoration-accent/60 decoration-dotted hover:text-accent"
+        className="inline-flex items-center gap-1 underline decoration-accent/60 decoration-dotted hover:text-accent"
       >
-        {event.location_name}
+        <span>{event.location_name}</span>
+        <img
+          src={assets.externalLinkIcon}
+          alt=""
+          aria-hidden="true"
+          className="h-3 w-3 opacity-80"
+        />
       </a>
     ) : (
       event.location_name
@@ -162,7 +169,6 @@ export default function EventsSection() {
           <div className="mt-auto flex items-center justify-between">
             <Button
               variant="secondary"
-              as="link"
               to={`/events/${event.slug}`}
               className="text-sm px-4 py-1.5"
             >
@@ -227,11 +233,10 @@ export default function EventsSection() {
                   <button
                     key={cat}
                     onClick={() => setActiveCategory(cat)}
-                    className={`cursor-pointer px-5 py-2 text-sm md:text-base font-medium rounded-full transition-all duration-300 border ${
-                      active
-                        ? "bg-accent text-white border-accent shadow-[0_0_15px_rgba(59,130,246,0.4)] scale-[1.03]"
-                        : "border-white/20 text-white/80 hover:border-white/40 hover:text-white"
-                    }`}
+                    className={`cursor-pointer px-5 py-2 text-sm md:text-base font-medium rounded-full transition-all duration-300 border ${active
+                      ? "bg-accent text-white border-accent shadow-[0_0_15px_rgba(59,130,246,0.4)] scale-[1.03]"
+                      : "border-white/20 text-white/80 hover:border-white/40 hover:text-white"
+                      }`}
                   >
                     {cat}
                     {typeof countLabel === "number" && singular !== "All" && (
@@ -254,11 +259,10 @@ export default function EventsSection() {
                   key={tf}
                   type="button"
                   onClick={() => setTimeframe(tf)}
-                  className={`cursor-pointer px-3.5 py-1.5 text-sm rounded-full transition-all ${
-                    active
-                      ? "bg-accent text-white shadow"
-                      : "text-white/80 hover:bg-white/10"
-                  }`}
+                  className={`cursor-pointer px-3.5 py-1.5 text-sm rounded-full transition-all ${active
+                    ? "bg-accent text-white shadow"
+                    : "text-white/80 hover:bg-white/10"
+                    }`}
                 >
                   {tf}
                 </button>

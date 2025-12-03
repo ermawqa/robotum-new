@@ -16,6 +16,9 @@ export { default as marketingIcon } from "./icons/offers/marketing.png";
 export { default as collaborationIcon } from "./icons/offers/collaboration.png";
 export { default as networkingIcon } from "./icons/offers/networking.png";
 
+//General icons
+export { default as externalLinkIcon } from "./icons/others/external-link.png";
+
 //Homepage images
 export { default as groupImg } from "./images/homepage/group-image.png";
 export { default as partnerImg } from "./images/homepage/partner-image.png";

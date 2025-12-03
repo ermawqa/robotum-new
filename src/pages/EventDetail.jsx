@@ -1,7 +1,6 @@
-// src/pages/EventDetail.jsx
-
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import * as assets from "@assets";
 import Navbar from "@components/sections/common-sections/Navbar";
 import FooterSection from "@components/sections/common-sections/FooterSection";
 import PageLoader from "@components/sections/common-sections/PageLoader";
@@ -93,9 +92,15 @@ export default function EventDetail() {
       href={event.location_url}
       target="_blank"
       rel="noreferrer"
-      className="underline decoration-accent/60 decoration-dotted hover:text-accent"
+      className="inline-flex items-center gap-1 underline decoration-accent/60 decoration-dotted hover:text-accent"
     >
-      {event.location_name}
+      <span>{event.location_name}</span>
+      <img
+        src={assets.externalLinkIcon}
+        alt=""
+        aria-hidden="true"
+        className="h-3 w-3 opacity-80"
+      />
     </a>
   ) : (
     event.location_name

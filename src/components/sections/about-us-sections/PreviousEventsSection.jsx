@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import * as assets from "@assets";
 import Button from "@components/ui/Button";
 import ImageFrame from "@components/ui/ImageFrame";
 import { fetchEvents } from "@data";
@@ -56,9 +57,15 @@ export default function PreviousEventsSection() {
         href={event.location_url}
         target="_blank"
         rel="noreferrer"
-        className="underline decoration-accent/60 decoration-dotted hover:text-accent"
+        className="inline-flex items-center gap-1 underline decoration-accent/60 decoration-dotted hover:text-accent"
       >
-        {event.location_name}
+        <span>{event.location_name}</span>
+        <img
+          src={assets.externalLinkIcon}
+          alt=""
+          aria-hidden="true"
+          className="h-3 w-3 opacity-80"
+        />
       </a>
     ) : (
       event.location_name
