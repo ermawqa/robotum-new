@@ -67,16 +67,22 @@ const PartnerCategories = () => {
           <h2 className="heading heading-h2 text-slate-50">Proud member of</h2>
 
           {nextPrototypesPartner && (
-            <div className="flex items-center justify-center mt-4">
-              <div className="inline-flex items-center justify-center rounded-2xl bg-white/5 border border-white/12 px-6 py-4 backdrop-blur-sm transition-all duration-500 hover:bg-white/10 hover:border-accent/60">
-                <PartnerLogo
-                  key={nextPrototypesPartner.id}
-                  partner={nextPrototypesPartner}
-                  context="partners"
-                  theme="dark"
-                  className="w-28 sm:w-32 bg-transparent border-0 shadow-none"
+            <div className="flex items-center justify-center mt-6">
+              <a
+                href={nextPrototypesPartner.website_url || undefined}
+                target={nextPrototypesPartner.website_url ? "_blank" : undefined}
+                rel="noopener noreferrer"
+                aria-label={nextPrototypesPartner.name}
+                className="flex-none"
+              >
+                <img
+                  src={nextPrototypesPartner.logo_url}
+                  alt={nextPrototypesPartner.name}
+                  draggable="false"
+                  loading="lazy"
+                  className="h-14 sm:h-16 md:h-20 w-auto object-contain"
                 />
-              </div>
+              </a>
             </div>
           )}
         </div>
