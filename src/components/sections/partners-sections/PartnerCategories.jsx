@@ -1,5 +1,4 @@
-import * as assets from "@assets";
-import ImageFrame from "@components/ui/ImageFrame";
+import PartnerLogo from "@components/ui/PartnerLogo";
 import { useEffect, useState } from "react";
 import { fetchActivePartners } from "@data";
 
@@ -27,7 +26,17 @@ const PartnerCategories = () => {
     loadPartners();
   }, []);
 
-  const grouped = partners.reduce((acc, item) => {
+  // Identify NEXT Prototypes from Supabase
+  const isNextPrototypes = (p) =>
+    p.slug === "next-prototypes" ||
+    p.name?.toLowerCase().includes("next prototypes");
+
+  const nextPrototypesPartner = partners.find(isNextPrototypes);
+
+  // Optionally exclude NEXT Prototypes from the grouped grid to avoid duplication
+  const groupedPartners = partners.filter((p) => !isNextPrototypes(p));
+
+  const grouped = groupedPartners.reduce((acc, item) => {
     const cat = formatCategory(item.category);
     if (!acc[cat]) acc[cat] = [];
     acc[cat].push(item);
@@ -49,26 +58,26 @@ const PartnerCategories = () => {
       className="relative section-container py-20 section-dark-secondary surface-pattern"
     >
       <div className="space-y-24">
-        {/* NEXT Prototypes intro block (merged from former NextPrototypes section) */}
+        {/* NEXT Prototypes intro block (from Supabase) */}
         <div className="max-w-4xl mx-auto text-center space-y-3">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-300/80">
-            Network & Community
+            Network &amp; Community
           </p>
 
           <h2 className="heading heading-h2 text-slate-50">Proud member of</h2>
 
-          <div className="flex items-center justify-center mt-4">
-            <div className="inline-flex items-center justify-center rounded-2xl bg-white/5 border border-white/12 px-6 py-4 backdrop-blur-sm transition-all duration-500 hover:bg-white/10 hover:border-accent/60">
-              <ImageFrame
-                src={assets.nextPrototypes}
-                alt="NEXT Prototypes"
-                fit="contain"
-                variant="none"
-                rounded="none"
-                className="h-10 md:h-12 w-auto filter invert brightness-200 md:brightness-[2.3] transition-transform duration-500"
-              />
+          {nextPrototypesPartner && (
+            <div className="flex items-center justify-center mt-4">
+              <div className="inline-flex items-center justify-center rounded-2xl bg-white/5 border border-white/12 px-6 py-4 backdrop-blur-sm transition-all duration-500 hover:bg-white/10 hover:border-accent/60">
+                <PartnerLogo
+                  partner={nextPrototypesPartner}
+                  context="partners"
+                  theme="dark"
+                  className="bg-transparent border-0 shadow-none"
+                />
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
         {Object.entries(grouped).map(([category, items], idx) => (
@@ -86,29 +95,13 @@ const PartnerCategories = () => {
 
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 sm:gap-10 place-items-center">
               {items.map((p) => (
-                <a
+                <PartnerLogo
                   key={p.id}
-                  href={p.website_url || "#"}
-                  target={p.website_url ? "_blank" : undefined}
-                  rel={p.website_url ? "noopener noreferrer" : undefined}
-                  aria-label={p.name}
-                  title={p.name}
-                  className="group relative w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center 
-                    rounded-2xl bg-white/5 border border-white/10 backdrop-blur
-                    shadow-[0_18px_45px_rgba(15,23,42,0.55)]
-                    hover:border-accent/60 hover:bg-white/8
-                    transition-all duration-400 cursor-pointer overflow-hidden"
-                >
-                  <div className="absolute inset-0 bg-linear-to-tr from-accent/0 via-accent/10 to-[#7C3AED]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
-                  <ImageFrame
-                    src={p.logo_url}
-                    alt={p.name}
-                    fit="contain"
-                    variant="none"
-                    rounded="none"
-                    className="shadow-none max-w-[70%] max-h-[70%] transition-transform duration-400 group-hover:scale-110"
-                  />
-                </a>
+                  partner={p}
+                  context="partners"
+                  theme="dark"
+                  className="w-28 sm:w-32"
+                />
               ))}
             </div>
           </div>

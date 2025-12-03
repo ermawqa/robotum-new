@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Button from "@components/ui/Button";
+import PartnerLogo from "@components/ui/PartnerLogo";
 import SectionLoader from "@components/sections/common-sections/SectionLoader";
 import { fetchActivePartners } from "@data"; // ✅ centralized data logic
 
@@ -102,10 +103,17 @@ export default function PartnersSection() {
               >
                 <div className="flex min-w-full items-center gap-10 sm:gap-12 py-5 sm:py-6 px-6 animate-marquee motion-reduce:animate-none">
                   {laneA.map((partner, idx) => (
-                    <LogoItem
+                    <div
                       key={`A-${partner.id ?? "x"}-${idx}`}
-                      partner={partner}
-                    />
+                      role="listitem"
+                      className="flex-none"
+                    >
+                      <PartnerLogo
+                        partner={partner}
+                        context="home"
+                        theme="light"
+                      />
+                    </div>
                   ))}
                 </div>
               </div>
@@ -121,10 +129,17 @@ export default function PartnersSection() {
               >
                 <div className="flex min-w-full items-center gap-10 sm:gap-12 py-5 sm:py-6 px-6 animate-marquee-reverse motion-reduce:animate-none">
                   {laneB.map((partner, idx) => (
-                    <LogoItem
+                    <div
                       key={`B-${partner.id ?? "x"}-${idx}`}
-                      partner={partner}
-                    />
+                      role="listitem"
+                      className="flex-none"
+                    >
+                      <PartnerLogo
+                        partner={partner}
+                        context="home"
+                        theme="light"
+                      />
+                    </div>
                   ))}
                 </div>
               </div>
@@ -139,7 +154,13 @@ export default function PartnersSection() {
             >
               <div className="grid grid-cols-2 gap-3">
                 {allPartners.map((partner) => (
-                  <LogoItem key={partner.id} partner={partner} variant="tile" />
+                  <PartnerLogo
+                    key={partner.id}
+                    partner={partner}
+                    context="home"
+                    theme="light"
+                    className="w-full"
+                  />
                 ))}
               </div>
             </div>
@@ -151,57 +172,6 @@ export default function PartnersSection() {
         </>
       )}
     </section>
-  );
-}
-
-/**
- * Single logo item
- * Keeps things visually consistent without heavy frames/shadows.
- * Uses grayscale + dimming by default on light surface; full color on hover/focus.
- */
-function LogoItem({ partner, variant = "default" }) {
-  const isTile = variant === "tile";
-  const hasLink = !!partner.website_url;
-
-  const commonClasses =
-    "cursor-pointer select-none group/logo focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/60";
-
-  const wrapperClassName = isTile
-    ? `group/logo block rounded-xl bg-[#F3F4F6] px-3 py-3 border border-accent/10 items-center justify-center ${commonClasses}`
-    : `inline-flex flex-col items-center justify-center rounded-md ${commonClasses}`;
-
-  const Wrapper = hasLink ? "a" : "div";
-
-  return (
-    <Wrapper
-      href={hasLink ? partner.website_url : undefined}
-      target={hasLink ? "_blank" : undefined}
-      rel={hasLink ? "noopener noreferrer" : undefined}
-      role="listitem"
-      className={wrapperClassName}
-      aria-label={partner.name}
-      title={partner.name}
-    >
-      {/* chip with group title (hidden in compact tile variant) */}
-      {!isTile && (
-        <span className="hidden md:inline-block mb-2 px-3 py-0.5 border border-accent/15 text-[11px] rounded-full text-accent/80 bg-[#0A1A2F]/5">
-          {partner.groupTitle}
-        </span>
-      )}
-
-      {/* Logo */}
-      <img
-        src={partner.logo_url}
-        alt={partner.name}
-        className={
-          isTile
-            ? "max-h-8 w-auto object-contain transition-transform duration-300 filter grayscale opacity-80 group-hover/logo:grayscale-0 group-hover/logo:opacity-100 group-hover/logo:scale-[1.03]"
-            : "h-7 sm:h-9 md:h-11 lg:h-12 object-contain transition-transform duration-300 filter grayscale opacity-80 hover:grayscale-0 hover:opacity-100 group-hover/logo:scale-[1.04] will-change-transform"
-        }
-        loading="lazy"
-        draggable="false"
-      />
-    </Wrapper>
   );
 }
 
