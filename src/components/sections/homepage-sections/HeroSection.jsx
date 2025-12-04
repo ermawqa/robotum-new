@@ -1,13 +1,6 @@
 import * as assets from "@assets";
 import Button from "@components/ui/Button";
 
-/**
- * HeroSection — minimal, creative, and responsive
- * - Layered background: soft radial glows + subtle grid overlay
- * - Motion-safe shimmer: uses opacity pulse only for users who allow motion
- * - Clean center layout that works on both mobile & desktop
- * - Uses global typography tokens: .heading, .heading-display, .text-text1
- */
 export default function HeroSection({
   ctaPrimary = "Become a Member",
   ctaPrimaryTo = "/join",

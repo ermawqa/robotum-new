@@ -27,13 +27,11 @@ const About = () => {
       <Navbar />
       <HeroSection />
 
-      {/* Lazy load sections */}
       <Suspense fallback={<PageLoader />}>
         <WhatIsRobotum />
         <TeamSection />
         <PreviousEventsSection />
       </Suspense>
-
       <FooterSection />
     </>
   );

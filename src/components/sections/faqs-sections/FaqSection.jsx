@@ -9,7 +9,7 @@ const FaqSection = ({ faqs, errorMsg }) => {
   };
 
   return (
-    <section className="section-container font-sans section-dark-primary surface-pattern">
+    <section className="section-container hero-offset font-sans section-dark-primary surface-pattern">
       <div>
         <h2 className="heading heading-h2 font-bold text-center mb-10">
           Frequently Asked <span className="text-gradient">Questions</span>

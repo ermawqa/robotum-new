@@ -120,7 +120,7 @@ export default function Projects() {
   return (
     <>
       <Navbar />
-      <section className="section-container surface-1 min-h-screen text-white font-sans section-dark-primary surface-pattern">
+      <section className="section-container hero-offset surface-1 min-h-screen text-white font-sans section-dark-primary surface-pattern">
         <div>
           <header className="mb-8">
             <h1 className="heading heading-h1">Projects</h1>
