@@ -34,7 +34,18 @@ export default function ProjectSection() {
         const data = await fetchFeaturedProjects(); // from Supabase
         // keep only rows where is_featured = true
         const featuredOnly = (data ?? []).filter((p) => p.is_featured === true);
-        setProjects(featuredOnly);
+
+        // 🧠 Ensure "Humanoid" (slug = "humanoid") is always first
+        const HUMANOID_SLUG = "humanoid";
+        const humanoidProjects = featuredOnly.filter(
+          (p) => p.slug === HUMANOID_SLUG || p.name === "Humanoid",
+        );
+        const otherProjects = featuredOnly.filter(
+          (p) => !(p.slug === HUMANOID_SLUG || p.name === "Humanoid"),
+        );
+        const ordered = [...humanoidProjects, ...otherProjects];
+
+        setProjects(ordered);
         setCurrent(0);
       } catch (error) {
         console.error("Error loading featured projects:", error);
